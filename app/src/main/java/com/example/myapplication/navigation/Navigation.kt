@@ -6,6 +6,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import com.example.myapplication.ScreenFour
 import com.example.myapplication.ScreenReplace
 import com.example.myapplication.UserDetailScreen
 import com.example.myapplication.UserListScreen
@@ -35,8 +36,10 @@ fun Navigation() {
         composable("screenReplace") {
             ScreenReplace(navController = navController)
         }
-        composable ("screenFour") {
-
+        // Тут добавили /{message} и  backStackEntry -> для получения сообщения
+        composable ("screenFour/{message}") { backStackEntry ->
+            val message = backStackEntry.arguments?.getString("message")
+            ScreenFour(navController = navController, message = message)
         }
     }
 }
