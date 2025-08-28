@@ -54,4 +54,20 @@ fun SwitchScreen() {
             modifier = Modifier.background(backColor),
         )
     }
+    Text(
+        "Статистика",
+        fontSize = 25.sp,
+        fontWeight = Bold,
+        color = Color.Black,
+        modifier = Modifier.padding(vertical = 130.dp, horizontal = 20.dp)
+    )
+    Row {
+        Card(
+
+        ) {
+            Text("")
+        }
+    }
+
+
 }
