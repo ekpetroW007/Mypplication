@@ -5,26 +5,26 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.wrapContentSize
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
-import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
-import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Color.Companion.White
 import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.text.font.FontWeight.Companion.Bold
@@ -50,7 +50,7 @@ fun Profile() {
         Box(
             modifier = Modifier
                 .size(100.dp, 100.dp)
-                .background(Color.Green)
+                .background(Color(0xFF18C933), shape = RoundedCornerShape(16.dp))
         ) {
             Image(
                 bitmap = ImageBitmap.imageResource(R.drawable.profile),
@@ -63,21 +63,20 @@ fun Profile() {
         Box(
             modifier = Modifier
                 .size(500.dp, 100.dp)
-                .background(Color.Green)
+                .background(Color(0xFF18C933), shape = RoundedCornerShape(16.dp))
         ) {
             Column {
                 Spacer(modifier = Modifier.height(20.dp))
                 Text(
                     "Профиль",
                     fontSize = 35.sp,
-                    color = Color.White,
+                    color = White,
                     fontWeight = Bold
                 )
                 Text(
                     email,
                     fontSize = 20.sp,
-                    color = Color.White,
-                    fontWeight = Bold
+                    color = White
                 )
             }
         }
@@ -94,26 +93,40 @@ fun Profile() {
         Card(
             modifier = Modifier
                 .size(70.dp)
-        ) {
-            Column {
-                Text(
-                    "1",
-                    modifier = Modifier.fillMaxWidth(1f),
-                    fontSize = 20.sp,
-                    textAlign = TextAlign.Center
-                )
-                Text(
-                    "Садов",
-                    modifier = Modifier.fillMaxWidth(1f),
-                    fontSize = 15.sp,
-                    textAlign = TextAlign.Center
-                )
+                .background(color = White),
+
+
+            ) {
+            Box(
+                modifier = Modifier
+                    .fillMaxSize() // Заполняет всю карточку
+                    .wrapContentSize(Alignment.Center) // Выравнивает содержимое Box по центру
+            ) {
+                Column(
+                    modifier = Modifier.align(Alignment.Center),
+                    verticalArrangement = Arrangement.Center,
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    Text(
+                        "1", // TODO (будет браться из вьюмодели)
+                        modifier = Modifier.fillMaxWidth(1f),
+                        fontSize = 20.sp,
+                        textAlign = TextAlign.Center
+                    )
+                    Text(
+                        "Садов",
+                        modifier = Modifier.fillMaxWidth(1f),
+                        fontSize = 15.sp,
+                        textAlign = TextAlign.Center
+                    )
+                }
             }
         }
         Spacer(modifier = Modifier.width(15.dp))
         Card(
             modifier = Modifier
                 .size(height = 70.dp, width = 90.dp)
+                .background(color = White)
         ) {
             Column {
                 Text(
@@ -134,6 +147,7 @@ fun Profile() {
         Card(
             modifier = Modifier
                 .size(height = 70.dp, width = 115.dp)
+                .background(color = White)
         ) {
             Column {
                 Text(
@@ -154,6 +168,7 @@ fun Profile() {
         Card(
             modifier = Modifier
                 .size(70.dp)
+                .background(color = White)
         ) {
             Column {
                 Text(
@@ -171,6 +186,4 @@ fun Profile() {
             }
         }
     }
-
-
 }

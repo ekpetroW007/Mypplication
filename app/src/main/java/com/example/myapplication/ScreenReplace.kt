@@ -27,8 +27,6 @@ fun ScreenReplace(navController: NavController) {
             Text(text = "<--")
         }
         val message = remember { mutableStateOf("") }
-        // Лишний текст закоментировал, но добавил вывод в Log
-        //Text(message.value, fontSize = 60.sp, color = Color.Black)
         TextField(
             value = message.value,
             textStyle = TextStyle(fontSize = 60.sp, color = Color.Black),
@@ -41,7 +39,6 @@ fun ScreenReplace(navController: NavController) {
         )
         Button(
             onClick = {
-                // Обязательно передаем параметр message
                 navController.navigate("screenFour/${message.value}")
             }
         ) {
