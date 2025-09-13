@@ -80,7 +80,20 @@ fun Profile() {
         Card(
 
         ) {
-            Text("")
+            Column {
+                Text(
+                    "1",
+                    modifier = Modifier.fillMaxWidth(1f),
+                    fontSize = 20.sp,
+                    textAlign = TextAlign.Center
+                )
+                Text(
+                    "Садов",
+                    modifier = Modifier.fillMaxWidth(1f),
+                    fontSize = 15.sp,
+                    textAlign = TextAlign.Center
+                )
+            }
         }
     }
 
