@@ -76,7 +76,8 @@ fun Profile() {
         color = Color.Black,
         modifier = Modifier.padding(vertical = 130.dp, horizontal = 20.dp)
     )
-    Row {
+
+    Row(modifier = Modifier.padding(vertical = 185.dp, horizontal = 20.dp)) {
         Card(
 
         ) {
