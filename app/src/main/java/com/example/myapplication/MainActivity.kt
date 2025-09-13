@@ -95,6 +95,66 @@ fun Profile() {
                 )
             }
         }
+        Spacer(modifier = Modifier.width(15.dp))
+        Card(
+            modifier = Modifier
+                .size(height = 70.dp, width = 90.dp)
+        ) {
+            Column {
+                Text(
+                    "2",
+                    modifier = Modifier.fillMaxWidth(1f),
+                    fontSize = 20.sp,
+                    textAlign = TextAlign.Center
+                )
+                Text(
+                    "Растений",
+                    modifier = Modifier.fillMaxWidth(1f),
+                    fontSize = 15.sp,
+                    textAlign = TextAlign.Center
+                )
+            }
+        }
+        Spacer(modifier = Modifier.width(15.dp))
+        Card(
+            modifier = Modifier
+                .size(height = 70.dp, width = 115.dp)
+        ) {
+            Column {
+                Text(
+                    "2",
+                    modifier = Modifier.fillMaxWidth(1f),
+                    fontSize = 20.sp,
+                    textAlign = TextAlign.Center
+                )
+                Text(
+                    "Препаратов",
+                    modifier = Modifier.fillMaxWidth(1f),
+                    fontSize = 15.sp,
+                    textAlign = TextAlign.Center
+                )
+            }
+        }
+        Spacer(modifier = Modifier.width(15.dp))
+        Card(
+            modifier = Modifier
+                .size(70.dp)
+        ) {
+            Column {
+                Text(
+                    "2",
+                    modifier = Modifier.fillMaxWidth(1f),
+                    fontSize = 20.sp,
+                    textAlign = TextAlign.Center
+                )
+                Text(
+                    "Задач",
+                    modifier = Modifier.fillMaxWidth(1f),
+                    fontSize = 15.sp,
+                    textAlign = TextAlign.Center
+                )
+            }
+        }
     }
 
 
