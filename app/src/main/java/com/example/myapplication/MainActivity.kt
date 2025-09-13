@@ -32,27 +32,42 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun SwitchScreen() {
-    var theme by remember { mutableStateOf(false) }
-    val textColor = if (theme) Color.Black else Color.White
-    val backColor = if (theme) Color.White else Color.Black
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(backColor)
-    ) {
-        Text(
-            "switch",
-            color = textColor
-        )
-        Spacer(modifier = Modifier.height(20.dp))
-        Switch(
-            checked = theme,
-            onCheckedChange = { isChecked ->
-                theme = isChecked
-            },
-            modifier = Modifier.background(backColor),
-        )
+fun Profile() {
+    Row {
+        Box(
+            modifier = Modifier
+                .size(100.dp, 100.dp)
+                .background(Color.Green)
+        ) {
+            Image(
+                bitmap = ImageBitmap.imageResource(R.drawable.profile),
+                contentDescription = "Картинка профиля",
+                modifier = Modifier
+                    .padding(horizontal = 10.dp)
+                    .size(70.dp, 100.dp)
+            )
+        }
+        Box(
+            modifier = Modifier
+                .size(500.dp, 100.dp)
+                .background(Color.Green)
+        ) {
+            Column {
+                Spacer(modifier = Modifier.height(20.dp))
+                Text(
+                    "Профиль",
+                    fontSize = 35.sp,
+                    color = Color.White,
+                    fontWeight = Bold
+                )
+                Text(
+                    email,
+                    fontSize = 20.sp,
+                    color = Color.White,
+                    fontWeight = Bold
+                )
+            }
+        }
     }
     Text(
         "Статистика",
