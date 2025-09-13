@@ -79,7 +79,8 @@ fun Profile() {
 
     Row(modifier = Modifier.padding(vertical = 185.dp, horizontal = 20.dp)) {
         Card(
-
+            modifier = Modifier
+                .size(70.dp)
         ) {
             Column {
                 Text(
