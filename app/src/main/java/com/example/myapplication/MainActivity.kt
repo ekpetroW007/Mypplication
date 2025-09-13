@@ -31,6 +31,8 @@ class MainActivity : ComponentActivity() {
     }
 }
 
+var email = "email@gmail.com" // ВВОДИТ ПОЛЬЗОВАТЕЛЬ
+
 @Composable
 fun Profile() {
     Row {
