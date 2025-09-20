@@ -49,25 +49,26 @@ var email = "email@gmail.com" // ВВОДИТ ПОЛЬЗОВАТЕЛЬ
 
 @Composable
 fun Profile() {
-    Row {
-        Box(
-            modifier = Modifier
-                .size(100.dp, 100.dp)
-                .background(Color(0xFF18C933))
-        ) {
+    Box(
+        modifier = Modifier
+            .size(600.dp, 100.dp)
+            .background(
+                Color(0xFF09E327), shape = RoundedCornerShape(
+                    topStart = 0.dp,
+                    topEnd = 0.dp,
+                    bottomEnd = 25.dp,
+                    bottomStart = 25.dp
+                )
+            )
+    ) {
+        Row {
             Image(
                 bitmap = ImageBitmap.imageResource(R.drawable.profile),
                 contentDescription = "Картинка профиля",
                 modifier = Modifier
-                    .padding(horizontal = 10.dp)
-                    .size(70.dp, 100.dp)
+                    .padding(horizontal = 10.dp, vertical = 20.dp)
+                    .size(80.dp, 110.dp)
             )
-        }
-        Box(
-            modifier = Modifier
-                .size(500.dp, 100.dp)
-                .background(Color(0xFF18C933))
-        ) {
             Column {
                 Spacer(modifier = Modifier.height(20.dp))
                 Text(
@@ -81,6 +82,7 @@ fun Profile() {
                     fontSize = 20.sp,
                     color = White
                 )
+
             }
         }
     }
