@@ -25,10 +25,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.Color.Companion.Black
 import androidx.compose.ui.graphics.Color.Companion.White
 import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.res.imageResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.font.FontWeight.Companion.Bold
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -274,21 +274,22 @@ fun Profile() {
                 Text(
                     "Bookeeper",
                     modifier = Modifier
-                        .padding(start = 0.dp, top = 20.dp, end = 0.dp, bottom = 3.dp),
+                        .padding(start = 0.dp, top = 23.dp, end = 0.dp, bottom = 3.dp),
                     fontSize = 30.sp,
                     letterSpacing = 0.3.em,
                     fontWeight = Bold,
-                    fontStyle = FontStyle.Italic,
                     color = Color(0xFF000000)
                 )
-                Text(
-                    "Приложение для планирования и учета обработки растений в саду. Создавайте графики работ, отслеживайте выполнение и ведите историю обработок.",
-                    modifier = Modifier
-                        .padding(start = (-15).dp, top = 10.dp, end = 0.dp, bottom = 3.dp),
-                    fontSize = 15.sp,
-                    color = Color(0xFF000000)
-                )
+
             }
         }
     }
+    Text(
+        "Приложение для планирования и учета обработки растений в саду. Создавайте графики работ, отслеживайте выполнение и ведите историю обработок.",
+        modifier = Modifier
+            .padding(vertical = 345.dp, horizontal = 42.dp),
+        fontSize = 14.sp,
+        fontStyle = FontStyle.Italic,
+        color = Color(0xFF000000)
+    )
 }
