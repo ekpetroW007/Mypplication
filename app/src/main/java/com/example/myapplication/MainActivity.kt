@@ -4,6 +4,7 @@ import androidx.compose.ui.text.font.FontStyle
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -28,7 +29,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Color.Companion.White
 import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.res.imageResource
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.font.FontWeight.Companion.Bold
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -249,41 +249,78 @@ fun Profile() {
             }
         }
     }
-    Card(
-        modifier = Modifier
-            .padding(vertical = 270.dp, horizontal = 20.dp)
-            .size(height = 150.dp, width = 375.dp)
-            .background(
-                White, shape = RoundedCornerShape(
-                    topStart = 16.dp,
-                    topEnd = 16.dp,
-                    bottomEnd = 0.dp,
-                    bottomStart = 0.dp
+    Column {
+        Card(
+            modifier = Modifier
+                .padding(start = 20.dp, top = 270.dp, end = 0.dp, bottom = 10.dp)
+                .size(height = 150.dp, width = 375.dp)
+                .background(
+                    White, shape = RoundedCornerShape(
+                        topStart = 16.dp,
+                        topEnd = 0.dp,
+                        bottomEnd = 0.dp,
+                        bottomStart = 0.dp
+                    )
                 )
-            )
-    ) {
-        Row {
-            Image(
-                bitmap = ImageBitmap.imageResource(R.drawable.picofplant),
-                contentDescription = "Картинка растения в профиле",
-                modifier = Modifier
-                    .padding(horizontal = 22.dp)
-                    .size(50.dp, 80.dp)
-            )
-            Column {
-                Text(
-                    "Bookeeper",
+        ) {
+            Row {
+                Image(
+                    bitmap = ImageBitmap.imageResource(R.drawable.picofplant),
+                    contentDescription = "Картинка растения в профиле",
                     modifier = Modifier
-                        .padding(start = 0.dp, top = 23.dp, end = 0.dp, bottom = 3.dp),
-                    fontSize = 30.sp,
-                    letterSpacing = 0.3.em,
-                    fontWeight = Bold,
-                    color = Color(0xFF000000)
+                        .padding(horizontal = 22.dp)
+                        .size(50.dp, 80.dp)
                 )
+                Column {
+                    Text(
+                        "Bookeeper",
+                        modifier = Modifier
+                            .padding(start = 0.dp, top = 23.dp, end = 0.dp, bottom = 3.dp),
+                        fontSize = 30.sp,
+                        letterSpacing = 0.3.em,
+                        fontWeight = Bold,
+                        color = Color(0xFF000000)
+                    )
 
+                }
+            }
+        }
+        Card(
+            border = BorderStroke(1.dp, Color(0xFFBD1A0E)),
+            modifier = Modifier
+                .padding(start = 20.dp, top = 10.dp, end = 0.dp, bottom = 0.dp)
+                .size(height = 50.dp, width = 375.dp)
+                .background(
+                    White, shape = RoundedCornerShape(
+                        topStart = 16.dp,
+                        topEnd = 0.dp,
+                        bottomEnd = 0.dp,
+                        bottomStart = 0.dp
+                    )
+                )
+        ) {
+            Row {
+                Image(
+                    bitmap = ImageBitmap.imageResource(R.drawable.logout),
+                    contentDescription = "Картинка выхода из аккаунта",
+                    modifier = Modifier
+                        .padding(horizontal = 22.dp)
+                        .size(30.dp, 60.dp)
+                )
+                Column {
+                    Text(
+                        "Выйти из аккаунта",
+                        modifier = Modifier
+                            .padding(horizontal = 15.dp, vertical = 10.dp),
+                        fontSize = 25.sp,
+                        color = Color(0xFFBD1A0E)
+                    )
+                }
             }
         }
     }
+
+
     Text(
         "Приложение для планирования и учета обработки растений в саду. Создавайте графики работ, отслеживайте выполнение и ведите историю обработок.",
         modifier = Modifier
