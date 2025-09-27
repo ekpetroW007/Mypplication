@@ -40,7 +40,7 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            Profile()
+            Drugs()
         }
     }
 }
@@ -331,4 +331,65 @@ fun Profile() {
         fontStyle = FontStyle.Italic,
         color = Color(0xFF000000)
     )
+}
+
+@Composable
+fun Drugs() {
+    Box(
+        modifier = Modifier
+            .size(600.dp, 100.dp)
+            .background(
+                Color(0xFF09E327), shape = RoundedCornerShape(
+                    topStart = 0.dp,
+                    topEnd = 0.dp,
+                    bottomEnd = 25.dp,
+                    bottomStart = 25.dp
+                )
+            )
+    ) {
+        Text(
+            "Использованные препараты",
+            Modifier.padding(start = 20.dp, top = 10.dp, end = 0.dp, bottom = 0.dp),
+            fontSize = 28.sp,
+            color = White,
+            fontWeight = Bold
+        )
+        Text(
+            "Справочник средств",
+            Modifier.padding(start = 20.dp, top = 39.dp, end = 0.dp, bottom = 0.dp),
+            fontSize = 23.sp,
+            color = White
+        )
+    }
+    Card(
+        border = BorderStroke(1.dp, Color(0xFF000000)),
+        modifier = Modifier
+            .padding(start = 25.dp, top = 140.dp, end = 0.dp, bottom = 0.dp)
+            .size(height = 45.dp, width = 360.dp)
+            .background(
+                White, shape = RoundedCornerShape(
+                    topStart = 16.dp,
+                    topEnd = 0.dp,
+                    bottomEnd = 0.dp,
+                    bottomStart = 0.dp
+                )
+            )
+    ) {
+        Row {
+            Image(
+                bitmap = ImageBitmap.imageResource(R.drawable.search),
+                contentDescription = "Картинка поиска",
+                modifier = Modifier
+                    .padding(horizontal = 22.dp)
+                    .size(25.dp, 45.dp)
+            )
+            Text(
+                "Поиск препаратов",
+                modifier = Modifier
+                    .padding(horizontal = 5.dp, vertical = 8.dp),
+                fontSize = 20.sp,
+                color = Color(0xFF000000)
+            )
+        }
+    }
 }
