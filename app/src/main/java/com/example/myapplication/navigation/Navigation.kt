@@ -10,15 +10,14 @@ import com.example.myapplication.ScreenFive
 import com.example.myapplication.ScreenFour
 import com.example.myapplication.ScreenReplace
 import com.example.myapplication.UserDetailScreen
-import com.example.myapplication.UserListScreen
 
 @Composable
 fun Navigation() {
     val navController = rememberNavController()
     NavHost(navController = navController, startDestination = "userList") {
-        composable("userList") {
-            UserListScreen(navController = navController)
-        }
+//        composable("userList") {
+//            UserListScreen(navController = navController)
+//        }
         composable(
             "userDetail/{userName}/{userAge}",
             arguments = listOf(
