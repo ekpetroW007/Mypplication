@@ -38,13 +38,48 @@ fun TopBar(topBarText: String) {
             )
     ) {
         Row {
-            Image(
-                bitmap = ImageBitmap.imageResource(R.drawable.profile),
-                contentDescription = "Картинка профиля", // TODO ПО ТАКОМУ ЖЕ ПРИНЦИПУ, КАК С ТОПБАРТЕКСТ
-                modifier = Modifier
-                    .padding(horizontal = 10.dp, vertical = 20.dp)
-                    .size(80.dp, 110.dp)
-            )
+            // TODO ПО ТАКОМУ ЖЕ ПРИНЦИПУ, КАК С ТОПБАРТЕКСТ (ДОБАВИТЬ ИФ)
+            when (topBarText) {
+                "Профиль" -> {
+                    Image(
+                        bitmap = ImageBitmap.imageResource(R.drawable.profile),
+                        contentDescription = "Профиль", // TODO ПО ТАКОМУ ЖЕ ПРИНЦИПУ, КАК С ТОПБАРТЕКСТ
+                        modifier = Modifier
+                            .padding(horizontal = 10.dp, vertical = 20.dp)
+                            .size(80.dp, 110.dp)
+                    )
+                }
+
+                "Календарь" -> {
+                    Image(
+                        bitmap = ImageBitmap.imageResource(R.drawable.calendar),
+                        contentDescription = "Календарь", // TODO ПО ТАКОМУ ЖЕ ПРИНЦИПУ, КАК С ТОПБАРТЕКСТ
+                        modifier = Modifier
+                            .padding(horizontal = 10.dp, vertical = 20.dp)
+                            .size(80.dp, 110.dp)
+                    )
+                }
+
+                "Мои сады" -> {
+                    Image(
+                        bitmap = ImageBitmap.imageResource(R.drawable.mygardens),
+                        contentDescription = "Мои сады", // TODO ПО ТАКОМУ ЖЕ ПРИНЦИПУ, КАК С ТОПБАРТЕКСТ
+                        modifier = Modifier
+                            .padding(horizontal = 10.dp, vertical = 20.dp)
+                            .size(80.dp, 110.dp)
+                    )
+                }
+
+                "Препараты" -> {
+                    Image(
+                        bitmap = ImageBitmap.imageResource(R.drawable.drug),
+                        contentDescription = "Препараты", // TODO ПО ТАКОМУ ЖЕ ПРИНЦИПУ, КАК С ТОПБАРТЕКСТ
+                        modifier = Modifier
+                            .padding(horizontal = 10.dp, vertical = 20.dp)
+                            .size(80.dp, 110.dp)
+                    )
+                }
+            }
             Column {
                 Spacer(modifier = Modifier.height(20.dp))
                 Text(
@@ -53,6 +88,7 @@ fun TopBar(topBarText: String) {
                     color = White,
                     fontWeight = Bold
                 )
+
                 Text(
                     email, // TODO ПО ТАКОМУ ЖЕ ПРИНЦИПУ, КАК С ТОПБАРТЕКСТ (ДОБАВИТЬ ИФ)
                     fontSize = 20.sp,

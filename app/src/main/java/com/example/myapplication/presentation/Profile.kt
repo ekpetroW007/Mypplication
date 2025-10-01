@@ -27,8 +27,11 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Color.Companion.White
 import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.res.imageResource
+import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight.Companion.Bold
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.em
 import androidx.compose.ui.unit.sp
@@ -225,27 +228,24 @@ fun Profile(innerPadding: PaddingValues) {
                             .padding(horizontal = 22.dp)
                             .size(50.dp, 80.dp)
                     )
-                    Column {
-                        Text(
-                            "Bookeeper",
-                            modifier = Modifier
-                                .padding(start = 0.dp, top = 23.dp, end = 0.dp, bottom = 3.dp),
-                            fontSize = 30.sp,
-                            letterSpacing = 0.3.em,
-                            fontWeight = Bold,
-                            color = Color(0xFF000000)
-                        )
-                        Text(
-                            "Приложение для планирования и учета обработки растений в саду. Создавайте графики работ, отслеживайте выполнение и ведите историю обработок.",
-                            modifier = Modifier
-                                .padding(vertical = 12.dp, horizontal = 0.dp),
-                            fontSize = 14.sp,
-//        fontStyle = FontStyle.Italic,
-                            color = Color(0xFF000000)
-                        )
-
-                    }
+                    Text(
+                        "Bookeeper",
+                        modifier = Modifier
+                            .padding(vertical = 20.dp, horizontal = 5.dp),
+                        fontSize = 30.sp,
+                        letterSpacing = 0.3.em,
+                        fontWeight = Bold,
+                        color = Color(0xFF000000)
+                    )
                 }
+                Text(
+                    "Приложение для планирования и учета обработки растений в саду. Создавайте графики работ, отслеживайте выполнение и ведите историю обработок.",
+                    modifier = Modifier
+                        .padding(horizontal = 22.dp),
+                    fontSize = 14.sp,
+                    fontStyle = FontStyle.Italic,
+                    color = Color(0xFF000000)
+                )
             }
             Card(
                 border = BorderStroke(1.dp, Color(0xFFBD1A0E)),

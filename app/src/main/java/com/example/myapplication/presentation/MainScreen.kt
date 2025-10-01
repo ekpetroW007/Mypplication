@@ -5,7 +5,6 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import com.example.myapplication.Drugs
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
@@ -19,12 +18,23 @@ fun MainScreen() {
                     selectedScreen.value = "Препараты"
                 }
             )
+            AppButtonBar(
+                onClick = {
+                    selectedScreen.value = "Мои сады"
+                }
+            )
+            AppButtonBar(
+                onClick = {
+                    selectedScreen.value = "Календарь"
+                }
+            )
         },
-    ) {  innerPadding ->
-        when(selectedScreen.value) {
+    ) { innerPadding ->
+        when (selectedScreen.value) {
             "Профиль" -> Profile(innerPadding)
             "Препараты" -> Drugs(innerPadding)
-            // TODO еще три экрана
+            "Мои сады" -> MyGardens(innerPadding)
+            "Календарь" -> Calendar(innerPadding)
         }
     }
 }
