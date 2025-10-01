@@ -38,42 +38,11 @@ fun TopBar(topBarText: String) {
             )
     ) {
         Row {
-            // TODO ПО ТАКОМУ ЖЕ ПРИНЦИПУ, КАК С ТОПБАРТЕКСТ (ДОБАВИТЬ ИФ)
             when (topBarText) {
                 "Профиль" -> {
                     Image(
                         bitmap = ImageBitmap.imageResource(R.drawable.profile),
-                        contentDescription = "Профиль", // TODO ПО ТАКОМУ ЖЕ ПРИНЦИПУ, КАК С ТОПБАРТЕКСТ
-                        modifier = Modifier
-                            .padding(horizontal = 10.dp, vertical = 20.dp)
-                            .size(80.dp, 110.dp)
-                    )
-                }
-
-                "Календарь" -> {
-                    Image(
-                        bitmap = ImageBitmap.imageResource(R.drawable.calendar),
-                        contentDescription = "Календарь", // TODO ПО ТАКОМУ ЖЕ ПРИНЦИПУ, КАК С ТОПБАРТЕКСТ
-                        modifier = Modifier
-                            .padding(horizontal = 10.dp, vertical = 20.dp)
-                            .size(80.dp, 110.dp)
-                    )
-                }
-
-                "Мои сады" -> {
-                    Image(
-                        bitmap = ImageBitmap.imageResource(R.drawable.mygardens),
-                        contentDescription = "Мои сады", // TODO ПО ТАКОМУ ЖЕ ПРИНЦИПУ, КАК С ТОПБАРТЕКСТ
-                        modifier = Modifier
-                            .padding(horizontal = 10.dp, vertical = 20.dp)
-                            .size(80.dp, 110.dp)
-                    )
-                }
-
-                "Препараты" -> {
-                    Image(
-                        bitmap = ImageBitmap.imageResource(R.drawable.drug),
-                        contentDescription = "Препараты", // TODO ПО ТАКОМУ ЖЕ ПРИНЦИПУ, КАК С ТОПБАРТЕКСТ
+                        contentDescription = "Профиль",
                         modifier = Modifier
                             .padding(horizontal = 10.dp, vertical = 20.dp)
                             .size(80.dp, 110.dp)
@@ -89,11 +58,35 @@ fun TopBar(topBarText: String) {
                     fontWeight = Bold
                 )
 
-                Text(
-                    email, // TODO ПО ТАКОМУ ЖЕ ПРИНЦИПУ, КАК С ТОПБАРТЕКСТ (ДОБАВИТЬ ИФ)
-                    fontSize = 20.sp,
-                    color = White
-                )
+                when (topBarText) {
+                    "Профиль" -> {
+                        Text(
+                            email, // TODO ПО ТАКОМУ ЖЕ ПРИНЦИПУ, КАК С ТОПБАРТЕКСТ (ДОБАВИТЬ ИФ)
+                            fontSize = 20.sp,
+                            color = White
+                        )
+                    }
+                    "Календарь" -> {
+                        Text("Календарь обработок",
+                        fontSize = 20.sp,
+                        color = White)
+                    }
+                    "Препараты" -> {
+                        Text(
+                            "Справочник средств", // TODO ПО ТАКОМУ ЖЕ ПРИНЦИПУ, КАК С ТОПБАРТЕКСТ (ДОБАВИТЬ ИФ)
+                            fontSize = 20.sp,
+                            color = White
+                        )
+                    }
+                    "Мои сады" -> {
+                        Text(
+                            "Управление садами", // TODO ПО ТАКОМУ ЖЕ ПРИНЦИПУ, КАК С ТОПБАРТЕКСТ (ДОБАВИТЬ ИФ)
+                            fontSize = 20.sp,
+                            color = White
+                        )
+                    }
+                }
+
 
             }
         }

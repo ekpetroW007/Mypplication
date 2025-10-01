@@ -51,5 +51,5 @@ fun NavigationItem(text: String, onClick: () -> Unit) {
 @Preview
 @Composable
 fun PreviewButtonBar() {
-    AppButtonBar({})
+    AppButtonBar {}
 }

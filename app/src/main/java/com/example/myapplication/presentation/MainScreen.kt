@@ -18,16 +18,6 @@ fun MainScreen() {
                     selectedScreen.value = "Препараты"
                 }
             )
-            AppButtonBar(
-                onClick = {
-                    selectedScreen.value = "Мои сады"
-                }
-            )
-            AppButtonBar(
-                onClick = {
-                    selectedScreen.value = "Календарь"
-                }
-            )
         },
     ) { innerPadding ->
         when (selectedScreen.value) {
