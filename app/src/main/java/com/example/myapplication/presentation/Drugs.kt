@@ -88,7 +88,7 @@ fun Drugs(innerPadding: PaddingValues) {
                 )
                 Text(
                     "Защита от                                              грибковых                                          заболеваний",
-                    fontSize = 17.sp,
+                    fontSize = 16.sp,
                     color = Color(0xFF6C6A6A)
                 )
             }
@@ -107,6 +107,60 @@ fun Drugs(innerPadding: PaddingValues) {
             )
             Text(
                 "100 г на 10 л воды",
+                fontSize = 17.sp, modifier = Modifier.padding(start = 22.dp),
+                color = Color(0xFF333030), fontWeight = FontWeight.Bold
+            )
+        }
+
+    }
+    Card(
+        modifier = Modifier
+            .padding(start = 25.dp, top = 430.dp, end = 0.dp, bottom = 0.dp)
+            .size(height = 200.dp, width = 365.dp)
+            .background(
+                White, shape = RoundedCornerShape(
+                    topStart = 16.dp,
+                    topEnd = 0.dp,
+                    bottomEnd = 0.dp,
+                    bottomStart = 0.dp
+                )
+            )
+    ) {
+        Row {
+            Image(
+                bitmap = ImageBitmap.imageResource(R.drawable.drug),
+                contentDescription = "Картинка препарата",
+                modifier = Modifier
+                    .padding(horizontal = 22.dp, vertical = 25.dp)
+                    .size(30.dp, 55.dp)
+            )
+            Column {
+                Text(
+                    "Лепидоцид",
+                    fontSize = 21.sp, modifier = Modifier.padding(top = 23.dp),
+                    color = Color(0xFF000000), fontWeight = FontWeight.Bold
+                )
+                Text(
+                    "Защита от                                              плодорожки",
+                    fontSize = 16.sp,
+                    color = Color(0xFF6C6A6A)
+                )
+            }
+        }
+        Image(
+            bitmap = ImageBitmap.imageResource(R.drawable.longline),
+            contentDescription = "Линия",
+            modifier = Modifier
+                .size(width = 365.dp, height = 1.dp)
+        )
+        Column {
+            Text(
+                "Норма расхода: ",
+                fontSize = 15.sp, modifier = Modifier.padding(start = 22.dp, top = 12.dp),
+                color = Color(0xFF6C6A6A)
+            )
+            Text(
+                "25 г на 10 л воды",
                 fontSize = 17.sp, modifier = Modifier.padding(start = 22.dp),
                 color = Color(0xFF333030), fontWeight = FontWeight.Bold
             )
