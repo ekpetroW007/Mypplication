@@ -1,9 +1,9 @@
 package com.example.myapplication.presentation
 
+import android.graphics.fonts.FontStyle
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
@@ -18,40 +18,15 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Color.Companion.White
 import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.res.imageResource
-import androidx.compose.ui.text.font.FontWeight.Companion.Bold
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.myapplication.R
 
 @Composable
 fun Drugs(innerPadding: PaddingValues) {
-    Box(
-        modifier = Modifier
-            .size(600.dp, 100.dp)
-            .padding(innerPadding)
-            .background(
-                Color(0xFF09E327), shape = RoundedCornerShape(
-                    topStart = 0.dp,
-                    topEnd = 0.dp,
-                    bottomEnd = 25.dp,
-                    bottomStart = 25.dp
-                )
-            )
-    ) {
-        Text(
-            "Использованные препараты",
-            Modifier.padding(start = 20.dp, top = 10.dp, end = 0.dp, bottom = 0.dp),
-            fontSize = 28.sp,
-            color = White,
-            fontWeight = Bold
-        )
-        Text(
-            "Справочник средств",
-            Modifier.padding(start = 20.dp, top = 39.dp, end = 0.dp, bottom = 0.dp),
-            fontSize = 23.sp,
-            color = White
-        )
-    }
+///  TODO (уже есть в топбар)
+
     Card(
         border = BorderStroke(1.dp, Color(0xFF000000)),
         modifier = Modifier
@@ -87,7 +62,7 @@ fun Drugs(innerPadding: PaddingValues) {
     Card(
         modifier = Modifier
             .padding(start = 25.dp, top = 200.dp, end = 0.dp, bottom = 0.dp)
-            .size(height = 130.dp, width = 365.dp)
+            .size(height = 200.dp, width = 365.dp)
             .background(
                 White, shape = RoundedCornerShape(
                     topStart = 16.dp,
@@ -107,17 +82,35 @@ fun Drugs(innerPadding: PaddingValues) {
             )
             Column {
                 Text(
-                    "Бордоская смесь", modifier = Modifier
-                        .padding(vertical = 25.dp),
-                    fontSize = 18.sp,
-                    color = Color(0xFF000000)
+                    "Бордоская смесь",
+                    fontSize = 21.sp, modifier = Modifier.padding(top = 23.dp),
+                    color = Color(0xFF000000), fontWeight = FontWeight.Bold
                 )
                 Text(
-                    "Защита от грибковых заболеваний",
-                    fontSize = 15.sp,
-                    color = Color(0xFF333030)
+                    "Защита от                                              грибковых                                          заболеваний",
+                    fontSize = 17.sp,
+                    color = Color(0xFF6C6A6A)
                 )
             }
         }
+        Image(
+            bitmap = ImageBitmap.imageResource(R.drawable.longline),
+            contentDescription = "Линия",
+            modifier = Modifier
+                .size(width = 365.dp, height = 1.dp)
+        )
+        Column {
+            Text(
+                "Норма расхода: ",
+                fontSize = 15.sp, modifier = Modifier.padding(start = 22.dp, top = 12.dp),
+                color = Color(0xFF6C6A6A)
+            )
+            Text(
+                "100 г на 10 л воды",
+                fontSize = 17.sp, modifier = Modifier.padding(start = 22.dp),
+                color = Color(0xFF333030), fontWeight = FontWeight.Bold
+            )
+        }
+
     }
 }
