@@ -21,7 +21,7 @@ import com.example.myapplication.R
 
 @Composable
 fun AppButtonBar(onClick: () -> Unit) {
-    Row(modifier = Modifier.padding(6.dp)) {
+    Row(modifier = Modifier.padding(start = 10.dp, bottom = 6.dp)) {
         NavigationItem("Календарь", onClick)
         NavigationItem("Мои сады", onClick)
         NavigationItem("Препараты", onClick)
@@ -44,11 +44,11 @@ fun NavigationItem(text: String, onClick: () -> Unit) {
                     bitmap = ImageBitmap.imageResource(R.drawable.prof2),
                     contentDescription = "Картинка профиля",
                     modifier = Modifier
-                        .size(22.dp)
+                        .size(22.dp).padding(start = 4.dp)
                 )
                 Text(
                     text, fontSize = 17.sp,
-                    color = Color(0xFF6B6F79)
+                    color = Color(0xFF48484B), modifier = Modifier.padding(start = 4.dp)
                 )
             }
 
@@ -57,11 +57,11 @@ fun NavigationItem(text: String, onClick: () -> Unit) {
                     bitmap = ImageBitmap.imageResource(R.drawable.drug),
                     contentDescription = "Картинка препаратов",
                     modifier = Modifier
-                        .size(22.dp)
+                        .size(22.dp).padding(start = 4.dp)
                 )
                 Text(
                     text, fontSize = 17.sp,
-                    color = Color(0xFF6B6F79)
+                    color = Color(0xFF48484B), modifier = Modifier.padding(start = 4.dp)
                 )
             }
 
@@ -70,11 +70,11 @@ fun NavigationItem(text: String, onClick: () -> Unit) {
                     bitmap = ImageBitmap.imageResource(R.drawable.mygardens),
                     contentDescription = "Картинка моих садов",
                     modifier = Modifier
-                        .size(22.dp)
+                        .size(22.dp).padding(start = 4.dp)
                 )
                 Text(
                     text, fontSize = 17.sp,
-                    color = Color(0xFF6B6F79)
+                    color = Color(0xFF48484B), modifier = Modifier.padding(start = 4.dp)
                 )
             }
 
@@ -83,11 +83,11 @@ fun NavigationItem(text: String, onClick: () -> Unit) {
                     bitmap = ImageBitmap.imageResource(R.drawable.calendar),
                     contentDescription = "Картинка календаря",
                     modifier = Modifier
-                        .size(22.dp)
+                        .size(22.dp).padding(start = 4.dp)
                 )
                 Text(
                     text, fontSize = 17.sp,
-                    color = Color(0xFF6B6F79)
+                    color = Color(0xFF48484B), modifier = Modifier.padding(start = 4.dp)
                 )
             }
         }
