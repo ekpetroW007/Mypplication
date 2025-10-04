@@ -1,5 +1,6 @@
 package com.example.myapplication.presentation
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -36,7 +37,7 @@ fun MyGardens(innerPadding: PaddingValues) {
     Card(
         modifier = Modifier
             .padding(start = 25.dp, top = 120.dp)
-            .size(height = 450.dp, width = 365.dp)
+            .size(height = 600.dp, width = 365.dp)
             .background(
                 White, shape = RoundedCornerShape(
                     topStart = 16.dp,
@@ -165,11 +166,94 @@ fun MyGardens(innerPadding: PaddingValues) {
             }
         }
         Image(
-            bitmap = ImageBitmap.imageResource(R.drawable.longline),
+            bitmap = ImageBitmap.imageResource(R.drawable.line),
             contentDescription = "Линия",
             modifier = Modifier
                 .padding(horizontal = 22.dp)
                 .size(323.dp, 1.dp)
         )
+        Column {
+            Text(
+                "Растения:",
+                modifier = Modifier.padding(top = 23.dp, start = 22.dp),
+                fontSize = 22.sp,
+            )
+            Column {
+                Card(
+                    border = BorderStroke(1.dp, Color(0xFF069B16)),
+                    modifier = Modifier
+                        .padding(start = 55.dp, top = 5.dp)
+                        .size(height = 35.dp, width = 155.dp)
+                        .background(
+                            Color(0xFF42E851), shape = RoundedCornerShape(topStart = 16.dp)
+                        )
+                ) {
+                    Text(
+                        "Груша Конференция",
+                        modifier = Modifier.padding(horizontal = 10.dp),
+                        fontSize = 15.sp,
+                        color = Color(0xFF069B16)
+                    )
+                }
+                Card(
+                    border = BorderStroke(1.dp, Color(0xFF069B16)),
+                    modifier = Modifier
+                        .padding(start = 55.dp, top = 5.dp)
+                        .size(height = 35.dp, width = 140.dp)
+                        .background(
+                            Color(0xFF42E851), shape = RoundedCornerShape(topStart = 16.dp)
+                        )
+                ) {
+                    Text(
+                        "Яблоня Антоновка",
+                        modifier = Modifier.padding(horizontal = 10.dp),
+                        fontSize = 15.sp,
+                        color = Color(0xFF069B16)
+                    )
+                }
+            }
+        }
+        Spacer(modifier = Modifier.width(15.dp))
+        Column {
+            Text(
+                "Задачи:",
+                modifier = Modifier.padding(top = 23.dp, start = 22.dp),
+                fontSize = 22.sp,
+            )
+            Column {
+                Card(
+                    border = BorderStroke(1.dp, Color(0xFF069B16)),
+                    modifier = Modifier
+                        .padding(start = 55.dp, top = 5.dp)
+                        .size(height = 35.dp, width = 140.dp)
+                        .background(
+                            Color(0xFF42E851), shape = RoundedCornerShape(topStart = 16.dp)
+                        )
+                ) {
+                    Text(
+                        "Обработка от парши",
+                        modifier = Modifier.padding(horizontal = 10.dp),
+                        fontSize = 25.sp,
+                        color = Color(0xFF069B16)
+                    )
+                }
+                Card(
+                    border = BorderStroke(1.dp, Color(0xFF069B16)),
+                    modifier = Modifier
+                        .padding(start = 55.dp, top = 5.dp)
+                        .size(height = 35.dp, width = 170.dp)
+                        .background(
+                            Color(0xFF42E851), shape = RoundedCornerShape(topStart = 16.dp)
+                        )
+                ) {
+                    Text(
+                        "Профилактика от вредителей",
+                        modifier = Modifier.padding(horizontal = 10.dp),
+                        fontSize = 25.sp,
+                        color = Color(0xFF069B16)
+                    )
+                }
+            }
+        }
     }
 }
