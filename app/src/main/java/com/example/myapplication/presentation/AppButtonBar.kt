@@ -15,6 +15,7 @@ import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.myapplication.R
 
 @Composable
@@ -40,10 +41,10 @@ fun NavigationItem(text: String, onClick: () -> Unit) {
             bitmap = ImageBitmap.imageResource(R.drawable.profile),
             contentDescription = "Картинка профиля",
             modifier = Modifier
-                .size(5.dp)
+                .size(7.dp)
         )
         Text(
-            text
+            text, fontSize = 10.sp,
         )
     }
 }

@@ -15,7 +15,7 @@ fun MainScreen() {
         bottomBar = {
             AppButtonBar(
                 onClick = {
-                    selectedScreen.value = "Препараты"
+                    MainScreenViewmodel().changeScreen(selectedScreen.value)
                 }
             )
         },
