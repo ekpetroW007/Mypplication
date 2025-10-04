@@ -88,7 +88,7 @@ fun TopBar(topBarText: String) {
                     "Мои сады" -> {
                         Text(
                             "Управление садами",
-                            modifier = Modifier.padding(horizontal = 10.dp),
+                            modifier = Modifier.padding(horizontal = 20.dp),
                             fontSize = 20.sp,
                             color = White
                         )

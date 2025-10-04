@@ -9,7 +9,7 @@ import androidx.compose.runtime.remember
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun MainScreen() {
-    val selectedScreen = remember { mutableStateOf("Препараты") }
+    val selectedScreen = remember { mutableStateOf("Мои сады") }
     Scaffold(
         topBar = { TopBar(selectedScreen.value) },
         bottomBar = {
