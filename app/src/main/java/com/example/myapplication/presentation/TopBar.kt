@@ -41,7 +41,7 @@ fun TopBar(topBarText: String) {
             when (topBarText) {
                 "Профиль" -> {
                     Image(
-                        bitmap = ImageBitmap.imageResource(R.drawable.profile),
+                        bitmap = ImageBitmap.imageResource(R.drawable.prof2),
                         contentDescription = "Профиль",
                         modifier = Modifier
                             .padding(horizontal = 10.dp, vertical = 20.dp)
@@ -52,7 +52,7 @@ fun TopBar(topBarText: String) {
             Column {
                 Spacer(modifier = Modifier.height(20.dp))
                 Text(
-                    topBarText,
+                    topBarText, modifier = Modifier.padding(horizontal = 20.dp),
                     fontSize = 35.sp,
                     color = White,
                     fontWeight = Bold
@@ -61,26 +61,34 @@ fun TopBar(topBarText: String) {
                 when (topBarText) {
                     "Профиль" -> {
                         Text(
-                            email, // TODO ПО ТАКОМУ ЖЕ ПРИНЦИПУ, КАК С ТОПБАРТЕКСТ (ДОБАВИТЬ ИФ)
+                            email,
                             fontSize = 20.sp,
                             color = White
                         )
                     }
+
                     "Календарь" -> {
-                        Text("Календарь обработок",
-                        fontSize = 20.sp,
-                        color = White)
+                        Text(
+                            "Календарь обработок",
+                            modifier = Modifier.padding(horizontal = 20.dp),
+                            fontSize = 20.sp,
+                            color = White
+                        )
                     }
+
                     "Препараты" -> {
                         Text(
-                            "Справочник средств", // TODO ПО ТАКОМУ ЖЕ ПРИНЦИПУ, КАК С ТОПБАРТЕКСТ (ДОБАВИТЬ ИФ)
+                            "Справочник средств",
+                            modifier = Modifier.padding(horizontal = 20.dp),
                             fontSize = 20.sp,
                             color = White
                         )
                     }
+
                     "Мои сады" -> {
                         Text(
-                            "Управление садами", // TODO ПО ТАКОМУ ЖЕ ПРИНЦИПУ, КАК С ТОПБАРТЕКСТ (ДОБАВИТЬ ИФ)
+                            "Управление садами",
+                            modifier = Modifier.padding(horizontal = 10.dp),
                             fontSize = 20.sp,
                             color = White
                         )
