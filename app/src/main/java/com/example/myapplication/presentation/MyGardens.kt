@@ -17,6 +17,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -35,11 +36,13 @@ import com.example.myapplication.R
 @Composable
 fun MyGardens(innerPadding: PaddingValues) {
     Card(
+        elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
+        colors = CardDefaults.cardColors(containerColor = White),
         modifier = Modifier
             .padding(start = 25.dp, top = 120.dp)
-            .size(height = 600.dp, width = 365.dp)
+            .size(height = 500.dp, width = 365.dp)
             .background(
-                White, shape = RoundedCornerShape(
+                color = Color(0xFFFBFCFB), shape = RoundedCornerShape(
                     topStart = 16.dp,
                     topEnd = 0.dp,
                     bottomEnd = 0.dp,
@@ -233,7 +236,7 @@ fun MyGardens(innerPadding: PaddingValues) {
                     Text(
                         "Обработка от парши",
                         modifier = Modifier.padding(horizontal = 10.dp),
-                        fontSize = 25.sp,
+                        fontSize = 15.sp,
                         color = Color(0xFF069B16)
                     )
                 }
@@ -249,7 +252,7 @@ fun MyGardens(innerPadding: PaddingValues) {
                     Text(
                         "Профилактика от вредителей",
                         modifier = Modifier.padding(horizontal = 10.dp),
-                        fontSize = 25.sp,
+                        fontSize = 15.sp,
                         color = Color(0xFF069B16)
                     )
                 }

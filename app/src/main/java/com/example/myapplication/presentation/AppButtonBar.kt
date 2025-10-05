@@ -20,7 +20,7 @@ import androidx.compose.ui.unit.sp
 import com.example.myapplication.R
 
 @Composable
-fun AppButtonBar(onClick: () -> Unit) {
+fun AppButtonBar(onClick: (String) -> Unit) {
     Row(modifier = Modifier.padding(start = 10.dp, bottom = 6.dp)) {
         NavigationItem("Календарь", onClick)
         NavigationItem("Мои сады", onClick)
@@ -30,11 +30,11 @@ fun AppButtonBar(onClick: () -> Unit) {
 }
 
 @Composable
-fun NavigationItem(text: String, onClick: () -> Unit) {
+fun NavigationItem(text: String, onClick: (String) -> Unit) {
     Column(
         modifier = Modifier
             .padding(5.dp)
-            .clickable { onClick() },
+            .clickable { onClick(text) },
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
@@ -44,7 +44,8 @@ fun NavigationItem(text: String, onClick: () -> Unit) {
                     bitmap = ImageBitmap.imageResource(R.drawable.prof2),
                     contentDescription = "Картинка профиля",
                     modifier = Modifier
-                        .size(22.dp).padding(start = 4.dp)
+                        .size(22.dp)
+                        .padding(start = 4.dp)
                 )
                 Text(
                     text, fontSize = 17.sp,
@@ -57,7 +58,8 @@ fun NavigationItem(text: String, onClick: () -> Unit) {
                     bitmap = ImageBitmap.imageResource(R.drawable.drug),
                     contentDescription = "Картинка препаратов",
                     modifier = Modifier
-                        .size(22.dp).padding(start = 4.dp)
+                        .size(22.dp)
+                        .padding(start = 4.dp)
                 )
                 Text(
                     text, fontSize = 17.sp,
@@ -70,7 +72,8 @@ fun NavigationItem(text: String, onClick: () -> Unit) {
                     bitmap = ImageBitmap.imageResource(R.drawable.mygardens),
                     contentDescription = "Картинка моих садов",
                     modifier = Modifier
-                        .size(22.dp).padding(start = 4.dp)
+                        .size(22.dp)
+                        .padding(start = 4.dp)
                 )
                 Text(
                     text, fontSize = 17.sp,
@@ -83,7 +86,8 @@ fun NavigationItem(text: String, onClick: () -> Unit) {
                     bitmap = ImageBitmap.imageResource(R.drawable.calendar),
                     contentDescription = "Картинка календаря",
                     modifier = Modifier
-                        .size(22.dp).padding(start = 4.dp)
+                        .size(22.dp)
+                        .padding(start = 4.dp)
                 )
                 Text(
                     text, fontSize = 17.sp,
