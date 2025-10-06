@@ -1,4 +1,4 @@
-package com.example.myapplication
+package com.example.myapplication.others
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -14,4 +14,4 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-var email = "email@gmail.com" // ВВОДИТ ПОЛЬЗОВАТЕЛЬ
+var login = "Егор Егор" // ВВОДИТ ПОЛЬЗОВАТЕЛЬ

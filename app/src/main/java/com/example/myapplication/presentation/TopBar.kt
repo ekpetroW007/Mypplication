@@ -21,7 +21,7 @@ import androidx.compose.ui.text.font.FontWeight.Companion.Bold
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.myapplication.R
-import com.example.myapplication.email
+import com.example.myapplication.others.login
 
 @Composable
 fun TopBar(topBarText: String) {
@@ -61,7 +61,7 @@ fun TopBar(topBarText: String) {
                 when (topBarText) {
                     "Профиль" -> {
                         Text(
-                            email,
+                            login,
                             fontSize = 20.sp,
                             color = White
                         )

@@ -1,4 +1,4 @@
-package com.example.myapplication.navigation
+package com.example.myapplication.ui.theme
 
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavType
@@ -6,10 +6,10 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
-import com.example.myapplication.ScreenFive
-import com.example.myapplication.ScreenFour
-import com.example.myapplication.ScreenReplace
-import com.example.myapplication.UserDetailScreen
+import com.example.myapplication.others.ScreenFive
+import com.example.myapplication.others.ScreenFour
+import com.example.myapplication.others.ScreenReplace
+import com.example.myapplication.others.UserDetailScreen
 
 @Composable
 fun Navigation() {

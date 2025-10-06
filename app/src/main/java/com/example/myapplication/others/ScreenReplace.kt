@@ -1,4 +1,4 @@
-package com.example.myapplication
+package com.example.myapplication.others
 
 import android.util.Log
 import androidx.compose.foundation.layout.Column
