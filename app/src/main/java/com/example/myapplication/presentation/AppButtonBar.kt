@@ -41,7 +41,7 @@ fun NavigationItem(text: String, onClick: (String) -> Unit) {
         when (text) {
             "Профиль" -> {
                 Image(
-                    bitmap = ImageBitmap.imageResource(R.drawable.prof2),
+                    bitmap = ImageBitmap.imageResource(R.drawable.bottomprofile),
                     contentDescription = "Картинка профиля",
                     modifier = Modifier
                         .size(22.dp)

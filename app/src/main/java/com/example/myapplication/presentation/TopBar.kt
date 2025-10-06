@@ -41,7 +41,7 @@ fun TopBar(topBarText: String) {
             when (topBarText) {
                 "Профиль" -> {
                     Image(
-                        bitmap = ImageBitmap.imageResource(R.drawable.prof2),
+                        bitmap = ImageBitmap.imageResource(R.drawable.profile),
                         contentDescription = "Профиль",
                         modifier = Modifier
                             .padding(horizontal = 10.dp, vertical = 20.dp)
@@ -63,6 +63,7 @@ fun TopBar(topBarText: String) {
                         Text(
                             login,
                             fontSize = 20.sp,
+                            modifier = Modifier.padding(start = 22.dp),
                             color = White
                         )
                     }

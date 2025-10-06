@@ -76,6 +76,7 @@ fun MyGardens(innerPadding: PaddingValues) {
         Row {
             Spacer(modifier = Modifier.width(28.dp))
             Card(
+                colors = CardDefaults.cardColors(containerColor = White),
                 modifier = Modifier
                     .size(height = 70.dp, width = 90.dp)
             ) {
@@ -107,6 +108,7 @@ fun MyGardens(innerPadding: PaddingValues) {
             }
             Spacer(modifier = Modifier.width(15.dp))
             Card(
+                colors = CardDefaults.cardColors(containerColor = White),
                 modifier = Modifier
                     .size(height = 70.dp, width = 100.dp)
             ) {
@@ -138,6 +140,7 @@ fun MyGardens(innerPadding: PaddingValues) {
             }
             Spacer(modifier = Modifier.width(15.dp))
             Card(
+                colors = CardDefaults.cardColors(containerColor = White),
                 modifier = Modifier
                     .size(height = 70.dp, width = 85.dp)
             ) {
@@ -183,35 +186,37 @@ fun MyGardens(innerPadding: PaddingValues) {
             )
             Column {
                 Card(
-                    border = BorderStroke(1.dp, Color(0xFF069B16)),
+                    colors = CardDefaults.cardColors(containerColor = Color(0xFFA2FFAC)),
+                    border = BorderStroke(1.dp, Color(0xFF075E10)),
                     modifier = Modifier
                         .padding(start = 55.dp, top = 5.dp)
                         .size(height = 35.dp, width = 155.dp)
                         .background(
-                            Color(0xFF42E851), shape = RoundedCornerShape(topStart = 16.dp)
+                            White, shape = RoundedCornerShape(topStart = 16.dp)
                         )
                 ) {
                     Text(
                         "Груша Конференция",
                         modifier = Modifier.padding(horizontal = 10.dp),
                         fontSize = 15.sp,
-                        color = Color(0xFF069B16)
+                        color = Color(0xFF075E10)
                     )
                 }
                 Card(
-                    border = BorderStroke(1.dp, Color(0xFF069B16)),
+                    colors = CardDefaults.cardColors(containerColor = Color(0xFFA2FFAC)),
+                    border = BorderStroke(1.dp, Color(0xFF075E10)),
                     modifier = Modifier
                         .padding(start = 55.dp, top = 5.dp)
                         .size(height = 35.dp, width = 140.dp)
                         .background(
-                            Color(0xFF42E851), shape = RoundedCornerShape(topStart = 16.dp)
+                            White, shape = RoundedCornerShape(topStart = 16.dp)
                         )
                 ) {
                     Text(
                         "Яблоня Антоновка",
                         modifier = Modifier.padding(horizontal = 10.dp),
                         fontSize = 15.sp,
-                        color = Color(0xFF069B16)
+                        color = Color(0xFF075E10)
                     )
                 }
             }
@@ -225,35 +230,37 @@ fun MyGardens(innerPadding: PaddingValues) {
             )
             Column {
                 Card(
-                    border = BorderStroke(1.dp, Color(0xFF069B16)),
+                    colors = CardDefaults.cardColors(containerColor = Color(0xFFA2FFAC)),
+                    border = BorderStroke(1.dp, Color(0xFF075E10)),
                     modifier = Modifier
                         .padding(start = 55.dp, top = 5.dp)
                         .size(height = 35.dp, width = 140.dp)
                         .background(
-                            Color(0xFF42E851), shape = RoundedCornerShape(topStart = 16.dp)
+                            White, shape = RoundedCornerShape(topStart = 16.dp)
                         )
                 ) {
                     Text(
                         "Обработка от парши",
                         modifier = Modifier.padding(horizontal = 10.dp),
                         fontSize = 15.sp,
-                        color = Color(0xFF069B16)
+                        color = Color(0xFF075E10)
                     )
                 }
                 Card(
-                    border = BorderStroke(1.dp, Color(0xFF069B16)),
+                    colors = CardDefaults.cardColors(containerColor = Color(0xFFA2FFAC)),
+                    border = BorderStroke(1.dp, Color(0xFF075E10)),
                     modifier = Modifier
                         .padding(start = 55.dp, top = 5.dp)
-                        .size(height = 35.dp, width = 170.dp)
+                        .size(height = 35.dp, width = 175.dp)
                         .background(
-                            Color(0xFF42E851), shape = RoundedCornerShape(topStart = 16.dp)
+                            White, shape = RoundedCornerShape(topStart = 16.dp)
                         )
                 ) {
                     Text(
                         "Профилактика от вредителей",
                         modifier = Modifier.padding(horizontal = 10.dp),
                         fontSize = 15.sp,
-                        color = Color(0xFF069B16)
+                        color = Color(0xFF075E10)
                     )
                 }
             }
