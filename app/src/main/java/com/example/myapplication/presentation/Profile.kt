@@ -71,7 +71,7 @@ fun Profile(innerPadding: PaddingValues) {
                         horizontalAlignment = Alignment.CenterHorizontally
                     ) {
                         Text(
-                            "1", // TODO (будет браться из вьюмодели)
+                            "1", // TODO (будет браться из вьюмодели) , образец
                             color = Color(0xFF18C933),
                             modifier = Modifier.fillMaxWidth(1f),
                             fontSize = 20.sp,
@@ -112,7 +112,7 @@ fun Profile(innerPadding: PaddingValues) {
                         horizontalAlignment = Alignment.CenterHorizontally
                     ) {
                         Text(
-                            "2",
+                            "2", // TODO (будет браться из вьюмодели) , образец
                             color = Color(0xFF18C933),
                             modifier = Modifier.fillMaxWidth(1f),
                             fontSize = 20.sp, fontWeight = Bold,
@@ -153,7 +153,7 @@ fun Profile(innerPadding: PaddingValues) {
                         horizontalAlignment = Alignment.CenterHorizontally
                     ) {
                         Text(
-                            "2",
+                            "2", // TODO (будет браться из вьюмодели) , образец
                             color = Color(0xFF18C933),
                             modifier = Modifier.fillMaxWidth(1f),
                             fontSize = 20.sp, fontWeight = Bold,
