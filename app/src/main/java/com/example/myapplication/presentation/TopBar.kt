@@ -30,8 +30,6 @@ fun TopBar(topBarText: String) {
             .size(600.dp, 100.dp)
             .background(
                 Color(0xFF09E327), shape = RoundedCornerShape(
-                    topStart = 0.dp,
-                    topEnd = 0.dp,
                     bottomEnd = 25.dp,
                     bottomStart = 25.dp
                 )

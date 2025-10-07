@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -25,9 +26,9 @@ import com.example.myapplication.R
 
 @Composable
 fun Drugs(innerPadding: PaddingValues) {
-///  TODO (уже есть в топбар)
-
     Card(
+        elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
+        colors = CardDefaults.cardColors(containerColor = White),
         border = BorderStroke(1.dp, Color(0xFF000000)),
         modifier = Modifier
             .padding(start = 25.dp, top = 140.dp, end = 0.dp, bottom = 0.dp)
@@ -60,6 +61,8 @@ fun Drugs(innerPadding: PaddingValues) {
     }
 
     Card(
+        elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
+        colors = CardDefaults.cardColors(containerColor = White),
         modifier = Modifier
             .padding(start = 25.dp, top = 200.dp, end = 0.dp, bottom = 0.dp)
             .size(height = 200.dp, width = 365.dp)
@@ -114,6 +117,8 @@ fun Drugs(innerPadding: PaddingValues) {
 
     }
     Card(
+        elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
+        colors = CardDefaults.cardColors(containerColor = White),
         modifier = Modifier
             .padding(start = 25.dp, top = 430.dp, end = 0.dp, bottom = 0.dp)
             .size(height = 200.dp, width = 365.dp)

@@ -17,6 +17,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -46,6 +47,8 @@ fun Profile(innerPadding: PaddingValues) {
 
         Row(modifier = Modifier.padding(vertical = 12.dp, horizontal = 20.dp)) {
             Card(
+                elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
+                colors = CardDefaults.cardColors(containerColor = White),
                 modifier = Modifier
                     .size(70.dp)
                     .background(
@@ -85,6 +88,8 @@ fun Profile(innerPadding: PaddingValues) {
             }
             Spacer(modifier = Modifier.width(15.dp))
             Card(
+                elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
+                colors = CardDefaults.cardColors(containerColor = White),
                 modifier = Modifier
                     .size(height = 70.dp, width = 90.dp)
                     .background(
@@ -124,6 +129,8 @@ fun Profile(innerPadding: PaddingValues) {
             }
             Spacer(modifier = Modifier.width(15.dp))
             Card(
+                elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
+                colors = CardDefaults.cardColors(containerColor = White),
                 modifier = Modifier
                     .size(height = 70.dp, width = 100.dp)
                     .background(
@@ -163,6 +170,8 @@ fun Profile(innerPadding: PaddingValues) {
             }
             Spacer(modifier = Modifier.width(15.dp))
             Card(
+                elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
+                colors = CardDefaults.cardColors(containerColor = White),
                 modifier = Modifier
                     .size(height = 70.dp, width = 85.dp)
                     .background(
@@ -203,6 +212,8 @@ fun Profile(innerPadding: PaddingValues) {
         }
         Column {
             Card(
+                elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
+                colors = CardDefaults.cardColors(containerColor = White),
                 modifier = Modifier
                     .padding(start = 20.dp, top = 12.dp, end = 0.dp, bottom = 10.dp)
                     .size(height = 150.dp, width = 375.dp)
@@ -243,6 +254,8 @@ fun Profile(innerPadding: PaddingValues) {
                 )
             }
             Card(
+                elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
+                colors = CardDefaults.cardColors(containerColor = White),
                 border = BorderStroke(1.dp, Color(0xFFBD1A0E)),
                 modifier = Modifier
                     .padding(start = 20.dp, top = 10.dp, end = 0.dp, bottom = 0.dp)
