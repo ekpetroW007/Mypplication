@@ -30,7 +30,7 @@ fun DrugInfo() {
         modifier = Modifier
             .size(600.dp, 100.dp)
             .background(
-                Color(0xFF09E327), shape = RoundedCornerShape(
+                Color(0xFF40BE54), shape = RoundedCornerShape(
                     bottomEnd = 25.dp,
                     bottomStart = 25.dp
                 )

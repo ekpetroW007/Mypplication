@@ -34,7 +34,7 @@ fun DrugAdd() {
         modifier = Modifier
             .size(600.dp, 100.dp)
             .background(
-                Color(0xFF09E327), shape = RoundedCornerShape(
+                Color(0xFF40BE54), shape = RoundedCornerShape(
                     bottomEnd = 25.dp,
                     bottomStart = 25.dp
                 )
@@ -149,7 +149,7 @@ fun DrugAdd() {
                     )
                 ), colors = ButtonDefaults.buttonColors(
                 contentColor = White,
-                containerColor = Color(0xFF09E327),
+                containerColor = Color(0xFF40BE54),
 
                 )
         ) {

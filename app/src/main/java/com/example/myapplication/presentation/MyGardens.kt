@@ -92,7 +92,7 @@ fun MyGardens(innerPadding: PaddingValues) {
                     ) {
                         Text(
                             "2",
-                            color = Color(0xFF18C933),
+                            color = Color(0xFF40BE54),
                             modifier = Modifier.fillMaxWidth(1f),
                             fontSize = 22.sp, fontWeight = Bold,
                             textAlign = TextAlign.Center
@@ -124,7 +124,7 @@ fun MyGardens(innerPadding: PaddingValues) {
                     ) {
                         Text(
                             "2",
-                            color = Color(0xFF18C933),
+                            color = Color(0xFF40BE54),
                             modifier = Modifier.fillMaxWidth(1f),
                             fontSize = 22.sp, fontWeight = Bold,
                             textAlign = TextAlign.Center
@@ -156,7 +156,7 @@ fun MyGardens(innerPadding: PaddingValues) {
                     ) {
                         Text(
                             "0",
-                            color = Color(0xFF18C933),
+                            color = Color(0xFF40BE54),
                             modifier = Modifier.fillMaxWidth(1f),
                             fontSize = 22.sp, fontWeight = Bold,
                             textAlign = TextAlign.Center
