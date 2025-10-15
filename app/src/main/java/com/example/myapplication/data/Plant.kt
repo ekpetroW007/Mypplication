@@ -6,5 +6,6 @@ data class Plant (
     val targetID: Int,
     val period: Int,
     val plantPhoto: String,
-    val drugID: Int
+    val drugID: Int,
+    val gardenID: Int
 )

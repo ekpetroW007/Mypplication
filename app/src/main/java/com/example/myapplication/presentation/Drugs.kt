@@ -14,6 +14,8 @@ import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Color.Companion.White
@@ -22,10 +24,17 @@ import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.myapplication.R
+import com.example.myapplication.viewmodel.DrugsViewmodel
 
 @Composable
-fun Drugs(innerPadding: PaddingValues) {
+fun Drugs(
+    innerPadding: PaddingValues,
+    drugsViewmodel: DrugsViewmodel = viewModel()
+) {
+    val drugList by drugsViewmodel.drugs.collectAsState()
+
     Card(
         elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
         colors = CardDefaults.cardColors(containerColor = White),
@@ -125,9 +134,6 @@ fun Drugs(innerPadding: PaddingValues) {
             .background(
                 White, shape = RoundedCornerShape(
                     topStart = 16.dp,
-                    topEnd = 0.dp,
-                    bottomEnd = 0.dp,
-                    bottomStart = 0.dp
                 )
             )
     ) {

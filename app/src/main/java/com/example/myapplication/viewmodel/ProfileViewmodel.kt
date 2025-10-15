@@ -5,7 +5,7 @@ import com.example.myapplication.data.Plant
 
 class ProfileViewmodel : ViewModel() {
     fun addPlant() {
-        Plant(1, "Яблоня", 1, 100, "(-)", 1)
+        Plant(1, "Яблоня", 1, 100, "(-)", 1, 1)
         // добавление растения
     }
 

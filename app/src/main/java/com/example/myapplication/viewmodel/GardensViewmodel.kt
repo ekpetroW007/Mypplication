@@ -10,7 +10,7 @@ class GardensViewmodel : ViewModel() {
 
     fun gardenAdd() {
         Garden(
-            1, "Мой сад", 1
+            1, "Мой сад", 
         )
         // создание нового сада
     }
