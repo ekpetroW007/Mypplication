@@ -31,10 +31,9 @@ import com.example.myapplication.viewmodel.DrugsViewmodel
 @Composable
 fun Drugs(
     innerPadding: PaddingValues,
-    drugsViewmodel: DrugsViewmodel = viewModel()
+//    drugsViewmodel: DrugsViewmodel = viewModel()
 ) {
-    val drugList by drugsViewmodel.drugs.collectAsState()
-
+//    val drugList by drugsViewmodel.drugs.collectAsState()
     Card(
         elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
         colors = CardDefaults.cardColors(containerColor = White),
@@ -68,68 +67,19 @@ fun Drugs(
             )
         }
     }
-
-    Card(
-        elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
-        colors = CardDefaults.cardColors(containerColor = White),
-        modifier = Modifier
-            .padding(start = 25.dp, top = 200.dp, end = 0.dp, bottom = 0.dp)
-            .size(height = 200.dp, width = 365.dp)
-            .background(
-                White, shape = RoundedCornerShape(
-                    topStart = 16.dp,
-                    topEnd = 0.dp,
-                    bottomEnd = 0.dp,
-                    bottomStart = 0.dp
-                )
-            )
-    ) {
-        Row {
-            Image(
-                bitmap = ImageBitmap.imageResource(R.drawable.drug),
-                contentDescription = "Картинка препарата",
-                modifier = Modifier
-                    .padding(horizontal = 22.dp, vertical = 25.dp)
-                    .size(30.dp, 55.dp)
-            )
-            Column {
-                Text(
-                    "Бордоская смесь",
-                    fontSize = 21.sp, modifier = Modifier.padding(top = 23.dp),
-                    color = Color(0xFF000000), fontWeight = FontWeight.Bold
-                )
-                Text(
-                    "Защита от                                              грибковых                                          заболеваний",
-                    fontSize = 16.sp,
-                    color = Color(0xFF6C6A6A)
-                )
-            }
-        }
-        Image(
-            bitmap = ImageBitmap.imageResource(R.drawable.longline),
-            contentDescription = "Линия",
-            modifier = Modifier
-                .size(width = 365.dp, height = 1.dp)
-        )
-        Column {
-            Text(
-                "Норма расхода: ",
-                fontSize = 15.sp, modifier = Modifier.padding(start = 22.dp, top = 12.dp),
-                color = Color(0xFF6C6A6A)
-            )
-            Text(
-                "100 г на 10 л воды",
-                fontSize = 17.sp, modifier = Modifier.padding(start = 22.dp),
-                color = Color(0xFF333030), fontWeight = FontWeight.Bold
-            )
-        }
-
+    Column(modifier = Modifier.padding(start = 25.dp, top = 200.dp)) {
+        DrugCard("Бордоская смесь", "Защита от грибковых заболеваний", "100г на 10л воды")
+        DrugCard("Лепидоцид", "Защита от грибковых заболеваний", "100г на 10л воды")
     }
+}
+
+@Composable
+fun DrugCard(drugName: String, drugTarget: String, drugAmount: String) {
     Card(
         elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
         colors = CardDefaults.cardColors(containerColor = White),
         modifier = Modifier
-            .padding(start = 25.dp, top = 430.dp, end = 0.dp, bottom = 0.dp)
+            .padding(top = 20.dp)
             .size(height = 200.dp, width = 365.dp)
             .background(
                 White, shape = RoundedCornerShape(
@@ -147,12 +97,12 @@ fun Drugs(
             )
             Column {
                 Text(
-                    "Лепидоцид",
+                    drugName,
                     fontSize = 21.sp, modifier = Modifier.padding(top = 23.dp),
                     color = Color(0xFF000000), fontWeight = FontWeight.Bold
                 )
                 Text(
-                    "Защита от                                              плодорожки",
+                    drugTarget,
                     fontSize = 16.sp,
                     color = Color(0xFF6C6A6A)
                 )
@@ -171,11 +121,12 @@ fun Drugs(
                 color = Color(0xFF6C6A6A)
             )
             Text(
-                "25 г на 10 л воды",
+                drugAmount,
                 fontSize = 17.sp, modifier = Modifier.padding(start = 22.dp),
                 color = Color(0xFF333030), fontWeight = FontWeight.Bold
             )
         }
 
+        // TODO (как в апбатонбар сделать карточки)
     }
 }
