@@ -184,41 +184,9 @@ fun MyGardens(innerPadding: PaddingValues) {
                 modifier = Modifier.padding(top = 23.dp, start = 22.dp),
                 fontSize = 22.sp,
             )
-            Column {
-                Card(
-                    colors = CardDefaults.cardColors(containerColor = Color(0xFFA2FFAC)),
-                    border = BorderStroke(1.dp, Color(0xFF075E10)),
-                    modifier = Modifier
-                        .padding(start = 55.dp, top = 5.dp)
-                        .size(height = 35.dp, width = 155.dp)
-                        .background(
-                            White, shape = RoundedCornerShape(topStart = 16.dp)
-                        )
-                ) {
-                    Text(
-                        "Груша Конференция",
-                        modifier = Modifier.padding(horizontal = 10.dp),
-                        fontSize = 15.sp,
-                        color = Color(0xFF075E10)
-                    )
-                }
-                Card(
-                    colors = CardDefaults.cardColors(containerColor = Color(0xFFA2FFAC)),
-                    border = BorderStroke(1.dp, Color(0xFF075E10)),
-                    modifier = Modifier
-                        .padding(start = 55.dp, top = 5.dp)
-                        .size(height = 35.dp, width = 140.dp)
-                        .background(
-                            White, shape = RoundedCornerShape(topStart = 16.dp)
-                        )
-                ) {
-                    Text(
-                        "Яблоня Антоновка",
-                        modifier = Modifier.padding(horizontal = 10.dp),
-                        fontSize = 15.sp,
-                        color = Color(0xFF075E10)
-                    )
-                }
+            Column(modifier = Modifier.padding(top = 5.dp)) {
+                PlantsAtMygardensScreen("Груша Конференция")
+                PlantsAtMygardensScreen("Яблоня Антоновка")
             }
         }
         Spacer(modifier = Modifier.width(15.dp))
@@ -228,42 +196,52 @@ fun MyGardens(innerPadding: PaddingValues) {
                 modifier = Modifier.padding(top = 23.dp, start = 22.dp),
                 fontSize = 22.sp,
             )
-            Column {
-                Card(
-                    colors = CardDefaults.cardColors(containerColor = Color(0xFFA2FFAC)),
-                    border = BorderStroke(1.dp, Color(0xFF075E10)),
-                    modifier = Modifier
-                        .padding(start = 55.dp, top = 5.dp)
-                        .size(height = 35.dp, width = 140.dp)
-                        .background(
-                            White, shape = RoundedCornerShape(topStart = 16.dp)
-                        )
-                ) {
-                    Text(
-                        "Обработка от парши",
-                        modifier = Modifier.padding(horizontal = 10.dp),
-                        fontSize = 15.sp,
-                        color = Color(0xFF075E10)
-                    )
-                }
-                Card(
-                    colors = CardDefaults.cardColors(containerColor = Color(0xFFA2FFAC)),
-                    border = BorderStroke(1.dp, Color(0xFF075E10)),
-                    modifier = Modifier
-                        .padding(start = 55.dp, top = 5.dp)
-                        .size(height = 35.dp, width = 175.dp)
-                        .background(
-                            White, shape = RoundedCornerShape(topStart = 16.dp)
-                        )
-                ) {
-                    Text(
-                        "Профилактика от вредителей",
-                        modifier = Modifier.padding(horizontal = 10.dp),
-                        fontSize = 15.sp,
-                        color = Color(0xFF075E10)
-                    )
-                }
+            Column(modifier = Modifier.padding(top = 5.dp)) {
+                TasksAtMygardensScreen("Обработка от парши")
+                TasksAtMygardensScreen("Профилактика от вредителей")
             }
         }
+    }
+}
+
+@Composable
+fun PlantsAtMygardensScreen(plantMygardenScreen: String) {
+    Card(
+        colors = CardDefaults.cardColors(containerColor = Color(0xFFA2FFAC)),
+        border = BorderStroke(1.dp, Color(0xFF075E10)),
+        modifier = Modifier
+            .padding(start = 55.dp, top = 5.dp)
+            .size(height = 35.dp, width = 155.dp)
+            .background(
+                White, shape = RoundedCornerShape(topStart = 16.dp)
+            )
+    ) {
+        Text(
+            plantMygardenScreen,
+            modifier = Modifier.padding(horizontal = 10.dp),
+            fontSize = 15.sp,
+            color = Color(0xFF075E10)
+        )
+    }
+}
+
+@Composable
+fun TasksAtMygardensScreen(taskMygardenScreen: String) {
+    Card(
+        colors = CardDefaults.cardColors(containerColor = Color(0xFFA2FFAC)),
+        border = BorderStroke(1.dp, Color(0xFF075E10)),
+        modifier = Modifier
+            .padding(start = 55.dp, top = 5.dp)
+            .size(height = 35.dp, width = 175.dp)
+            .background(
+                White, shape = RoundedCornerShape(topStart = 16.dp)
+            )
+    ) {
+        Text(
+            "Профилактика от вредителей",
+            modifier = Modifier.padding(horizontal = 10.dp),
+            fontSize = 15.sp,
+            color = Color(0xFF075E10)
+        )
     }
 }

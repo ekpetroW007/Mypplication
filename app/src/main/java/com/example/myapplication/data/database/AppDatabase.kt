@@ -19,7 +19,7 @@ import com.example.myapplication.data.database.entity.*
 )
 abstract class AppDatabase : RoomDatabase() {
 
-    abstract fun DrugDao(): DrugDao
+    abstract fun drugDao(): DrugDao
     //  abstract fun sadDao(): GardenDao // TODO (НУЖНО ДОБАВИТЬ)
     //abstract fun rastenieDao(): PlantDao // TODO (НУЖНО ДОБАВИТЬ)
     // abstract fun zadachaDao(): TaskDao // TODO (НУЖНО ДОБАВИТЬ)

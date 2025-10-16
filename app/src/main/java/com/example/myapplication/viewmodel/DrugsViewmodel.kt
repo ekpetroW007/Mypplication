@@ -1,13 +1,15 @@
 package com.example.myapplication.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.example.myapplication.data.Drug
+import com.example.myapplication.data.database.entity.DrugEntity
 import com.example.myapplication.data.repository.GardenRepository
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.WhileSubscribed
 import kotlinx.coroutines.flow.stateIn
+import kotlinx.coroutines.launch
 
 class DrugsViewmodel(
     private val repository: GardenRepository
@@ -20,12 +22,36 @@ class DrugsViewmodel(
         )
 
 
-    fun addDrug() {
-        Drug(1, "Цинк", "Удобрить", 100)
-        // юзер добавляет препарат
+    fun addDrug(name: String, purpose: String, consumptionRate: String) {
+        viewModelScope.launch {
+            try {
+                val newDrug = DrugEntity(
+                    name = name,
+                    purpose = purpose,
+                    consumptionRate = consumptionRate
+                )
+                repository.insertDrug(newDrug)
+            } catch (e: Exception) {
+                Log.d("addDrug", e.toString())
+            }
+        }
     }
 
+    fun deleteDrug(name: String, purpose: String, consumptionRate: String) {
+        viewModelScope.launch {
+            try {
+                val newDrug = DrugEntity(
+                    name = name,
+                    purpose = purpose,
+                    consumptionRate = consumptionRate
+                )
+                repository.deleteDrug(newDrug)
+            } catch (e: Exception) {
+                Log.d("deleteDrug", e.toString())
+            }
+        }
+    }
     fun searchDrug() {
-        // юзер вводит препарат
+
     }
 }

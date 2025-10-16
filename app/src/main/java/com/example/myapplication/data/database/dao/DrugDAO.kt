@@ -19,5 +19,5 @@ interface DrugDao {
     fun getAllDrugs(): Flow<List<DrugEntity>>
 
     @Delete
-    fun delete(drug: DrugEntity)
+    fun deleteDrug(drug: DrugEntity)
 }

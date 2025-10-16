@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -20,20 +21,29 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Color.Companion.White
 import androidx.compose.ui.graphics.ImageBitmap
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.myapplication.BookeeperApp
 import com.example.myapplication.R
 import com.example.myapplication.viewmodel.DrugsViewmodel
+import com.example.myapplication.viewmodel.DrugsViewmodelFactory
 
 @Composable
 fun Drugs(
-    innerPadding: PaddingValues,
-//    drugsViewmodel: DrugsViewmodel = viewModel()
+    innerPadding: PaddingValues
 ) {
-//    val drugList by drugsViewmodel.drugs.collectAsState()
+    val application = LocalContext.current.applicationContext as BookeeperApp
+    val viewmodelFactory = DrugsViewmodelFactory(application.repository)
+    val drugsViewmodel: DrugsViewmodel = viewModel(factory = viewmodelFactory)
+    val drugList by drugsViewmodel.drugs.collectAsState()
+    drugsViewmodel.addDrug("a", "qwerty", "1000")
+    drugsViewmodel.addDrug("b", "zxcvb", "200")
+    drugsViewmodel.deleteDrug("b", "zxcvb", "200")
+
     Card(
         elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
         colors = CardDefaults.cardColors(containerColor = White),
@@ -67,9 +77,11 @@ fun Drugs(
             )
         }
     }
-    Column(modifier = Modifier.padding(start = 25.dp, top = 200.dp)) {
-        DrugCard("Бордоская смесь", "Защита от грибковых заболеваний", "100г на 10л воды")
-        DrugCard("Лепидоцид", "Защита от грибковых заболеваний", "100г на 10л воды")
+
+    Column(modifier = Modifier.padding(start = 25.dp, top = 200.dp)) { // TODO сделать колонку прокручиваемой или лейзиколмн
+        drugList.forEach { drug ->
+            DrugCard(drug.name, drug.purpose, drug.consumptionRate)
+        }
     }
 }
 
@@ -108,12 +120,7 @@ fun DrugCard(drugName: String, drugTarget: String, drugAmount: String) {
                 )
             }
         }
-        Image(
-            bitmap = ImageBitmap.imageResource(R.drawable.longline),
-            contentDescription = "Линия",
-            modifier = Modifier
-                .size(width = 365.dp, height = 1.dp)
-        )
+        HorizontalDivider(thickness = 1.dp)
         Column {
             Text(
                 "Норма расхода: ",

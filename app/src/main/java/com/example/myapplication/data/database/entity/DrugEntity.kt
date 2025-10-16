@@ -16,5 +16,5 @@ data class DrugEntity(
     val purpose: String,
 
     @ColumnInfo(name = "amount")
-    val consumptionRate: Int
+    val consumptionRate: String
 )

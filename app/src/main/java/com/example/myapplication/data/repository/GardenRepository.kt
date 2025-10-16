@@ -18,5 +18,8 @@ class GardenRepository(
         drugDao.insertDrug(drug)
     }
 
+    suspend fun deleteDrug(drug: DrugEntity) {
+        drugDao.deleteDrug(drug)
+    }
     // TODO (добавить остальные методы к другим DAO)
 }
