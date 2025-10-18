@@ -1,11 +1,13 @@
 package com.example.myapplication.data.repository
 
 import com.example.myapplication.data.database.dao.DrugDAO
-import com.example.myapplication.data.database.dao.DrugDao
 import com.example.myapplication.data.database.dao.GardenDAO
 import com.example.myapplication.data.database.dao.PlantDAO
 import com.example.myapplication.data.database.dao.TaskDAO
 import com.example.myapplication.data.database.entity.DrugEntity
+import com.example.myapplication.data.database.entity.GardenEntity
+import com.example.myapplication.data.database.entity.PlantEntity
+import com.example.myapplication.data.database.entity.TaskEntity
 import kotlinx.coroutines.flow.Flow
 
 // В конструктор передаем DAO, которые нам нужны
@@ -25,5 +27,34 @@ class GardenRepository(
     suspend fun deleteDrug(drug: DrugEntity) {
         drugDao.deleteDrug(drug)
     }
-    // TODO (добавить остальные методы к другим DAO)
+
+    suspend fun insertTask(task: TaskEntity) {
+        taskDAO.insertTask(task)
+    }
+
+    suspend fun deleteGarden(garden: GardenEntity) {
+        gardenDAO.deleteGarden(garden)
+    }
+
+    val exportDrugs: Flow<List<GardenEntity>> = gardenDAO.exportGardens()
+
+    suspend fun insertPlantName(plant: PlantEntity) {
+        plantDAO.insertPlantName(plant)
+    }
+
+    suspend fun insertPlantTask(plant: PlantEntity) {
+        plantDAO.insertPlantTask(plant)
+    }
+
+    suspend fun insertPlantGarden(plant: PlantEntity) {
+        plantDAO.insertPlantGarden(plant)
+    }
+
+    suspend fun insertPlantPeriod(plant: PlantEntity) {
+        plantDAO.insertPlantPeriod(plant)
+    }
+
+    suspend fun insertPlantPhoto(plant: PlantEntity) {
+        plantDAO.insertPlantPhoto(plant)
+    }
 }
