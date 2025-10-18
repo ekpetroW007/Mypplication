@@ -19,10 +19,10 @@ import com.example.myapplication.data.database.entity.*
 )
 abstract class AppDatabase : RoomDatabase() {
 
-    abstract fun drugDao(): DrugDao
-    //  abstract fun sadDao(): GardenDao // TODO (НУЖНО ДОБАВИТЬ)
-    //abstract fun rastenieDao(): PlantDao // TODO (НУЖНО ДОБАВИТЬ)
-    // abstract fun zadachaDao(): TaskDao // TODO (НУЖНО ДОБАВИТЬ)
+    abstract fun drugDao(): DrugDAO
+    abstract fun gardenDao(): GardenDAO
+    abstract fun plantDao(): PlantDAO
+    abstract fun taskDao(): TaskDAO
 
     companion object {
         // @Volatile гарантирует, что значение INSTANCE всегда будет актуальным

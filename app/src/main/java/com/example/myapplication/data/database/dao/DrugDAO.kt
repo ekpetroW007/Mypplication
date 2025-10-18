@@ -9,7 +9,7 @@ import com.example.myapplication.data.database.entity.DrugEntity
 import kotlinx.coroutines.flow.Flow
 
 @Dao
-interface DrugDao {
+interface DrugDAO {
     // Вставить препарат. Если такой уже есть, он будет заменен
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertDrug(drug: DrugEntity)

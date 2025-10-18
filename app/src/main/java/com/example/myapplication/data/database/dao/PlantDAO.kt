@@ -6,7 +6,7 @@ import androidx.room.OnConflictStrategy
 import com.example.myapplication.data.database.entity.PlantEntity
 
 @Dao
-interface PlantDao {
+interface PlantDAO {
     @Insert
     suspend fun insertPlantName(plant: PlantEntity)
 
