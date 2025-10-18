@@ -9,7 +9,9 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.HorizontalDivider
@@ -78,7 +80,7 @@ fun Drugs(
         }
     }
 
-    Column(modifier = Modifier.padding(start = 25.dp, top = 200.dp)) { // TODO сделать колонку прокручиваемой или лейзиколмн
+    Column(modifier = Modifier.padding(start = 25.dp, top = 200.dp).verticalScroll(rememberScrollState())) {
         drugList.forEach { drug ->
             DrugCard(drug.name, drug.purpose, drug.consumptionRate)
         }
