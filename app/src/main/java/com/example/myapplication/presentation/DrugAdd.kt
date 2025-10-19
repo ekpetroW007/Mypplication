@@ -2,6 +2,7 @@ package com.example.myapplication.presentation
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -15,22 +16,35 @@ import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Color.Companion.White
 import androidx.compose.ui.graphics.ImageBitmap
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight.Companion.Bold
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
+import com.example.myapplication.BookeeperApp
 import com.example.myapplication.R
+import com.example.myapplication.viewmodel.DrugsViewmodel
+import com.example.myapplication.viewmodel.DrugsViewmodelFactory
 
 @Composable
 fun DrugAdd(navController: NavController) {
+    val application = LocalContext.current.applicationContext as BookeeperApp
+    val viewmodelFactory = DrugsViewmodelFactory(application.repository)
+    val drugsViewmodel: DrugsViewmodel = viewModel(factory = viewmodelFactory)
+    val name = remember { mutableStateOf("") }
+    val purpose = remember { mutableStateOf("") }
+    val consumptionRate = remember { mutableStateOf("") }
     Box(
         modifier = Modifier
             .size(600.dp, 100.dp)
@@ -48,6 +62,7 @@ fun DrugAdd(navController: NavController) {
                 modifier = Modifier
                     .padding(start = 22.dp, top = 28.dp)
                     .size(35.dp, 40.dp)
+                    .clickable { navController.popBackStack() }
             )
             Text(
                 "Добавление препарата",
@@ -77,12 +92,12 @@ fun DrugAdd(navController: NavController) {
                     modifier = Modifier
                         .padding(start = 18.dp, top = 22.dp), fontSize = 22.sp
                 )
-                val message = remember { mutableStateOf("") }
-                Text(message.value, fontSize = 20.sp)
+
+                Text(name.value, fontSize = 20.sp)
                 TextField(
-                    value = message.value,
+                    value = name.value,
                     textStyle = TextStyle(fontSize = 20.sp),
-                    onValueChange = { newText -> message.value = newText }
+                    onValueChange = { newText -> name.value = newText }
                 )
             }
         }
@@ -104,12 +119,12 @@ fun DrugAdd(navController: NavController) {
                     modifier = Modifier
                         .padding(start = 18.dp, top = 22.dp), fontSize = 22.sp
                 )
-                val message = remember { mutableStateOf("") }
-                Text(message.value, fontSize = 20.sp)
+
+                Text(purpose.value, fontSize = 20.sp)
                 TextField(
-                    value = message.value,
+                    value = purpose.value,
                     textStyle = TextStyle(fontSize = 20.sp),
-                    onValueChange = { newText -> message.value = newText }
+                    onValueChange = { newText -> purpose.value = newText }
                 )
             }
         }
@@ -131,17 +146,17 @@ fun DrugAdd(navController: NavController) {
                     modifier = Modifier
                         .padding(start = 18.dp, top = 22.dp), fontSize = 22.sp
                 )
-                val message = remember { mutableStateOf("") }
-                Text(message.value, fontSize = 20.sp)
+
+                Text(consumptionRate.value, fontSize = 20.sp)
                 TextField(
-                    value = message.value,
+                    value = consumptionRate.value,
                     textStyle = TextStyle(fontSize = 20.sp),
-                    onValueChange = { newText -> message.value = newText }
+                    onValueChange = { newText -> consumptionRate.value = newText }
                 )
             }
         }
         Button(
-            onClick = {}, modifier = Modifier
+            onClick = {drugsViewmodel.addDrug(name.value, purpose.value, consumptionRate.value )}, modifier = Modifier
                 .padding(start = 25.dp, top = 40.dp)
                 .size(height = 70.dp, width = 365.dp)
                 .background(
