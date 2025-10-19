@@ -11,13 +11,13 @@ import com.example.myapplication.presentation.EditingNotes
 import com.example.myapplication.presentation.GardenAdd
 import com.example.myapplication.presentation.MainScreen
 import com.example.myapplication.presentation.Registration
+import com.example.myapplication.presentation.navigation.AppNavigation
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         setContent {
-            MainScreen()
+            AppNavigation()
         }
     }
 }

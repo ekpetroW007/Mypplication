@@ -1,6 +1,7 @@
 package com.example.myapplication.presentation
 
 import android.graphics.fonts.FontStyle
+import androidx.compose.material3.Button
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -17,6 +18,7 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -31,59 +33,69 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavController
 import com.example.myapplication.BookeeperApp
 import com.example.myapplication.R
+import com.example.myapplication.presentation.navigation.AppDestinations
 import com.example.myapplication.viewmodel.DrugsViewmodel
 import com.example.myapplication.viewmodel.DrugsViewmodelFactory
 
 @Composable
 fun Drugs(
-    innerPadding: PaddingValues
+    navController: NavController
 ) {
+
     val application = LocalContext.current.applicationContext as BookeeperApp
     val viewmodelFactory = DrugsViewmodelFactory(application.repository)
     val drugsViewmodel: DrugsViewmodel = viewModel(factory = viewmodelFactory)
     val drugList by drugsViewmodel.drugs.collectAsState()
-    drugsViewmodel.addDrug("a", "qwerty", "1000")
-    drugsViewmodel.addDrug("b", "zxcvb", "200")
-    drugsViewmodel.deleteDrug("b", "zxcvb", "200")
 
-    Card(
-        elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
-        colors = CardDefaults.cardColors(containerColor = White),
-        border = BorderStroke(1.dp, Color(0xFF000000)),
-        modifier = Modifier
-            .padding(start = 25.dp, top = 140.dp, end = 0.dp, bottom = 0.dp)
-            .size(height = 45.dp, width = 365.dp)
-            .background(
-                White, shape = RoundedCornerShape(
-                    topStart = 16.dp,
-                    topEnd = 0.dp,
-                    bottomEnd = 0.dp,
-                    bottomStart = 0.dp
-                )
-            )
-    ) {
-        Row {
-            Image(
-                bitmap = ImageBitmap.imageResource(R.drawable.search),
-                contentDescription = "Картинка поиска",
-                modifier = Modifier
-                    .padding(horizontal = 22.dp)
-                    .size(20.dp, 45.dp)
-            )
-            Text(
-                "Поиск использованных препаратов...",
-                modifier = Modifier
-                    .padding(vertical = 14.dp),
-                fontSize = 15.sp,
-                color = Color(0xD2343538)
-            )
+    Scaffold(
+        floatingActionButton = {
+            Button(onClick = {navController.navigate(AppDestinations.DRUG_ADD_ROUTE)}) {
+                Text("+")
+            }
         }
-    }
-    LazyColumn(modifier = Modifier.padding(start = 25.dp, top = 200.dp)) {
-        items(drugList) { drug ->
-            DrugCard(drug.name, drug.purpose, drug.consumptionRate)
+    ) { innerPadding ->
+        Column(modifier = Modifier.padding(innerPadding)) {
+            Card(
+                elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
+                colors = CardDefaults.cardColors(containerColor = White),
+                border = BorderStroke(1.dp, Color(0xFF000000)),
+                modifier = Modifier
+                    .padding(start = 25.dp, top = 140.dp, end = 0.dp, bottom = 0.dp)
+                    .size(height = 45.dp, width = 365.dp)
+                    .background(
+                        White, shape = RoundedCornerShape(
+                            topStart = 16.dp,
+                            topEnd = 0.dp,
+                            bottomEnd = 0.dp,
+                            bottomStart = 0.dp
+                        )
+                    )
+            ) {
+                Row {
+                    Image(
+                        bitmap = ImageBitmap.imageResource(R.drawable.search),
+                        contentDescription = "Картинка поиска",
+                        modifier = Modifier
+                            .padding(horizontal = 22.dp)
+                            .size(20.dp, 45.dp)
+                    )
+                    Text(
+                        "Поиск использованных препаратов...",
+                        modifier = Modifier
+                            .padding(vertical = 14.dp),
+                        fontSize = 15.sp,
+                        color = Color(0xD2343538)
+                    )
+                }
+            }
+            LazyColumn(modifier = Modifier.padding(start = 25.dp, top = 200.dp)) {
+                items(drugList) { drug ->
+                    DrugCard(drug.name, drug.purpose, drug.consumptionRate)
+                }
+            }
         }
     }
 }
