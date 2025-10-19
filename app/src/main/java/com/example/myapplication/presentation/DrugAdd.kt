@@ -156,14 +156,19 @@ fun DrugAdd(navController: NavController) {
             }
         }
         Button(
-            onClick = {drugsViewmodel.addDrug(name.value, purpose.value, consumptionRate.value )}, modifier = Modifier
+            onClick = {
+                drugsViewmodel.addDrug(name.value, purpose.value, consumptionRate.value)
+                navController.popBackStack()
+            },
+            modifier = Modifier
                 .padding(start = 25.dp, top = 40.dp)
                 .size(height = 70.dp, width = 365.dp)
                 .background(
                     White, shape = RoundedCornerShape(
                         topStart = 16.dp,
                     )
-                ), colors = ButtonDefaults.buttonColors(
+                ),
+            colors = ButtonDefaults.buttonColors(
                 contentColor = White,
                 containerColor = Color(0xFF40BE54),
 

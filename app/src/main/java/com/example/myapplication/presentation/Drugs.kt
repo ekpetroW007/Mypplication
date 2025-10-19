@@ -42,7 +42,7 @@ import com.example.myapplication.viewmodel.DrugsViewmodelFactory
 
 @Composable
 fun Drugs(
-    navController: NavController
+    navController: NavController, innerPadding: PaddingValues
 ) {
 
     val application = LocalContext.current.applicationContext as BookeeperApp
@@ -51,8 +51,9 @@ fun Drugs(
     val drugList by drugsViewmodel.drugs.collectAsState()
 
     Scaffold(
+        modifier = Modifier.padding(innerPadding),
         floatingActionButton = {
-            Button(onClick = {navController.navigate(AppDestinations.DRUG_ADD_ROUTE)}) {
+            Button(onClick = { navController.navigate(AppDestinations.DRUG_ADD_ROUTE) }) {
                 Text("+")
             }
         }
@@ -63,14 +64,11 @@ fun Drugs(
                 colors = CardDefaults.cardColors(containerColor = White),
                 border = BorderStroke(1.dp, Color(0xFF000000)),
                 modifier = Modifier
-                    .padding(start = 25.dp, top = 140.dp, end = 0.dp, bottom = 0.dp)
+                    .padding(start = 25.dp, top = 10.dp)
                     .size(height = 45.dp, width = 365.dp)
                     .background(
                         White, shape = RoundedCornerShape(
                             topStart = 16.dp,
-                            topEnd = 0.dp,
-                            bottomEnd = 0.dp,
-                            bottomStart = 0.dp
                         )
                     )
             ) {
@@ -91,7 +89,7 @@ fun Drugs(
                     )
                 }
             }
-            LazyColumn(modifier = Modifier.padding(start = 25.dp, top = 200.dp)) {
+            LazyColumn(modifier = Modifier.padding(start = 25.dp, top = 10.dp)) {
                 items(drugList) { drug ->
                     DrugCard(drug.name, drug.purpose, drug.consumptionRate)
                 }
