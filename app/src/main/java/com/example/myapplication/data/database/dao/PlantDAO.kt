@@ -3,22 +3,16 @@ package com.example.myapplication.data.database.dao
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
+import androidx.room.Query
+import com.example.myapplication.data.database.entity.DrugEntity
 import com.example.myapplication.data.database.entity.PlantEntity
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface PlantDAO {
     @Insert
-    suspend fun insertPlantName(plant: PlantEntity)
+    suspend fun insertPlant(plant: PlantEntity)
 
-    @Insert
-    suspend fun insertPlantTask(plant: PlantEntity)
-
-    @Insert
-    suspend fun insertPlantGarden(plant: PlantEntity)
-
-    @Insert
-    suspend fun insertPlantPeriod(plant: PlantEntity)
-
-    @Insert
-    suspend fun insertPlantPhoto(plant: PlantEntity)
+    @Query("SELECT * FROM plant")
+    fun getAllPlants(): Flow<List<PlantEntity>>
 }

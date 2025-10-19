@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
@@ -79,13 +80,14 @@ fun Drugs(
             )
         }
     }
-
-    Column(modifier = Modifier.padding(start = 25.dp, top = 200.dp).verticalScroll(rememberScrollState())) {
-        drugList.forEach { drug ->
-            DrugCard(drug.name, drug.purpose, drug.consumptionRate)
-        }
+//    LazyColumn(modifier = Modifier.padding(start = 25.dp, top = 200.dp)) {
+//        items { lang ->
+//            drugList.forEach { drug ->
+//                DrugCard(drug.name, drug.purpose, drug.consumptionRate)
+//            }
+//        }
     }
-}
+//}
 
 @Composable
 fun DrugCard(drugName: String, drugTarget: String, drugAmount: String) {

@@ -36,25 +36,11 @@ class GardenRepository(
         gardenDAO.deleteGarden(garden)
     }
 
-    val exportDrugs: Flow<List<GardenEntity>> = gardenDAO.exportGardens()
+    val allGardens: Flow<List<GardenEntity>> = gardenDAO.getAllGardens()
+    val allTasks: Flow<List<TaskEntity>> = taskDAO.getAllTasks()
+    val allPlants: Flow<List<PlantEntity>> = plantDAO.getAllPlants()
 
-    suspend fun insertPlantName(plant: PlantEntity) {
-        plantDAO.insertPlantName(plant)
-    }
-
-    suspend fun insertPlantTask(plant: PlantEntity) {
-        plantDAO.insertPlantTask(plant)
-    }
-
-    suspend fun insertPlantGarden(plant: PlantEntity) {
-        plantDAO.insertPlantGarden(plant)
-    }
-
-    suspend fun insertPlantPeriod(plant: PlantEntity) {
-        plantDAO.insertPlantPeriod(plant)
-    }
-
-    suspend fun insertPlantPhoto(plant: PlantEntity) {
-        plantDAO.insertPlantPhoto(plant)
+    suspend fun insertPlant(plant: PlantEntity) {
+        plantDAO.insertPlant(plant)
     }
 }

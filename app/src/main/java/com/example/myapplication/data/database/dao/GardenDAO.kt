@@ -15,5 +15,5 @@ interface GardenDAO {
     suspend fun deleteGarden(garden: GardenEntity)
 
     @Query("SELECT * FROM garden")
-    fun exportGardens(): Flow<List<GardenEntity>>
+    fun getAllGardens(): Flow<List<GardenEntity>>
 }
