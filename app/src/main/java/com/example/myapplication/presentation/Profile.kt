@@ -20,11 +20,14 @@ import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Color.Companion.White
 import androidx.compose.ui.graphics.ImageBitmap
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight.Companion.Bold
@@ -32,10 +35,18 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.em
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.myapplication.BookeeperApp
 import com.example.myapplication.R
+import com.example.myapplication.viewmodel.DrugsViewmodel
+import com.example.myapplication.viewmodel.DrugsViewmodelFactory
 
 @Composable
 fun Profile(innerPadding: PaddingValues) {
+    val application = LocalContext.current.applicationContext as BookeeperApp
+    val viewmodelFactory = DrugsViewmodelFactory(application.repository)
+    val drugsViewmodel: DrugsViewmodel = viewModel(factory = viewmodelFactory)
+    val drugList by drugsViewmodel.drugs.collectAsState()
     Column(modifier = Modifier.padding(innerPadding)) {
         Text(
             "Статистика",
@@ -153,7 +164,7 @@ fun Profile(innerPadding: PaddingValues) {
                         horizontalAlignment = Alignment.CenterHorizontally
                     ) {
                         Text(
-                            "2", // TODO (будет браться из вьюмодели) , образец
+                            drugList.size.toString(), // TODO (будет браться из вьюмодели) , образец
                             color = Color(0xFF18C933),
                             modifier = Modifier.fillMaxWidth(1f),
                             fontSize = 20.sp, fontWeight = Bold,
