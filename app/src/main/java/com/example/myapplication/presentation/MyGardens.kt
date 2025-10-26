@@ -1,6 +1,7 @@
 package com.example.myapplication.presentation
 
 import android.annotation.SuppressLint
+import android.util.Log
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -23,32 +24,54 @@ import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Color.Companion.White
 import androidx.compose.ui.graphics.ImageBitmap
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.font.FontWeight.Companion.Bold
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
+import com.example.myapplication.BookeeperApp
 import com.example.myapplication.R
 import com.example.myapplication.presentation.navigation.AppDestinations
+import com.example.myapplication.viewmodel.DrugsViewmodel
+import com.example.myapplication.viewmodel.DrugsViewmodelFactory
+import com.example.myapplication.viewmodel.GardensViewmodel
+import com.example.myapplication.viewmodel.GardensViewmodelFactory
+import com.example.myapplication.viewmodel.PlantsViewmodel
+import com.example.myapplication.viewmodel.PlantsViewmodelFactory
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun MyGardens(navController: NavController, innerPadding: PaddingValues) {
+    val application = LocalContext.current.applicationContext as BookeeperApp
+    val viewmodelGardenFactory = GardensViewmodelFactory(application.repository)
+    val gardensViewmodel: GardensViewmodel = viewModel(factory = viewmodelGardenFactory)
+
+    val viewmodelPlantFactory = PlantsViewmodelFactory(application.repository)
+    val plantsViewmodel: PlantsViewmodel = viewModel(factory = viewmodelPlantFactory)
+
+    val x = plantsViewmodel.getPlantByGardenId(1)
+    LaunchedEffect(x) { Log.d("allPlantsByGardenId", "result: ${x}") }
+
+
+
     Scaffold(
         modifier = Modifier.padding(innerPadding),
         floatingActionButton = {
             Button(onClick = { navController.navigate(AppDestinations.GARDEN_ADD) }) {
                 Text("+")
             }
-        }
-    ) {  innerPadding ->
+        } // TODO (СДЕЛАТЬ LAZUCOLUMN, ЧТОБ ОТОБРАЖАЛИСЬ КАРТОЧКИ САДОВ)
+    ) { innerPadding ->
         Card(
             elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
             colors = CardDefaults.cardColors(containerColor = White),
