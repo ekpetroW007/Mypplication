@@ -21,15 +21,25 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Color.Companion.White
 import androidx.compose.ui.graphics.ImageBitmap
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight.Companion.Bold
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavController
+import com.example.myapplication.BookeeperApp
 import com.example.myapplication.R
+import com.example.myapplication.viewmodel.GardensViewmodel
+import com.example.myapplication.viewmodel.GardensViewmodelFactory
 
 @Composable
-fun GardenAdd() {
+fun GardenAdd(navController: NavController) {
+    val name = remember { mutableStateOf("") }
+    val application = LocalContext.current.applicationContext as BookeeperApp
+    val viewmodelFactory = GardensViewmodelFactory(application.repository)
+    val gardensViewmodel: GardensViewmodel = viewModel(factory = viewmodelFactory)
     Box(
         modifier = Modifier
             .size(600.dp, 100.dp)
@@ -77,17 +87,20 @@ fun GardenAdd() {
                     modifier = Modifier
                         .padding(start = 18.dp, top = 22.dp), fontSize = 22.sp
                 )
-                val message = remember { mutableStateOf("") }
-                Text(message.value, fontSize = 20.sp)
+
+                Text(name.value, fontSize = 20.sp)
                 TextField(
-                    value = message.value,
+                    value = name.value,
                     textStyle = TextStyle(fontSize = 20.sp),
-                    onValueChange = { newText -> message.value = newText }
+                    onValueChange = { newText -> name.value = newText }
                 )
             }
         }
         Button(
-            onClick = {}, modifier = Modifier
+            onClick = {
+                gardensViewmodel.gardenAdd(name.value)
+                navController.popBackStack()
+            }, modifier = Modifier
                 .padding(start = 25.dp, top = 40.dp)
                 .size(height = 70.dp, width = 365.dp)
                 .background(

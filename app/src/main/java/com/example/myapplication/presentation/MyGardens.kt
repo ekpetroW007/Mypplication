@@ -1,5 +1,6 @@
 package com.example.myapplication.presentation
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -16,8 +17,10 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -31,174 +34,186 @@ import androidx.compose.ui.text.font.FontWeight.Companion.Bold
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.example.myapplication.R
+import com.example.myapplication.presentation.navigation.AppDestinations
 
+@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
-fun MyGardens(innerPadding: PaddingValues) {
-    Card(
-        elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
-        colors = CardDefaults.cardColors(containerColor = White),
-        modifier = Modifier
-            .padding(start = 25.dp, top = 120.dp)
-            .size(height = 500.dp, width = 365.dp)
-            .background(
-                color = Color(0xFFFBFCFB), shape = RoundedCornerShape(
-                    topStart = 16.dp,
-                    topEnd = 0.dp,
-                    bottomEnd = 0.dp,
-                    bottomStart = 0.dp
+fun MyGardens(navController: NavController, innerPadding: PaddingValues) {
+    Scaffold(
+        modifier = Modifier.padding(innerPadding),
+        floatingActionButton = {
+            Button(onClick = { navController.navigate(AppDestinations.GARDEN_ADD) }) {
+                Text("+")
+            }
+        }
+    ) {  innerPadding ->
+        Card(
+            elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
+            colors = CardDefaults.cardColors(containerColor = White),
+            modifier = Modifier
+                .padding(start = 25.dp, top = 120.dp)
+                .size(height = 500.dp, width = 365.dp)
+                .background(
+                    color = Color(0xFFFBFCFB), shape = RoundedCornerShape(
+                        topStart = 16.dp,
+                        topEnd = 0.dp,
+                        bottomEnd = 0.dp,
+                        bottomStart = 0.dp
+                    )
                 )
-            )
-    ) {
-        Row {
+        ) {
+            Row {
+                Image(
+                    bitmap = ImageBitmap.imageResource(R.drawable.greenmygarden),
+                    contentDescription = "Картинка моих садов",
+                    modifier = Modifier
+                        .padding(horizontal = 22.dp, vertical = 35.dp)
+                        .size(40.dp)
+                )
+                Text(
+                    "Дачный участок",
+                    fontSize = 25.sp,
+                    modifier = Modifier.padding(top = 43.dp, start = 30.dp),
+                    color = Color(0xFF000000),
+                    fontWeight = FontWeight.Medium
+                )
+            }
             Image(
-                bitmap = ImageBitmap.imageResource(R.drawable.greenmygarden),
-                contentDescription = "Картинка моих садов",
+                bitmap = ImageBitmap.imageResource(R.drawable.longline),
+                contentDescription = "Линия",
                 modifier = Modifier
-                    .padding(horizontal = 22.dp, vertical = 35.dp)
-                    .size(40.dp)
+                    .padding(horizontal = 22.dp)
+                    .size(323.dp, 1.dp)
             )
-            Text(
-                "Дачный участок",
-                fontSize = 25.sp,
-                modifier = Modifier.padding(top = 43.dp, start = 30.dp),
-                color = Color(0xFF000000),
-                fontWeight = FontWeight.Medium
-            )
-        }
-        Image(
-            bitmap = ImageBitmap.imageResource(R.drawable.longline),
-            contentDescription = "Линия",
-            modifier = Modifier
-                .padding(horizontal = 22.dp)
-                .size(323.dp, 1.dp)
-        )
-        Row {
-            Spacer(modifier = Modifier.width(28.dp))
-            Card(
-                colors = CardDefaults.cardColors(containerColor = White),
-                modifier = Modifier
-                    .size(height = 70.dp, width = 90.dp)
-            ) {
-                Box(
+            Row {
+                Spacer(modifier = Modifier.width(28.dp))
+                Card(
+                    colors = CardDefaults.cardColors(containerColor = White),
                     modifier = Modifier
-                        .fillMaxSize()
-                        .wrapContentSize(Alignment.Center)
+                        .size(height = 70.dp, width = 90.dp)
                 ) {
-                    Column(
-                        modifier = Modifier.align(Alignment.Center),
-                        verticalArrangement = Arrangement.Center,
-                        horizontalAlignment = Alignment.CenterHorizontally
+                    Box(
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .wrapContentSize(Alignment.Center)
                     ) {
-                        Text(
-                            "2",
-                            color = Color(0xFF40BE54),
-                            modifier = Modifier.fillMaxWidth(1f),
-                            fontSize = 22.sp, fontWeight = Bold,
-                            textAlign = TextAlign.Center
-                        )
-                        Text(
-                            "Растений",
-                            modifier = Modifier.fillMaxWidth(1f),
-                            fontSize = 17.sp,
-                            textAlign = TextAlign.Center
-                        )
+                        Column(
+                            modifier = Modifier.align(Alignment.Center),
+                            verticalArrangement = Arrangement.Center,
+                            horizontalAlignment = Alignment.CenterHorizontally
+                        ) {
+                            Text(
+                                "2",
+                                color = Color(0xFF40BE54),
+                                modifier = Modifier.fillMaxWidth(1f),
+                                fontSize = 22.sp, fontWeight = Bold,
+                                textAlign = TextAlign.Center
+                            )
+                            Text(
+                                "Растений",
+                                modifier = Modifier.fillMaxWidth(1f),
+                                fontSize = 17.sp,
+                                textAlign = TextAlign.Center
+                            )
+                        }
                     }
+                }
+                Spacer(modifier = Modifier.width(15.dp))
+                Card(
+                    colors = CardDefaults.cardColors(containerColor = White),
+                    modifier = Modifier
+                        .size(height = 70.dp, width = 100.dp)
+                ) {
+                    Box(
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .wrapContentSize(Alignment.Center)
+                    ) {
+                        Column(
+                            modifier = Modifier.align(Alignment.Center),
+                            verticalArrangement = Arrangement.Center,
+                            horizontalAlignment = Alignment.CenterHorizontally
+                        ) {
+                            Text(
+                                "2",
+                                color = Color(0xFF40BE54),
+                                modifier = Modifier.fillMaxWidth(1f),
+                                fontSize = 22.sp, fontWeight = Bold,
+                                textAlign = TextAlign.Center
+                            )
+                            Text(
+                                "Задач",
+                                modifier = Modifier.fillMaxWidth(1f),
+                                fontSize = 17.sp,
+                                textAlign = TextAlign.Center
+                            )
+                        }
+                    }
+                }
+                Spacer(modifier = Modifier.width(15.dp))
+                Card(
+                    colors = CardDefaults.cardColors(containerColor = White),
+                    modifier = Modifier
+                        .size(height = 70.dp, width = 85.dp)
+                ) {
+                    Box(
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .wrapContentSize(Alignment.Center)
+                    ) {
+                        Column(
+                            modifier = Modifier.align(Alignment.Center),
+                            verticalArrangement = Arrangement.Center,
+                            horizontalAlignment = Alignment.CenterHorizontally
+                        ) {
+                            Text(
+                                "0",
+                                color = Color(0xFF40BE54),
+                                modifier = Modifier.fillMaxWidth(1f),
+                                fontSize = 22.sp, fontWeight = Bold,
+                                textAlign = TextAlign.Center
+                            )
+                            Text(
+                                "Обработок",
+                                modifier = Modifier.fillMaxWidth(1f),
+                                fontSize = 17.sp,
+                                textAlign = TextAlign.Center
+                            )
+                        }
+                    }
+                }
+            }
+            Image(
+                bitmap = ImageBitmap.imageResource(R.drawable.line),
+                contentDescription = "Линия",
+                modifier = Modifier
+                    .padding(horizontal = 22.dp)
+                    .size(323.dp, 1.dp)
+            )
+            Column {
+                Text(
+                    "Растения:",
+                    modifier = Modifier.padding(top = 23.dp, start = 22.dp),
+                    fontSize = 22.sp,
+                )
+                Column(modifier = Modifier.padding(top = 5.dp)) {
+                    PlantsAtMygardensScreen("Груша Конференция")
+                    PlantsAtMygardensScreen("Яблоня Антоновка")
                 }
             }
             Spacer(modifier = Modifier.width(15.dp))
-            Card(
-                colors = CardDefaults.cardColors(containerColor = White),
-                modifier = Modifier
-                    .size(height = 70.dp, width = 100.dp)
-            ) {
-                Box(
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .wrapContentSize(Alignment.Center)
-                ) {
-                    Column(
-                        modifier = Modifier.align(Alignment.Center),
-                        verticalArrangement = Arrangement.Center,
-                        horizontalAlignment = Alignment.CenterHorizontally
-                    ) {
-                        Text(
-                            "2",
-                            color = Color(0xFF40BE54),
-                            modifier = Modifier.fillMaxWidth(1f),
-                            fontSize = 22.sp, fontWeight = Bold,
-                            textAlign = TextAlign.Center
-                        )
-                        Text(
-                            "Задач",
-                            modifier = Modifier.fillMaxWidth(1f),
-                            fontSize = 17.sp,
-                            textAlign = TextAlign.Center
-                        )
-                    }
+            Column {
+                Text(
+                    "Задачи:",
+                    modifier = Modifier.padding(top = 23.dp, start = 22.dp),
+                    fontSize = 22.sp,
+                )
+                Column(modifier = Modifier.padding(top = 5.dp)) {
+                    TasksAtMygardensScreen("Обработка от парши")
+                    TasksAtMygardensScreen("Профилактика от вредителей")
                 }
-            }
-            Spacer(modifier = Modifier.width(15.dp))
-            Card(
-                colors = CardDefaults.cardColors(containerColor = White),
-                modifier = Modifier
-                    .size(height = 70.dp, width = 85.dp)
-            ) {
-                Box(
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .wrapContentSize(Alignment.Center)
-                ) {
-                    Column(
-                        modifier = Modifier.align(Alignment.Center),
-                        verticalArrangement = Arrangement.Center,
-                        horizontalAlignment = Alignment.CenterHorizontally
-                    ) {
-                        Text(
-                            "0",
-                            color = Color(0xFF40BE54),
-                            modifier = Modifier.fillMaxWidth(1f),
-                            fontSize = 22.sp, fontWeight = Bold,
-                            textAlign = TextAlign.Center
-                        )
-                        Text(
-                            "Обработок",
-                            modifier = Modifier.fillMaxWidth(1f),
-                            fontSize = 17.sp,
-                            textAlign = TextAlign.Center
-                        )
-                    }
-                }
-            }
-        }
-        Image(
-            bitmap = ImageBitmap.imageResource(R.drawable.line),
-            contentDescription = "Линия",
-            modifier = Modifier
-                .padding(horizontal = 22.dp)
-                .size(323.dp, 1.dp)
-        )
-        Column {
-            Text(
-                "Растения:",
-                modifier = Modifier.padding(top = 23.dp, start = 22.dp),
-                fontSize = 22.sp,
-            )
-            Column(modifier = Modifier.padding(top = 5.dp)) {
-                PlantsAtMygardensScreen("Груша Конференция")
-                PlantsAtMygardensScreen("Яблоня Антоновка")
-            }
-        }
-        Spacer(modifier = Modifier.width(15.dp))
-        Column {
-            Text(
-                "Задачи:",
-                modifier = Modifier.padding(top = 23.dp, start = 22.dp),
-                fontSize = 22.sp,
-            )
-            Column(modifier = Modifier.padding(top = 5.dp)) {
-                TasksAtMygardensScreen("Обработка от парши")
-                TasksAtMygardensScreen("Профилактика от вредителей")
             }
         }
     }

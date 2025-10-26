@@ -18,4 +18,6 @@ object AppDestinations {
     const val DRUG_ID_ARG = "drugId"
 
     const val DRUG_ADD_ROUTE = "drugsAddScreen"
+
+    const val GARDEN_ADD = "gardenAddScreen"
 }
