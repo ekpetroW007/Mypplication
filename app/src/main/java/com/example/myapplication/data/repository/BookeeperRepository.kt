@@ -17,13 +17,11 @@ class BookeeperRepository(
     private val taskDAO: TaskDAO,
     private val gardenDAO: GardenDAO
 ) {
-    // Пример функции для получения всех препаратов
-    val allDrugs: Flow<List<DrugEntity>> = drugDao.getAllDrugs()
-
     // Пример функции для добавления нового препарата
     suspend fun insertDrug(drug: DrugEntity) {
         drugDao.insertDrug(drug)
     }
+
     suspend fun deleteDrug(drug: DrugEntity) {
         drugDao.deleteDrug(drug)
     }
@@ -32,10 +30,15 @@ class BookeeperRepository(
         taskDAO.insertTask(task)
     }
 
+    suspend fun insertGarden(garden: GardenEntity) {
+        gardenDAO.insertGarden(garden)
+    }
+
     suspend fun deleteGarden(garden: GardenEntity) {
         gardenDAO.deleteGarden(garden)
     }
 
+    val allDrugs: Flow<List<DrugEntity>> = drugDao.getAllDrugs()
     val allGardens: Flow<List<GardenEntity>> = gardenDAO.getAllGardens()
     val allTasks: Flow<List<TaskEntity>> = taskDAO.getAllTasks()
     val allPlants: Flow<List<PlantEntity>> = plantDAO.getAllPlants()

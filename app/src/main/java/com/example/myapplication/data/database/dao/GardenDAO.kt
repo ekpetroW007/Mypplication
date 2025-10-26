@@ -3,6 +3,7 @@ package com.example.myapplication.data.database.dao
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
+import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.example.myapplication.data.database.entity.DrugEntity
 import com.example.myapplication.data.database.entity.GardenEntity
@@ -13,6 +14,9 @@ import kotlinx.coroutines.flow.Flow
 interface GardenDAO {
     @Delete
     suspend fun deleteGarden(garden: GardenEntity)
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertGarden(garden: GardenEntity)
 
     @Query("SELECT * FROM garden")
     fun getAllGardens(): Flow<List<GardenEntity>>
