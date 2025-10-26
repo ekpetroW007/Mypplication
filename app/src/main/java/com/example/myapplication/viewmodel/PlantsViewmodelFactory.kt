@@ -2,10 +2,10 @@ package com.example.myapplication.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.myapplication.data.repository.GardenRepository
+import com.example.myapplication.data.repository.BookeeperRepository
 
 class PlantsViewmodelFactory(
-    private val repository: GardenRepository
+    private val repository: BookeeperRepository
 ) : ViewModelProvider.Factory {
 
     // 2. Система вызывает этот метод, когда ей нужно создать ViewModel.

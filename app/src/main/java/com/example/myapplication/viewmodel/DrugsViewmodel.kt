@@ -3,16 +3,14 @@ package com.example.myapplication.viewmodel
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.myapplication.data.database.entity.DrugEntity
-import com.example.myapplication.data.repository.GardenRepository
+import com.example.myapplication.data.repository.BookeeperRepository
 import kotlinx.coroutines.flow.SharingStarted
-import kotlinx.coroutines.flow.WhileSubscribed
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 
 class DrugsViewmodel(
-    private val repository: GardenRepository
+    private val repository: BookeeperRepository
 ) : ViewModel() {
     val drugs = repository.allDrugs
         .stateIn(

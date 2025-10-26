@@ -38,9 +38,12 @@ android {
     buildFeatures {
         compose = true
     }
+
 }
 
 dependencies {
+    implementation("io.github.boguszpawlowski.composecalendar:composecalendar:1.4.0")
+    implementation ("io.github.boguszpawlowski.composecalendar:kotlinx-datetime:1.4.0")
     implementation(libs.androidx.room.runtime)
     implementation(libs.androidx.room.ktx)
     implementation (libs.androidx.runtime.livedata)

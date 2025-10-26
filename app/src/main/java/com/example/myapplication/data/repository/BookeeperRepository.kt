@@ -11,7 +11,7 @@ import com.example.myapplication.data.database.entity.TaskEntity
 import kotlinx.coroutines.flow.Flow
 
 // В конструктор передаем DAO, которые нам нужны
-class GardenRepository(
+class BookeeperRepository(
     private val drugDao: DrugDAO,
     private val plantDAO: PlantDAO,
     private val taskDAO: TaskDAO,

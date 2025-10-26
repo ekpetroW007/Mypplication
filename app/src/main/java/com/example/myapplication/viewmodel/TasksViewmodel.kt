@@ -1,7 +1,7 @@
 package com.example.myapplication.viewmodel
 
-import com.example.myapplication.data.repository.GardenRepository
+import com.example.myapplication.data.repository.BookeeperRepository
 
-class TasksViewmodel(repository: GardenRepository) {
+class TasksViewmodel(repository: BookeeperRepository) {
 
 }

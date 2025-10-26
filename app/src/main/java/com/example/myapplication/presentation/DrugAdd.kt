@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
@@ -28,6 +29,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight.Companion.Bold
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -96,6 +98,7 @@ fun DrugAdd(navController: NavController) {
                 Text(name.value, fontSize = 20.sp)
                 TextField(
                     value = name.value,
+                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
                     textStyle = TextStyle(fontSize = 20.sp),
                     onValueChange = { newText -> name.value = newText }
                 )
@@ -123,6 +126,7 @@ fun DrugAdd(navController: NavController) {
                 Text(purpose.value, fontSize = 20.sp)
                 TextField(
                     value = purpose.value,
+                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
                     textStyle = TextStyle(fontSize = 20.sp),
                     onValueChange = { newText -> purpose.value = newText }
                 )
@@ -150,6 +154,7 @@ fun DrugAdd(navController: NavController) {
                 Text(consumptionRate.value, fontSize = 20.sp)
                 TextField(
                     value = consumptionRate.value,
+                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
                     textStyle = TextStyle(fontSize = 20.sp),
                     onValueChange = { newText -> consumptionRate.value = newText }
                 )
