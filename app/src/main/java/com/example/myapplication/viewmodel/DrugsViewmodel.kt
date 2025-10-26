@@ -49,6 +49,7 @@ class DrugsViewmodel(
             }
         }
     }
+
     fun searchDrug() {
 
     }
