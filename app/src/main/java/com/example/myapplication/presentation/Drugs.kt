@@ -4,6 +4,7 @@ import androidx.compose.material3.Button
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
@@ -88,7 +89,7 @@ fun Drugs(
             }
             LazyColumn(modifier = Modifier.padding(start = 25.dp, top = 10.dp)) {
                 items(drugList) { drug ->
-                    DrugCard(drug.name, drug.purpose, drug.consumptionRate)
+                    DrugCard(drug.name, drug.purpose, drug.consumptionRate, navController)
                 }
             }
         }
@@ -96,10 +97,11 @@ fun Drugs(
 }
 
 @Composable
-fun DrugCard(drugName: String, drugTarget: String, drugAmount: String) {
+fun DrugCard(drugName: String, drugTarget: String, drugAmount: String, navController: NavController) {
     Card(
         elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
         colors = CardDefaults.cardColors(containerColor = White),
+        onClick = { { navController.navigate(AppDestinations.DRUG_ADD_ROUTE) } },
         modifier = Modifier
             .padding(top = 20.dp)
             .size(height = 200.dp, width = 365.dp)

@@ -3,7 +3,6 @@ package com.example.myapplication.viewmodel
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.myapplication.data.database.entity.DrugEntity
 import com.example.myapplication.data.database.entity.TaskEntity
 import com.example.myapplication.data.repository.BookeeperRepository
 import kotlinx.coroutines.flow.SharingStarted

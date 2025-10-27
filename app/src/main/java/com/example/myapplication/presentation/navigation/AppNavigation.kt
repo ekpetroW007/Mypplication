@@ -5,6 +5,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.myapplication.presentation.DrugAdd
+import com.example.myapplication.presentation.DrugInfo
 import com.example.myapplication.presentation.Drugs
 import com.example.myapplication.presentation.GardenAdd
 import com.example.myapplication.presentation.MainScreen
@@ -30,6 +31,9 @@ fun AppNavigation() {
         }
         composable(route = AppDestinations.GARDEN_ADD) {
             GardenAdd(navController = navController)
+        }
+        composable(route = AppDestinations.DRUG_INFO) {
+            DrugInfo(navController = navController)
         }
     }
 }

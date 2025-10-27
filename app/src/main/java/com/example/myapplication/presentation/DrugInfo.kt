@@ -22,10 +22,11 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.font.FontWeight.Companion.Bold
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.example.myapplication.R
 
 @Composable
-fun DrugInfo() {
+fun DrugInfo(navController: NavController) {
     Box(
         modifier = Modifier
             .size(600.dp, 100.dp)
