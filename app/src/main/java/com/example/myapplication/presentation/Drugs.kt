@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.HorizontalDivider
@@ -50,7 +51,13 @@ fun Drugs(
     Scaffold(
         modifier = Modifier.padding(innerPadding),
         floatingActionButton = {
-            Button(onClick = { navController.navigate(AppDestinations.DRUG_ADD_ROUTE) }) {
+            Button(
+                onClick = { navController.navigate(AppDestinations.DRUG_ADD_ROUTE) },
+                colors = ButtonDefaults.buttonColors(
+                    contentColor = White,       // цвет текста
+                    containerColor = Color(0xFF40BE54)
+                )
+            ) {
                 Text("+")
             }
         }
@@ -96,11 +103,16 @@ fun Drugs(
 }
 
 @Composable
-fun DrugCard(drugName: String, drugTarget: String, drugAmount: String, navController: NavController) {
+fun DrugCard(
+    drugName: String,
+    drugTarget: String,
+    drugAmount: String,
+    navController: NavController
+) {
     Card(
         elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
         colors = CardDefaults.cardColors(containerColor = White),
-        onClick = { { navController.navigate(AppDestinations.DRUG_INFO) } },
+        onClick = {  navController.navigate(AppDestinations.DRUG_INFO)  },
         modifier = Modifier
             .padding(top = 20.dp)
             .size(height = 200.dp, width = 365.dp)

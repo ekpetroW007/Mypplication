@@ -111,6 +111,13 @@ fun GardensCard(gardenName: String) {
                 color = Color(0xFF000000),
                 fontWeight = FontWeight.Medium
             )
+            Image(
+                bitmap = ImageBitmap.imageResource(R.drawable.longline),
+                contentDescription = "Линия",
+                modifier = Modifier
+                    .padding(horizontal = 22.dp)
+                    .size(323.dp, 1.dp)
+            )
         }
         Image(
             bitmap = ImageBitmap.imageResource(R.drawable.longline),
