@@ -83,7 +83,7 @@ fun MyGardens(navController: NavController, innerPadding: PaddingValues) {
 
             LazyColumn(modifier = Modifier.padding(start = 25.dp, top = 10.dp)) {
                 items(gardensList) { garden ->
-                    GardensCard(garden.name, navController)
+                    GardensCard(garden.name)
                 }
             }
         }
@@ -91,7 +91,7 @@ fun MyGardens(navController: NavController, innerPadding: PaddingValues) {
 }
 
 @Composable
-fun GardensCard(gardenName: String, navController: NavController) {
+fun GardensCard(gardenName: String) {
     Card(
         elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
         colors = CardDefaults.cardColors(containerColor = White),
@@ -119,14 +119,24 @@ fun GardensCard(gardenName: String, navController: NavController) {
                 color = Color(0xFF000000),
                 fontWeight = FontWeight.Medium
             )
-            Image(
-                bitmap = ImageBitmap.imageResource(R.drawable.arrow),
-                contentDescription = "Стрелка",
-                modifier = Modifier
-                    .padding(start = 22.dp, top = 28.dp)
-                    .size(35.dp, 40.dp)
-                    .clickable { navController.popBackStack() }
-            )
+            Column {
+                Image(
+                    bitmap = ImageBitmap.imageResource(R.drawable.export),
+                    contentDescription = "Экспортировать",
+                    modifier = Modifier
+                        .padding(start = 100.dp, top = 20.dp)
+                        .size(15.dp, 20.dp)
+                        .clickable { }
+                )
+                Image(
+                    bitmap = ImageBitmap.imageResource(R.drawable.delete),
+                    contentDescription = "Удалить",
+                    modifier = Modifier
+                        .padding(start = 100.dp, top = 10.dp)
+                        .size(15.dp, 20.dp)
+                        .clickable { }
+                )
+            }
         }
         Image(
             bitmap = ImageBitmap.imageResource(R.drawable.longline),
