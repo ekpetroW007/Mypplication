@@ -37,7 +37,7 @@ import com.example.myapplication.viewmodel.GardensViewmodel
 import com.example.myapplication.viewmodel.GardensViewmodelFactory
 
 @Composable
-fun GardenAdd(navController: NavController) {
+fun GardenAdd(navController: NavController) { // TODO (тут в карточки садов будет добавляться инофрмация с экрана календаря)
     val name = remember { mutableStateOf("") }
     val application = LocalContext.current.applicationContext as BookeeperApp
     val viewmodelFactory = GardensViewmodelFactory(application.repository)

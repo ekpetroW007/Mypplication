@@ -85,7 +85,7 @@ fun Drugs(
                             .size(20.dp, 45.dp)
                     )
                     Text(
-                        "Поиск использованных препаратов...",
+                        "Поиск использованных препаратов...", // TODO (СДЕЛАТЬ ПОИСК ПРЕПАРАТОВ)
                         modifier = Modifier
                             .padding(vertical = 14.dp),
                         fontSize = 15.sp,
