@@ -45,6 +45,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.example.myapplication.BookeeperApp
 import com.example.myapplication.R
+import com.example.myapplication.data.repository.BookeeperRepository
 import com.example.myapplication.presentation.navigation.AppDestinations
 import com.example.myapplication.viewmodel.GardensViewmodel
 import com.example.myapplication.viewmodel.GardensViewmodelFactory
@@ -126,7 +127,7 @@ fun GardensCard(gardenName: String) {
                     modifier = Modifier
                         .padding(start = 100.dp, top = 20.dp)
                         .size(15.dp, 20.dp)
-                        .clickable { }
+                        .clickable { } // TODO (ЭКСПОРТ САДА)
                 )
                 Image(
                     bitmap = ImageBitmap.imageResource(R.drawable.delete),
@@ -134,7 +135,7 @@ fun GardensCard(gardenName: String) {
                     modifier = Modifier
                         .padding(start = 100.dp, top = 10.dp)
                         .size(15.dp, 20.dp)
-      //                  .clickable { GardensViewmodel(application.repository)}
+                        .clickable { } // TODO (УДАЛЕНИЕ САДА)
                 )
             }
         }

@@ -164,6 +164,7 @@ fun DrugAdd(navController: NavController) {
             onClick = {
                 drugsViewmodel.addDrug(name.value, purpose.value, consumptionRate.value)
                 navController.popBackStack()
+
             },
             modifier = Modifier
                 .padding(start = 25.dp, top = 40.dp)

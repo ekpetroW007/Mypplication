@@ -1,6 +1,8 @@
 package com.example.myapplication.viewmodel
 
 import android.util.Log
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.myapplication.data.database.entity.DrugEntity
@@ -19,7 +21,9 @@ class DrugsViewmodel(
             initialValue = emptyList()
         )
 
-
+    val nameInfo = ""
+    val purposeInfo = ""
+    val consumptionRateInfo = ""
     fun addDrug(name: String, purpose: String, consumptionRate: String) {
         viewModelScope.launch {
             try {
@@ -36,6 +40,21 @@ class DrugsViewmodel(
     }
 
     fun deleteDrug(name: String, purpose: String, consumptionRate: String) {
+        viewModelScope.launch {
+            try {
+                val newDrug = DrugEntity(
+                    name = name,
+                    purpose = purpose,
+                    consumptionRate = consumptionRate
+                )
+                repository.deleteDrug(newDrug)
+            } catch (e: Exception) {
+                Log.d("deleteDrug", e.toString())
+            }
+        }
+    }
+
+    fun drugInfo(name: String, purpose: String, consumptionRate: String) {
         viewModelScope.launch {
             try {
                 val newDrug = DrugEntity(
