@@ -88,14 +88,11 @@ fun GardensCard(gardenName: String) {
         elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
         colors = CardDefaults.cardColors(containerColor = White),
         modifier = Modifier
-            .padding(start = 25.dp, top = 120.dp)
+            .padding(top = 20.dp)
             .size(height = 500.dp, width = 365.dp)
             .background(
                 color = Color(0xFFFBFCFB), shape = RoundedCornerShape(
                     topStart = 16.dp,
-                    topEnd = 0.dp,
-                    bottomEnd = 0.dp,
-                    bottomStart = 0.dp
                 )
             )
     ) {
