@@ -80,7 +80,7 @@ fun DrugInfo(navController: NavController) {
                     fontStyle = FontStyle.Italic,
                     modifier = Modifier
                         .padding(start = 18.dp)
-                ) // образец
+                ) // TODO (образец)
             }
         }
         Card(
@@ -108,7 +108,7 @@ fun DrugInfo(navController: NavController) {
                     fontStyle = FontStyle.Italic,
                     modifier = Modifier
                         .padding(start = 18.dp)
-                ) // образец
+                ) // TODO (образец)
             }
         }
         Card(
@@ -136,7 +136,7 @@ fun DrugInfo(navController: NavController) {
                     fontStyle = FontStyle.Italic,
                     modifier = Modifier
                         .padding(start = 18.dp)
-                ) // образец
+                ) // TODO (образец)
             }
         }
     }
