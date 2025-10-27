@@ -54,7 +54,7 @@ fun Drugs(
             Button(
                 onClick = { navController.navigate(AppDestinations.DRUG_ADD_ROUTE) },
                 colors = ButtonDefaults.buttonColors(
-                    contentColor = White,       // цвет текста
+                    contentColor = White,
                     containerColor = Color(0xFF40BE54)
                 )
             ) {
