@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -82,7 +83,7 @@ fun MyGardens(navController: NavController, innerPadding: PaddingValues) {
 
             LazyColumn(modifier = Modifier.padding(start = 25.dp, top = 10.dp)) {
                 items(gardensList) { garden ->
-                    GardensCard(garden.name)
+                    GardensCard(garden.name, navController)
                 }
             }
         }
@@ -90,7 +91,7 @@ fun MyGardens(navController: NavController, innerPadding: PaddingValues) {
 }
 
 @Composable
-fun GardensCard(gardenName: String) {
+fun GardensCard(gardenName: String, navController: NavController) {
     Card(
         elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
         colors = CardDefaults.cardColors(containerColor = White),
@@ -119,11 +120,12 @@ fun GardensCard(gardenName: String) {
                 fontWeight = FontWeight.Medium
             )
             Image(
-                bitmap = ImageBitmap.imageResource(R.drawable.longline),
-                contentDescription = "Линия",
+                bitmap = ImageBitmap.imageResource(R.drawable.arrow),
+                contentDescription = "Стрелка",
                 modifier = Modifier
-                    .padding(horizontal = 22.dp)
-                    .size(323.dp, 1.dp)
+                    .padding(start = 22.dp, top = 28.dp)
+                    .size(35.dp, 40.dp)
+                    .clickable { navController.popBackStack() }
             )
         }
         Image(
