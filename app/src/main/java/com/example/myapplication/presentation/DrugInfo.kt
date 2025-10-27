@@ -39,9 +39,9 @@ fun DrugInfo(navController: NavController) {
     val application = LocalContext.current.applicationContext as BookeeperApp
     val viewmodelFactory = DrugsViewmodelFactory(application.repository)
     val drugsViewmodel: DrugsViewmodel = viewModel(factory = viewmodelFactory)
-    val name = remember { mutableStateOf("") }
-    val purpose = remember { mutableStateOf("") }
-    val consumptionRate = remember { mutableStateOf("") }
+//    val name = remember { mutableStateOf("") }
+//    val purpose = remember { mutableStateOf("") }
+//    val consumptionRate = remember { mutableStateOf("") }
     Box(
         modifier = Modifier
             .size(600.dp, 100.dp)
@@ -90,7 +90,7 @@ fun DrugInfo(navController: NavController) {
                         .padding(start = 18.dp, top = 22.dp), fontSize = 22.sp
                 )
                 Text(
-                    name.value,
+                    drugName,
                     fontWeight = FontWeight.Medium,
                     fontSize = 20.sp,
                     fontStyle = FontStyle.Italic,

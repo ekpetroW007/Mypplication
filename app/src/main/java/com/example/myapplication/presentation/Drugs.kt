@@ -112,7 +112,7 @@ fun DrugCard(
     Card(
         elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
         colors = CardDefaults.cardColors(containerColor = White),
-        onClick = {  navController.navigate(AppDestinations.DRUG_INFO)  },
+        onClick = { navController.navigate(AppDestinations.DRUG_INFO) },
         modifier = Modifier
             .padding(top = 20.dp)
             .size(height = 200.dp, width = 365.dp)

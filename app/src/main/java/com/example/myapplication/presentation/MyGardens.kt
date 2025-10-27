@@ -134,7 +134,7 @@ fun GardensCard(gardenName: String) {
                     modifier = Modifier
                         .padding(start = 100.dp, top = 10.dp)
                         .size(15.dp, 20.dp)
-                        .clickable { }
+      //                  .clickable { GardensViewmodel(application.repository)}
                 )
             }
         }
