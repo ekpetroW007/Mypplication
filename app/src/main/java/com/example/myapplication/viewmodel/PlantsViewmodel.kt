@@ -21,16 +21,16 @@ class PlantsViewmodel(private val repository: BookeeperRepository) : ViewModel()
             started = SharingStarted.WhileSubscribed(5000L),
             initialValue = emptyList()
         )
-    private val _listPlantsByGardenId :
-        Flow<List<PlantEntity>> = emptyList()
-    val listPlantsByGardenId = _listPlantsByGardenId.asStateFlow()
-    fun getPlantByGardenId(gardenId: Int): List<PlantEntity> {
-        viewModelScope.launch {
-            try {
-                _listPlantsByGardenId = repository.allPlantsByGardenId(gardenId)
-            } catch (e: Exception) {
-                Log.d("plantsById", e.toString())
-            }
-        }
-    }
+//    private val _listPlantsByGardenId :
+//        Flow<List<PlantEntity>> = emptyList()
+//    val listPlantsByGardenId = _listPlantsByGardenId.asStateFlow()
+//    fun getPlantByGardenId(gardenId: Int): List<PlantEntity> {
+//        viewModelScope.launch {
+//            try {
+//                _listPlantsByGardenId = repository.allPlantsByGardenId(gardenId)
+//            } catch (e: Exception) {
+//                Log.d("plantsById", e.toString())
+//            }
+//        }
+//    }
 }
