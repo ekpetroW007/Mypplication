@@ -105,14 +105,14 @@ fun Drugs(
 @Composable
 fun DrugCard(
     drugName: String,
-    drugTarget: String,
-    drugAmount: String,
+    purpose: String,
+    consumptionRate: String,
     navController: NavController
 ) {
     Card(
         elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
         colors = CardDefaults.cardColors(containerColor = White),
-        onClick = { navController.navigate("drugInfoScreen") },
+        onClick = { navController.navigate("drugInfoScreen/${drugName}/${purpose}/${consumptionRate}") },
         modifier = Modifier
             .padding(top = 20.dp)
             .size(height = 200.dp, width = 365.dp)
@@ -137,7 +137,7 @@ fun DrugCard(
                     color = Color(0xFF000000), fontWeight = FontWeight.Bold
                 )
                 Text(
-                    drugTarget,
+                    purpose,
                     fontSize = 16.sp,
                     color = Color(0xFF6C6A6A)
                 )
@@ -151,7 +151,7 @@ fun DrugCard(
                 color = Color(0xFF6C6A6A)
             )
             Text(
-                drugAmount,
+                consumptionRate,
                 fontSize = 17.sp, modifier = Modifier.padding(start = 22.dp),
                 color = Color(0xFF333030), fontWeight = FontWeight.Bold
             )
