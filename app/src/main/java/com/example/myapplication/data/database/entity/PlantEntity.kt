@@ -41,7 +41,7 @@ data class PlantEntity(
     @ColumnInfo(name = "photo_path")
     val photo: String,
 
-    // Внешние ключи
+    // Внешние ключ
     @ColumnInfo(name = "task_id", index = true)
     val taskId: Int?,
 
