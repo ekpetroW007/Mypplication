@@ -84,7 +84,7 @@ fun MyGardens(navController: NavController, innerPadding: PaddingValues) {
 
             LazyColumn(modifier = Modifier.padding(start = 25.dp, top = 10.dp)) {
                 items(gardensList) { garden ->
-                    GardensCard(garden.name)
+                    GardensCard(garden.name, gardensViewmodel)
                 }
             }
         }
@@ -92,7 +92,7 @@ fun MyGardens(navController: NavController, innerPadding: PaddingValues) {
 }
 
 @Composable
-fun GardensCard(gardenName: String) {
+fun GardensCard(gardenName: String, gardenViewmodel: GardensViewmodel) {
     Card(
         elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
         colors = CardDefaults.cardColors(containerColor = White),
@@ -135,7 +135,7 @@ fun GardensCard(gardenName: String) {
                     modifier = Modifier
                         .padding(start = 100.dp, top = 10.dp)
                         .size(15.dp, 20.dp)
-                        .clickable { } // TODO (УДАЛЕНИЕ САДА)
+                        .clickable { gardenViewmodel.deleteGarden(gardenName)} // TODO (УДАЛЕНИЕ САДА)
                 )
             }
         }
