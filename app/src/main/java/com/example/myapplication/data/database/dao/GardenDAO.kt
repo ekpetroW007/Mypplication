@@ -12,8 +12,8 @@ import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface GardenDAO {
-    @Delete
-    suspend fun deleteGarden(garden: GardenEntity)
+    @Query("DELETE FROM garden WHERE id = :id ")
+    suspend fun deleteGarden(id: Int)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertGarden(garden: GardenEntity)

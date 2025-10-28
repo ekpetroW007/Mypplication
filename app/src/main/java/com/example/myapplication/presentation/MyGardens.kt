@@ -54,7 +54,7 @@ import com.example.myapplication.viewmodel.PlantsViewmodelFactory
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
-fun MyGardens(navController: NavController, innerPadding: PaddingValues) {
+fun MyGardens(navController: NavController, innerPadding: PaddingValues, ) {
     val application = LocalContext.current.applicationContext as BookeeperApp
     val viewmodelGardenFactory = GardensViewmodelFactory(application.repository)
     val gardensViewmodel: GardensViewmodel = viewModel(factory = viewmodelGardenFactory)
@@ -84,7 +84,7 @@ fun MyGardens(navController: NavController, innerPadding: PaddingValues) {
 
             LazyColumn(modifier = Modifier.padding(start = 25.dp, top = 10.dp)) {
                 items(gardensList) { garden ->
-                    GardensCard(garden.name, gardensViewmodel)
+                    GardensCard(garden.name, gardensViewmodel, garden.id)
                 }
             }
         }
@@ -92,7 +92,7 @@ fun MyGardens(navController: NavController, innerPadding: PaddingValues) {
 }
 
 @Composable
-fun GardensCard(gardenName: String, gardenViewmodel: GardensViewmodel) {
+fun GardensCard(gardenName: String, gardenViewmodel: GardensViewmodel, id: Int) {
     Card(
         elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
         colors = CardDefaults.cardColors(containerColor = White),
@@ -135,7 +135,7 @@ fun GardensCard(gardenName: String, gardenViewmodel: GardensViewmodel) {
                     modifier = Modifier
                         .padding(start = 100.dp, top = 10.dp)
                         .size(15.dp, 20.dp)
-                        .clickable { gardenViewmodel.deleteGarden(gardenName)} // TODO (УДАЛЕНИЕ САДА)
+                        .clickable { gardenViewmodel.deleteGarden(id)}
                 )
             }
         }

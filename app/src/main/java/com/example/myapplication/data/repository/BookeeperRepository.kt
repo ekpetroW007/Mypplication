@@ -38,8 +38,8 @@ class BookeeperRepository(
         gardenDAO.insertGarden(garden)
     }
 
-    suspend fun deleteGarden(garden: GardenEntity) {
-        gardenDAO.deleteGarden(garden)
+    suspend fun deleteGarden(id: Int) {
+        gardenDAO.deleteGarden(id)
     }
 
     suspend fun allPlantsByGardenId(gardenId: Int): Flow<List<PlantEntity>> {

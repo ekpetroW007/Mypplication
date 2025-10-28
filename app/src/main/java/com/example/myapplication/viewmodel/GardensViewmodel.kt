@@ -34,13 +34,10 @@ class GardensViewmodel(
         }
     }
 
-    fun deleteGarden(name: String) {
+    fun deleteGarden(id: Int) {
         viewModelScope.launch {
             try {
-                val newGarden = GardenEntity(
-                    name = name
-                )
-                repository.deleteGarden(newGarden)
+                repository.deleteGarden(id)
             } catch (e: Exception) {
                 Log.d("deleteGarden", e.toString())
             }
