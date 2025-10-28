@@ -32,8 +32,11 @@ fun AppNavigation() {
         composable(route = AppDestinations.GARDEN_ADD) {
             GardenAdd(navController = navController)
         }
-        composable(route = AppDestinations.DRUG_INFO) {
-            DrugInfo(navController = navController)
+        composable(route = "drugInfoScreen/{drugName}/{purpose}/{consumptionRate}") { backStackEntry ->
+            val drugName = backStackEntry.arguments?.getString("drugName")
+            val purpose = backStackEntry.arguments?.getString("purpose")
+            val consumptionRate = backStackEntry.arguments?.getString("consumptionRate")
+            DrugInfo(navController = navController, drugName, purpose, consumptionRate)
         }
     }
 }

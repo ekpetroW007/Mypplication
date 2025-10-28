@@ -35,13 +35,10 @@ import com.example.myapplication.viewmodel.DrugsViewmodel
 import com.example.myapplication.viewmodel.DrugsViewmodelFactory
 
 @Composable
-fun DrugInfo(navController: NavController) {
+fun DrugInfo(navController: NavController, drugName: String?, purpose: String?, consumptionRate: String?) {
     val application = LocalContext.current.applicationContext as BookeeperApp
     val viewmodelFactory = DrugsViewmodelFactory(application.repository)
     val drugsViewmodel: DrugsViewmodel = viewModel(factory = viewmodelFactory)
-//    val name = remember { mutableStateOf("") }
-//    val purpose = remember { mutableStateOf("") }
-//    val consumptionRate = remember { mutableStateOf("") }
     Box(
         modifier = Modifier
             .size(600.dp, 100.dp)
@@ -89,14 +86,16 @@ fun DrugInfo(navController: NavController) {
                     modifier = Modifier
                         .padding(start = 18.dp, top = 22.dp), fontSize = 22.sp
                 )
-                Text(
-                    drugName,
-                    fontWeight = FontWeight.Medium,
-                    fontSize = 20.sp,
-                    fontStyle = FontStyle.Italic,
-                    modifier = Modifier
-                        .padding(start = 18.dp)
-                ) // TODO (образец)
+                if (drugName != null) {
+                    Text(
+                        drugName,
+                        fontWeight = FontWeight.Medium,
+                        fontSize = 20.sp,
+                        fontStyle = FontStyle.Italic,
+                        modifier = Modifier
+                            .padding(start = 18.dp)
+                    )
+                } // TODO (образец)
             }
         }
         Card(
@@ -118,7 +117,7 @@ fun DrugInfo(navController: NavController) {
                         .padding(start = 18.dp, top = 22.dp), fontSize = 22.sp
                 )
                 Text(
-                    purpose.value,
+                    "purpose.value",
                     fontWeight = FontWeight.Medium,
                     fontSize = 20.sp,
                     fontStyle = FontStyle.Italic,
@@ -146,7 +145,7 @@ fun DrugInfo(navController: NavController) {
                         .padding(start = 18.dp, top = 22.dp), fontSize = 22.sp
                 )
                 Text(
-                    consumptionRate.value,
+                   "consumptionRate.value",
                     fontWeight = FontWeight.Medium,
                     fontSize = 20.sp,
                     fontStyle = FontStyle.Italic,

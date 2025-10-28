@@ -14,6 +14,8 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.catch
 
 class PlantsViewmodel(private val repository: BookeeperRepository) : ViewModel() {
     val plants = repository.allPlants
@@ -47,16 +49,31 @@ class PlantsViewmodel(private val repository: BookeeperRepository) : ViewModel()
             }
         }
     }
-//    private val _listPlantsByGardenId :
-//        Flow<List<PlantEntity>> = emptyList()
-//    val listPlantsByGardenId = _listPlantsByGardenId.asStateFlow()
-//    fun getPlantByGardenId(gardenId: Int): List<PlantEntity> {
-//        viewModelScope.launch {
-//            try {
-//                _listPlantsByGardenId = repository.allPlantsByGardenId(gardenId)
-//            } catch (e: Exception) {
-//                Log.d("plantsById", e.toString())
-//            }
-//        }
-//    }
+
+    // StateFlow для хранения списка растений для конкретного сада.
+    // Используем MutableStateFlow, чтобы иметь возможность обновлять его значение.
+    private val _plantsByGardenId = MutableStateFlow<List<PlantEntity>>(emptyList())
+    val plantsByGardenId: StateFlow<List<PlantEntity>> = _plantsByGardenId.asStateFlow()
+
+    // Функция для загрузки растений по ID сада.
+    fun loadPlantsByGardenId(gardenId: Int) {
+        viewModelScope.launch {
+            repository.allPlantsByGardenId(gardenId)
+                .catch { exception ->
+                    // Обработка возможных ошибок при получении данных из БД
+                    Log.d(
+                        "PlantsViewModel",
+                        "Exception while fetching plants by garden ID",
+                        exception
+                    )
+                    _plantsByGardenId.value =
+                        emptyList() // В случае ошибки показываем пустой список
+                }
+                .collect { plants ->
+                    // Как только Flow эмитит новые данные, мы обновляем наш StateFlow.
+                    _plantsByGardenId.value = plants
+                }
+        }
+    }
+
 }
