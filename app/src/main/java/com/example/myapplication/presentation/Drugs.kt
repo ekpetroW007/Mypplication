@@ -65,36 +65,36 @@ fun Drugs(
         }
     ) { innerPadding ->
         Column(modifier = Modifier.padding(innerPadding)) {
-            Card(
-                elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
-                colors = CardDefaults.cardColors(containerColor = White),
-                border = BorderStroke(1.dp, Color(0xFF000000)),
-                modifier = Modifier
-                    .padding(start = 25.dp, top = 10.dp)
-                    .size(height = 45.dp, width = 365.dp)
-                    .background(
-                        White, shape = RoundedCornerShape(
-                            topStart = 16.dp,
-                        )
-                    )
-            ) {
-                Row {
-                    Image(
-                        bitmap = ImageBitmap.imageResource(R.drawable.search),
-                        contentDescription = "Картинка поиска",
-                        modifier = Modifier
-                            .padding(horizontal = 22.dp)
-                            .size(20.dp, 45.dp)
-                    )
-                    Text(
-                        "Поиск использованных препаратов...", // TODO (СДЕЛАТЬ ПОИСК ПРЕПАРАТОВ)
-                        modifier = Modifier
-                            .padding(vertical = 14.dp),
-                        fontSize = 15.sp,
-                        color = Color(0xD2343538)
-                    )
-                }
-            }
+//            Card(
+//                elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
+//                colors = CardDefaults.cardColors(containerColor = White),
+//                border = BorderStroke(1.dp, Color(0xFF000000)),
+//                modifier = Modifier
+//                    .padding(start = 25.dp, top = 10.dp)
+//                    .size(height = 45.dp, width = 365.dp)
+//                    .background(
+//                        White, shape = RoundedCornerShape(
+//                            topStart = 16.dp,
+//                        )
+//                    )
+//            ) {
+//                Row {
+//                    Image(
+//                        bitmap = ImageBitmap.imageResource(R.drawable.search),
+//                        contentDescription = "Картинка поиска",
+//                        modifier = Modifier
+//                            .padding(horizontal = 22.dp)
+//                            .size(20.dp, 45.dp)
+//                    )
+//                    Text(
+//                        "Поиск использованных препаратов...", // TODO (СДЕЛАТЬ ПОИСК ПРЕПАРАТОВ)
+//                        modifier = Modifier
+//                            .padding(vertical = 14.dp),
+//                        fontSize = 15.sp,
+//                        color = Color(0xD2343538)
+//                    )
+//                }
+//            }
             LazyColumn(modifier = Modifier.padding(start = 25.dp, top = 10.dp)) {
                 items(drugList) { drug ->
                     DrugCard(drug.name, drug.purpose, drug.consumptionRate, navController, drugsViewmodel, drug.id)
@@ -168,6 +168,14 @@ fun DrugCard(
                 consumptionRate,
                 fontSize = 17.sp, modifier = Modifier.padding(start = 22.dp),
                 color = Color(0xFF333030), fontWeight = FontWeight.Bold
+            )
+            Image(
+                bitmap = ImageBitmap.imageResource(R.drawable.delete),
+                contentDescription = "Удалить",
+                modifier = Modifier
+                    .padding(start = 340.dp, top = 20.dp)
+                    .size(15.dp, 20.dp)
+                    .clickable { drugsViewmodel.deleteDrug(id) }
             )
         }
     }
