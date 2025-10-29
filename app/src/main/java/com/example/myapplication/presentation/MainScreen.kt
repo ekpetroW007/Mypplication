@@ -28,7 +28,7 @@ fun MainScreen(viewModel: MainScreenViewmodel = viewModel(), navController: NavC
             "Профиль" -> Profile(innerPadding)
             "Препараты" -> Drugs(navController, innerPadding)
             "Мои сады" -> MyGardens(navController,innerPadding)
-            "Календарь" -> Calendar(innerPadding)
+            "Календарь" -> Calendar(innerPadding, navController)
         }
     }
 }

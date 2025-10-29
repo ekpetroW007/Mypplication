@@ -50,16 +50,16 @@ import com.example.myapplication.viewmodel.GardensViewmodel
 import com.example.myapplication.viewmodel.GardensViewmodelFactory
 import com.example.myapplication.viewmodel.PlantsViewmodel
 import com.example.myapplication.viewmodel.PlantsViewmodelFactory
+
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 
-fun MyGardens(navController: NavController, innerPadding: PaddingValues, ) {
+fun MyGardens(navController: NavController, innerPadding: PaddingValues) {
 
     val application = LocalContext.current.applicationContext as BookeeperApp
     val viewmodelGardenFactory = GardensViewmodelFactory(application.repository)
     val gardensViewmodel: GardensViewmodel = viewModel(factory = viewmodelGardenFactory)
     val gardensList by gardensViewmodel.gardens.collectAsState()
-
 
 
     val viewmodelPlantFactory = PlantsViewmodelFactory(application.repository)
@@ -95,7 +95,7 @@ fun MyGardens(navController: NavController, innerPadding: PaddingValues, ) {
 }
 
 @Composable
-fun GardensCard(gardenName: String, gardenViewmodel: GardensViewmodel, id: Int, ) {
+fun GardensCard(gardenName: String, gardenViewmodel: GardensViewmodel, id: Int) {
     Card(
         elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
         colors = CardDefaults.cardColors(containerColor = White),
@@ -109,31 +109,33 @@ fun GardensCard(gardenName: String, gardenViewmodel: GardensViewmodel, id: Int, 
             )
     ) {
         Row {
-            Image(
-                bitmap = ImageBitmap.imageResource(R.drawable.export),
-                contentDescription = "Экспортировать",
-                modifier = Modifier
-                    .padding(start = 10.dp, top = 10.dp)
-                    .size(15.dp, 20.dp)
-                    .clickable { } // TODO (ЭКСПОРТ САДА)
-            )
-            Image(
-                bitmap = ImageBitmap.imageResource(R.drawable.delete),
-                contentDescription = "Удалить",
-                modifier = Modifier
-                    .padding(start = 10.dp, top = 10.dp)
-                    .size(15.dp, 20.dp)
-                    .clickable { gardenViewmodel.deleteGarden(id)}
-            )
-        }
-        Row {
-            Image(
-                bitmap = ImageBitmap.imageResource(R.drawable.greenmygarden),
-                contentDescription = "Картинка моих садов",
-                modifier = Modifier
-                    .padding(horizontal = 22.dp, vertical = 35.dp)
-                    .size(40.dp)
-            )
+            Column {
+                Row {
+                    Image(
+                        bitmap = ImageBitmap.imageResource(R.drawable.export),
+                        contentDescription = "Экспортировать",
+                        modifier = Modifier
+                            .padding(start = 10.dp, top = 10.dp)
+                            .size(15.dp, 20.dp)
+                            .clickable { } // TODO (ЭКСПОРТ САДА)
+                    )
+                    Image(
+                        bitmap = ImageBitmap.imageResource(R.drawable.delete),
+                        contentDescription = "Удалить",
+                        modifier = Modifier
+                            .padding(start = 10.dp, top = 10.dp)
+                            .size(15.dp, 20.dp)
+                            .clickable { gardenViewmodel.deleteGarden(id) }
+                    )
+                }
+                Image(
+                    bitmap = ImageBitmap.imageResource(R.drawable.greenmygarden),
+                    contentDescription = "Картинка моих садов",
+                    modifier = Modifier
+                        .padding(horizontal = 22.dp, vertical = 10.dp)
+                        .size(40.dp)
+                )
+            }
             Text(
                 gardenName,
                 fontSize = 25.sp,
