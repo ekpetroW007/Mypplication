@@ -45,9 +45,9 @@ fun PlantAdd(
     val viewmodelFactory = PlantsViewmodelFactory(application.repository)
     val plantsViewmodel: PlantsViewmodel = viewModel(factory = viewmodelFactory)
     val plantName = remember { mutableStateOf("") }
-    val drugName = remember { mutableStateOf("") }
+    val drugName = remember { mutableIntStateOf(0) }
     val taskName = remember { mutableStateOf("") }
-    val gardenName = remember { mutableStateOf("") }
+    val gardenId = remember { mutableIntStateOf(0) }
     val period = remember { mutableIntStateOf(0) }
     val plantPhoto = remember { mutableStateOf("") }
     Box(
@@ -93,7 +93,11 @@ fun PlantAdd(
             fontSize = 20.sp
         )
 
-        Text(drugName.value, fontSize = 20.sp, modifier = Modifier.padding(top = 5.dp, start = 20.dp))
+        Text(
+            drugName.value,
+            fontSize = 20.sp,
+            modifier = Modifier.padding(top = 5.dp, start = 20.dp)
+        )
         TextField(
             value = drugName.value,
             textStyle = TextStyle(fontSize = 20.sp),
@@ -106,7 +110,11 @@ fun PlantAdd(
             fontSize = 20.sp
         )
 
-        Text(taskName.value, fontSize = 20.sp, modifier = Modifier.padding(top = 5.dp, start = 20.dp))
+        Text(
+            taskName.value,
+            fontSize = 20.sp,
+            modifier = Modifier.padding(top = 5.dp, start = 20.dp)
+        )
         TextField(
             value = taskName.value,
             textStyle = TextStyle(fontSize = 20.sp),
