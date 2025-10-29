@@ -2,6 +2,7 @@ package com.example.myapplication.presentation
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -59,6 +60,7 @@ fun GardenAdd(navController: NavController) { // TODO (тут в карточк�
                 modifier = Modifier
                     .padding(start = 22.dp, top = 28.dp)
                     .size(35.dp, 40.dp)
+                    .clickable { navController.popBackStack() }
             )
             Text(
                 "Добавление сада",

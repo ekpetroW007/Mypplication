@@ -28,14 +28,14 @@ fun Calendar(innerPadding: PaddingValues) {
 fun DayCard(dayState: DayState<DynamicSelectionState>) {
     Column {
         Text(
-            text = dayState.date.dayOfWeek.toString(),
-            modifier = Modifier.fillMaxWidth(),
-            textAlign = TextAlign.Center
-        )
-        Text(
             text = dayState.date.dayOfMonth.toString(),
             modifier = Modifier.fillMaxWidth(),
             textAlign = TextAlign.Center
         )
+//        Text(
+//            text = dayState.date.dayOfMonth.toString(),
+//            modifier = Modifier.fillMaxWidth(),
+//            textAlign = TextAlign.Center
+//        )
     }
 }

@@ -151,7 +151,7 @@ fun DrugCard(
                     bitmap = ImageBitmap.imageResource(R.drawable.delete),
                     contentDescription = "Удалить",
                     modifier = Modifier
-                        .padding(start = 100.dp, top = 10.dp)
+                        .padding(start = 135.dp, top = 22.dp)
                         .size(15.dp, 20.dp)
                         .clickable { drugsViewmodel.deleteDrug(id)}
                 )
