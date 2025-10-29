@@ -16,6 +16,10 @@ import androidx.compose.ui.graphics.Color.Companion.White
 import androidx.compose.ui.text.style.TextAlign
 import androidx.navigation.NavController
 import com.example.myapplication.presentation.navigation.AppDestinations
+import com.example.myapplication.viewmodel.DrugsViewmodel
+import com.example.myapplication.viewmodel.GardensViewmodel
+import com.example.myapplication.viewmodel.PlantsViewmodel
+import com.example.myapplication.viewmodel.TasksViewmodel
 import io.github.boguszpawlowski.composecalendar.SelectableWeekCalendar
 import io.github.boguszpawlowski.composecalendar.day.DayState
 import io.github.boguszpawlowski.composecalendar.selection.DynamicSelectionState
@@ -24,7 +28,8 @@ import java.time.DayOfWeek
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun Calendar(innerPadding: PaddingValues, navController: NavController) {
-    Scaffold(modifier = Modifier.padding(innerPadding),
+    Scaffold(
+        modifier = Modifier.padding(innerPadding),
         floatingActionButton = {
             Button(
                 onClick = { navController.navigate(AppDestinations.PLANT_ADD) },
@@ -37,23 +42,33 @@ fun Calendar(innerPadding: PaddingValues, navController: NavController) {
             }
         }) { innerPadding ->
 
-        SelectableWeekCalendar(dayContent = {DayCard(it)}, firstDayOfWeek = DayOfWeek.MONDAY)
+        SelectableWeekCalendar(dayContent = { WeekCalendar(it) }, firstDayOfWeek = DayOfWeek.MONDAY)
 
     }
 }
 
 @Composable
-fun DayCard(dayState: DayState<DynamicSelectionState>) {
+fun WeekCalendar(dayState: DayState<DynamicSelectionState>) {
     Column {
         Text(
             text = dayState.date.dayOfMonth.toString(),
             modifier = Modifier.fillMaxWidth(),
             textAlign = TextAlign.Center
         )
-//        Text(
-//            text = dayState.date.dayOfMonth.toString(),
-//            modifier = Modifier.fillMaxWidth(),
-//            textAlign = TextAlign.Center
-//        )
     }
+}
+
+@Composable
+fun DayCard(
+    plantName: String,
+    drugName: String,
+    taskName: String,
+    gardenName: String,
+    plantsViewmodel: PlantsViewmodel,
+    drugsViewmodel: DrugsViewmodel,
+    tasksViewmodel: TasksViewmodel,
+    gardensViewmodel: GardensViewmodel,
+    id: Int
+) {
+
 }
