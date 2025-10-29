@@ -2,6 +2,7 @@ package com.example.myapplication.presentation
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -17,16 +18,29 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ImageBitmap
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
+import com.example.myapplication.BookeeperApp
 import com.example.myapplication.R
+import com.example.myapplication.viewmodel.DrugsViewmodel
+import com.example.myapplication.viewmodel.DrugsViewmodelFactory
+import com.example.myapplication.viewmodel.PlantsViewmodel
+import com.example.myapplication.viewmodel.PlantsViewmodelFactory
 
 @Composable
-fun PlantAdd(navController: NavController) {
+fun PlantAdd(
+    navController: NavController,
+    id: Int
+) {
+    val application = LocalContext.current.applicationContext as BookeeperApp
+    val viewmodelFactory = PlantsViewmodelFactory(application.repository)
+    val plantsViewmodel: PlantsViewmodel = viewModel(factory = viewmodelFactory)
     Box(
         modifier = Modifier
             .size(600.dp, 100.dp)
@@ -44,13 +58,15 @@ fun PlantAdd(navController: NavController) {
                 modifier = Modifier
                     .padding(start = 22.dp, top = 28.dp)
                     .size(35.dp, 40.dp)
+                    .clickable { navController.popBackStack() }
             )
             Image(
-                bitmap = ImageBitmap.imageResource(R.drawable.threefullstops),
+                bitmap = ImageBitmap.imageResource(R.drawable.delete),
                 contentDescription = "Три точки", // в трех точках будет "удалить карточку"
                 modifier = Modifier
                     .padding(start = 300.dp, top = 28.dp)
                     .size(35.dp, 40.dp)
+                    .clickable { plantsViewmodel.deleteDrug(id) }
             )
         }
     }
@@ -61,7 +77,11 @@ fun PlantAdd(navController: NavController) {
             fontSize = 20.sp
         )
         val plantName = remember { mutableStateOf("") }
-        Text(plantName.value, fontSize = 20.sp, modifier = Modifier.padding(top = 5.dp, start = 20.dp))
+        Text(
+            plantName.value,
+            fontSize = 20.sp,
+            modifier = Modifier.padding(top = 5.dp, start = 20.dp)
+        )
         TextField(
             value = plantName.value,
             textStyle = TextStyle(fontSize = 20.sp),
@@ -100,7 +120,11 @@ fun PlantAdd(navController: NavController) {
             fontSize = 20.sp
         )
         val gardenName = remember { mutableStateOf("") }
-        Text(gardenName.value, fontSize = 20.sp, modifier = Modifier.padding(top = 5.dp, start = 20.dp))
+        Text(
+            gardenName.value,
+            fontSize = 20.sp,
+            modifier = Modifier.padding(top = 5.dp, start = 20.dp)
+        )
         TextField(
             value = gardenName.value,
             textStyle = TextStyle(fontSize = 20.sp),
@@ -126,7 +150,11 @@ fun PlantAdd(navController: NavController) {
             fontSize = 20.sp
         )
         val plantPhoto = remember { mutableStateOf("") }
-        Text(plantPhoto.value, fontSize = 20.sp, modifier = Modifier.padding(top = 5.dp, start = 20.dp))
+        Text(
+            plantPhoto.value,
+            fontSize = 20.sp,
+            modifier = Modifier.padding(top = 5.dp, start = 20.dp)
+        )
         TextField(
             value = plantPhoto.value,
             textStyle = TextStyle(fontSize = 20.sp),

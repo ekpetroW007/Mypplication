@@ -25,6 +25,16 @@ class PlantsViewmodel(private val repository: BookeeperRepository) : ViewModel()
             initialValue = emptyList()
         )
 
+    fun deleteDrug(id: Int) {
+        viewModelScope.launch {
+            try {
+                repository.deleteDrug(id)
+            } catch (e: Exception) {
+                Log.d("deleteDrug", e.toString())
+            }
+        }
+    }
+
     fun addPlant(
         name: String,
         period: Int,
