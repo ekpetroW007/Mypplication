@@ -36,11 +36,7 @@ import com.example.myapplication.viewmodel.PlantsViewmodelFactory
 @Composable
 fun PlantAdd(
     navController: NavController,
-    id: Int
 ) {
-    val application = LocalContext.current.applicationContext as BookeeperApp
-    val viewmodelFactory = PlantsViewmodelFactory(application.repository)
-    val plantsViewmodel: PlantsViewmodel = viewModel(factory = viewmodelFactory)
     Box(
         modifier = Modifier
             .size(600.dp, 100.dp)
@@ -51,24 +47,14 @@ fun PlantAdd(
                 )
             )
     ) {
-        Row {
-            Image(
-                bitmap = ImageBitmap.imageResource(R.drawable.arrow),
-                contentDescription = "Стрелка",
-                modifier = Modifier
-                    .padding(start = 22.dp, top = 28.dp)
-                    .size(35.dp, 40.dp)
-                    .clickable { navController.popBackStack() }
-            )
-            Image(
-                bitmap = ImageBitmap.imageResource(R.drawable.delete),
-                contentDescription = "Три точки", // в трех точках будет "удалить карточку"
-                modifier = Modifier
-                    .padding(start = 300.dp, top = 28.dp)
-                    .size(35.dp, 40.dp)
-                    .clickable { plantsViewmodel.deleteDrug(id) }
-            )
-        }
+        Image(
+            bitmap = ImageBitmap.imageResource(R.drawable.arrow),
+            contentDescription = "Стрелка",
+            modifier = Modifier
+                .padding(start = 22.dp, top = 28.dp)
+                .size(35.dp, 40.dp)
+                .clickable { navController.popBackStack() }
+        )
     }
     Column {
         Text(
