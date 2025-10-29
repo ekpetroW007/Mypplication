@@ -18,6 +18,6 @@ interface DrugDAO {
     @Query("SELECT * FROM drug")
     fun getAllDrugs(): Flow<List<DrugEntity>>
 
-    @Delete
-    fun deleteDrug(drug: DrugEntity)
+    @Query("DELETE FROM drug WHERE id = :id ")
+    suspend fun deleteDrug(id: Int)
 }

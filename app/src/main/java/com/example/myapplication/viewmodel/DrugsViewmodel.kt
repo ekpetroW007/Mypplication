@@ -21,9 +21,6 @@ class DrugsViewmodel(
             initialValue = emptyList()
         )
 
-    val nameInfo = ""
-    val purposeInfo = ""
-    val consumptionRateInfo = ""
     fun addDrug(name: String, purpose: String, consumptionRate: String) {
         viewModelScope.launch {
             try {
@@ -39,30 +36,10 @@ class DrugsViewmodel(
         }
     }
 
-    fun deleteDrug(name: String, purpose: String, consumptionRate: String) {
+    fun deleteDrug(id: Int) {
         viewModelScope.launch {
             try {
-                val newDrug = DrugEntity(
-                    name = name,
-                    purpose = purpose,
-                    consumptionRate = consumptionRate
-                )
-                repository.deleteDrug(newDrug)
-            } catch (e: Exception) {
-                Log.d("deleteDrug", e.toString())
-            }
-        }
-    }
-
-    fun drugInfo(name: String, purpose: String, consumptionRate: String) {
-        viewModelScope.launch {
-            try {
-                val newDrug = DrugEntity(
-                    name = name,
-                    purpose = purpose,
-                    consumptionRate = consumptionRate
-                )
-                repository.deleteDrug(newDrug)
+                repository.deleteDrug(id)
             } catch (e: Exception) {
                 Log.d("deleteDrug", e.toString())
             }

@@ -4,6 +4,7 @@ import androidx.compose.material3.Button
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
@@ -37,6 +38,7 @@ import com.example.myapplication.R
 import com.example.myapplication.presentation.navigation.AppDestinations
 import com.example.myapplication.viewmodel.DrugsViewmodel
 import com.example.myapplication.viewmodel.DrugsViewmodelFactory
+import com.example.myapplication.viewmodel.GardensViewmodel
 
 @Composable
 fun Drugs(
@@ -95,7 +97,7 @@ fun Drugs(
             }
             LazyColumn(modifier = Modifier.padding(start = 25.dp, top = 10.dp)) {
                 items(drugList) { drug ->
-                    DrugCard(drug.name, drug.purpose, drug.consumptionRate, navController)
+                    DrugCard(drug.name, drug.purpose, drug.consumptionRate, navController, drugsViewmodel, drug.id)
                 }
             }
         }
@@ -107,7 +109,9 @@ fun DrugCard(
     drugName: String,
     purpose: String,
     consumptionRate: String,
-    navController: NavController
+    navController: NavController,
+    drugsViewmodel: DrugsViewmodel,
+    id: Int
 ) {
     Card(
         elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
@@ -130,16 +134,26 @@ fun DrugCard(
                     .padding(horizontal = 22.dp, vertical = 25.dp)
                     .size(30.dp, 55.dp)
             )
-            Column {
-                Text(
-                    drugName,
-                    fontSize = 21.sp, modifier = Modifier.padding(top = 23.dp),
-                    color = Color(0xFF000000), fontWeight = FontWeight.Bold
-                )
-                Text(
-                    purpose,
-                    fontSize = 16.sp,
-                    color = Color(0xFF6C6A6A)
+            Row {
+                Column {
+                    Text(
+                        drugName,
+                        fontSize = 21.sp, modifier = Modifier.padding(top = 23.dp),
+                        color = Color(0xFF000000), fontWeight = FontWeight.Bold
+                    )
+                    Text(
+                        purpose,
+                        fontSize = 16.sp,
+                        color = Color(0xFF6C6A6A)
+                    )
+                }
+                Image(
+                    bitmap = ImageBitmap.imageResource(R.drawable.delete),
+                    contentDescription = "Удалить",
+                    modifier = Modifier
+                        .padding(start = 100.dp, top = 10.dp)
+                        .size(15.dp, 20.dp)
+                        .clickable { drugsViewmodel.deleteDrug(id)}
                 )
             }
         }

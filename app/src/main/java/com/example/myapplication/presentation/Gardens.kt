@@ -45,7 +45,6 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.example.myapplication.BookeeperApp
 import com.example.myapplication.R
-import com.example.myapplication.data.repository.BookeeperRepository
 import com.example.myapplication.presentation.navigation.AppDestinations
 import com.example.myapplication.viewmodel.GardensViewmodel
 import com.example.myapplication.viewmodel.GardensViewmodelFactory
@@ -55,10 +54,14 @@ import com.example.myapplication.viewmodel.PlantsViewmodelFactory
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun MyGardens(navController: NavController, innerPadding: PaddingValues, ) {
+
     val application = LocalContext.current.applicationContext as BookeeperApp
     val viewmodelGardenFactory = GardensViewmodelFactory(application.repository)
     val gardensViewmodel: GardensViewmodel = viewModel(factory = viewmodelGardenFactory)
     val gardensList by gardensViewmodel.gardens.collectAsState()
+
+
+
     val viewmodelPlantFactory = PlantsViewmodelFactory(application.repository)
     val plantsViewmodel: PlantsViewmodel = viewModel(factory = viewmodelPlantFactory)
 
