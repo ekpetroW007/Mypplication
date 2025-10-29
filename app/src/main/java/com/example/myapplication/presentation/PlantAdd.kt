@@ -37,6 +37,15 @@ import com.example.myapplication.viewmodel.PlantsViewmodelFactory
 fun PlantAdd(
     navController: NavController,
 ) {
+    val application = LocalContext.current.applicationContext as BookeeperApp
+    val viewmodelFactory = PlantsViewmodelFactory(application.repository)
+    val plantsViewmodel: PlantsViewmodel = viewModel(factory = viewmodelFactory)
+    val plantName = remember { mutableStateOf("") }
+    val drugName = remember { mutableStateOf("") }
+    val taskName = remember { mutableStateOf("") }
+    val gardenName = remember { mutableStateOf("") }
+    val period = remember { mutableStateOf("") }
+    val plantPhoto = remember { mutableStateOf("") }
     Box(
         modifier = Modifier
             .size(600.dp, 100.dp)
@@ -62,7 +71,7 @@ fun PlantAdd(
             modifier = Modifier.padding(top = 120.dp, start = 20.dp),
             fontSize = 20.sp
         )
-        val plantName = remember { mutableStateOf("") }
+
         Text(
             plantName.value,
             fontSize = 20.sp,
@@ -79,33 +88,33 @@ fun PlantAdd(
             modifier = Modifier.padding(top = 20.dp, start = 20.dp),
             fontSize = 20.sp
         )
-        val drug = remember { mutableStateOf("") }
-        Text(drug.value, fontSize = 20.sp, modifier = Modifier.padding(top = 5.dp, start = 20.dp))
+
+        Text(drugName.value, fontSize = 20.sp, modifier = Modifier.padding(top = 5.dp, start = 20.dp))
         TextField(
-            value = drug.value,
+            value = drugName.value,
             textStyle = TextStyle(fontSize = 20.sp),
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Phone),
-            onValueChange = { newText -> drug.value = newText }
+            onValueChange = { newText -> drugName.value = newText }
         )
         Text(
             "Задача:",
             modifier = Modifier.padding(top = 20.dp, start = 20.dp),
             fontSize = 20.sp
         )
-        val task = remember { mutableStateOf("") }
-        Text(task.value, fontSize = 20.sp, modifier = Modifier.padding(top = 5.dp, start = 20.dp))
+
+        Text(taskName.value, fontSize = 20.sp, modifier = Modifier.padding(top = 5.dp, start = 20.dp))
         TextField(
-            value = task.value,
+            value = taskName.value,
             textStyle = TextStyle(fontSize = 20.sp),
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Phone),
-            onValueChange = { newText -> task.value = newText }
+            onValueChange = { newText -> taskName.value = newText }
         )
         Text(
             "Название сада:",
             modifier = Modifier.padding(top = 20.dp, start = 20.dp),
             fontSize = 20.sp
         )
-        val gardenName = remember { mutableStateOf("") }
+
         Text(
             gardenName.value,
             fontSize = 20.sp,
@@ -122,7 +131,7 @@ fun PlantAdd(
             modifier = Modifier.padding(top = 20.dp, start = 20.dp),
             fontSize = 20.sp
         )
-        val period = remember { mutableStateOf("") }
+
         Text(period.value, fontSize = 20.sp, modifier = Modifier.padding(top = 5.dp, start = 20.dp))
         TextField(
             value = period.value,
@@ -135,7 +144,7 @@ fun PlantAdd(
             modifier = Modifier.padding(top = 20.dp, start = 20.dp),
             fontSize = 20.sp
         )
-        val plantPhoto = remember { mutableStateOf("") }
+
         Text(
             plantPhoto.value,
             fontSize = 20.sp,
