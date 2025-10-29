@@ -14,8 +14,7 @@ class GardensViewmodel(
     private val repository: BookeeperRepository
 ) : ViewModel() {
 
-    val gardens = repository.allGardens
-        .stateIn(
+    val gardens = repository.allGardens.stateIn(
             scope = viewModelScope,
             started = SharingStarted.WhileSubscribed(5000L),
             initialValue = emptyList()

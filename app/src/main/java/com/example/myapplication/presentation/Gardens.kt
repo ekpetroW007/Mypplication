@@ -50,9 +50,9 @@ import com.example.myapplication.viewmodel.GardensViewmodel
 import com.example.myapplication.viewmodel.GardensViewmodelFactory
 import com.example.myapplication.viewmodel.PlantsViewmodel
 import com.example.myapplication.viewmodel.PlantsViewmodelFactory
-
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
+
 fun MyGardens(navController: NavController, innerPadding: PaddingValues, ) {
 
     val application = LocalContext.current.applicationContext as BookeeperApp
