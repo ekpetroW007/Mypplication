@@ -18,4 +18,7 @@ interface PlantDAO {
 
     @Query("SELECT * FROM plant WHERE garden_id = :gardenId")
     fun getPlantByGardenId(gardenId: Int): Flow<List<PlantEntity>>
+
+    @Query("DELETE FROM plant WHERE id = :id ")
+    suspend fun deletePlant(id: Int)
 }

@@ -30,6 +30,10 @@ class BookeeperRepository(
         drugDao.deleteDrug(id)
     }
 
+    suspend fun deletePlant(id: Int) {
+        plantDAO.deletePlant(id)
+    }
+
     suspend fun insertTask(task: TaskEntity) {
         taskDAO.insertTask(task)
     }

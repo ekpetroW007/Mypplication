@@ -35,15 +35,14 @@ data class PlantEntity(
     @ColumnInfo(name = "name")
     val name: String,
 
+    @ColumnInfo(name = "task")
+    val task: String,
+
     @ColumnInfo(name = "period")
     val period: Int,
 
     @ColumnInfo(name = "photo_path")
     val photo: String,
-
-    // Внешние ключ
-    @ColumnInfo(name = "task_id", index = true)
-    val taskId: Int?,
 
     @ColumnInfo(name = "drug_id", index = true)
     val drugId: Int?,

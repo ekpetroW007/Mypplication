@@ -10,13 +10,17 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Color.Companion.White
 import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.imageResource
@@ -44,7 +48,7 @@ fun PlantAdd(
     val drugName = remember { mutableStateOf("") }
     val taskName = remember { mutableStateOf("") }
     val gardenName = remember { mutableStateOf("") }
-    val period = remember { mutableStateOf("") }
+    val period = remember { mutableIntStateOf(0) }
     val plantPhoto = remember { mutableStateOf("") }
     Box(
         modifier = Modifier
@@ -156,5 +160,30 @@ fun PlantAdd(
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Phone),
             onValueChange = { newText -> plantPhoto.value = newText }
         )
+        Button(
+            onClick = {
+                plantsViewmodel.addPlant(plantName.value, taskName.value, consumptionRate.value)
+                navController.popBackStack()
+
+            },
+            modifier = Modifier
+                .padding(start = 25.dp, top = 40.dp)
+                .size(height = 70.dp, width = 365.dp)
+                .background(
+                    White, shape = RoundedCornerShape(
+                        topStart = 16.dp,
+                    )
+                ),
+            colors = ButtonDefaults.buttonColors(
+                contentColor = White,
+                containerColor = Color(0xFF40BE54),
+
+                )
+        ) {
+            Text(
+                "Cохранить", fontSize = 25.sp, modifier = Modifier
+                    .padding(horizontal = 22.dp)
+            )
+        }
     }
 }

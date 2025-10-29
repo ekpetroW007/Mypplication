@@ -1,11 +1,8 @@
 package com.example.myapplication.viewmodel
 
 import android.util.Log
-import androidx.compose.runtime.collectAsState
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.myapplication.data.database.entity.DrugEntity
-import com.example.myapplication.data.database.entity.GardenEntity
 import com.example.myapplication.data.database.entity.PlantEntity
 import com.example.myapplication.data.repository.BookeeperRepository
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -13,7 +10,6 @@ import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.catch
 
@@ -25,21 +21,21 @@ class PlantsViewmodel(private val repository: BookeeperRepository) : ViewModel()
             initialValue = emptyList()
         )
 
-    fun deleteDrug(id: Int) {
+    fun deletePlant(id: Int) {
         viewModelScope.launch {
             try {
-                repository.deleteDrug(id)
+                repository.deletePlant(id)
             } catch (e: Exception) {
-                Log.d("deleteDrug", e.toString())
+                Log.d("deletePlant", e.toString())
             }
         }
     }
 
     fun addPlant(
         name: String,
+        task: String,
         period: Int,
         photo: String,
-        taskId: Int?,
         drugId: Int?,
         gardenId: Int
     ) {
@@ -49,7 +45,7 @@ class PlantsViewmodel(private val repository: BookeeperRepository) : ViewModel()
                     name = name,
                     period = period,
                     photo = photo,
-                    taskId = taskId,
+                    task = task,
                     drugId = drugId,
                     gardenId = gardenId
                 )
