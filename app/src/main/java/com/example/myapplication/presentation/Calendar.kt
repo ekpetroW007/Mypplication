@@ -2,6 +2,7 @@ package com.example.myapplication.presentation
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
@@ -19,16 +20,23 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Color.Companion.White
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
+import com.example.myapplication.BookeeperApp
 import com.example.myapplication.presentation.navigation.AppDestinations
 import com.example.myapplication.viewmodel.DrugsViewmodel
+import com.example.myapplication.viewmodel.DrugsViewmodelFactory
 import com.example.myapplication.viewmodel.GardensViewmodel
+import com.example.myapplication.viewmodel.GardensViewmodelFactory
 import com.example.myapplication.viewmodel.PlantsViewmodel
+import com.example.myapplication.viewmodel.PlantsViewmodelFactory
 import com.example.myapplication.viewmodel.TasksViewmodel
+import com.example.myapplication.viewmodel.TasksViewmodelFactory
 import io.github.boguszpawlowski.composecalendar.SelectableWeekCalendar
 import io.github.boguszpawlowski.composecalendar.day.DayState
 import io.github.boguszpawlowski.composecalendar.selection.DynamicSelectionState
@@ -37,6 +45,19 @@ import java.time.DayOfWeek
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun Calendar(innerPadding: PaddingValues, navController: NavController) {
+    val application = LocalContext.current.applicationContext as BookeeperApp
+    val viewmodelGardenFactory = GardensViewmodelFactory(application.repository)
+    val gardensViewmodel: GardensViewmodel = viewModel(factory = viewmodelGardenFactory)
+
+    val viewmodelDrugsFactory = DrugsViewmodelFactory(application.repository)
+    val drugsViewmodel: DrugsViewmodel = viewModel(factory = viewmodelDrugsFactory)
+
+    val viewmodelTasksFactory = TasksViewmodelFactory(application.repository)
+    val tasksViewmodel: TasksViewmodel = viewModel(factory = viewmodelTasksFactory)
+
+    val viewmodelPlantsFactory = PlantsViewmodelFactory(application.repository)
+    val plantsViewmodel: PlantsViewmodel = viewModel(factory = viewmodelPlantsFactory)
+
     Scaffold(
         modifier = Modifier.padding(innerPadding),
         floatingActionButton = {
@@ -52,7 +73,16 @@ fun Calendar(innerPadding: PaddingValues, navController: NavController) {
         }) { innerPadding ->
 
         SelectableWeekCalendar(dayContent = { WeekCalendar(it) }, firstDayOfWeek = DayOfWeek.MONDAY)
-
+        DayCard(
+            "plantName",
+            "drugName",
+            "taskName",
+            "gardenName",
+            plantsViewmodel,
+            drugsViewmodel,
+            tasksViewmodel,
+            gardensViewmodel
+        )
     }
 }
 
@@ -76,58 +106,60 @@ fun DayCard(
     plantsViewmodel: PlantsViewmodel,
     drugsViewmodel: DrugsViewmodel,
     tasksViewmodel: TasksViewmodel,
-    gardensViewmodel: GardensViewmodel,
-    id: Int
+    gardensViewmodel: GardensViewmodel
 ) {
     Card(
         elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
         colors = CardDefaults.cardColors(containerColor = White),
         modifier = Modifier
-            .padding(top = 40.dp)
-            .size(height = 120.dp, width = 365.dp)
+            .padding(top = 120.dp, start = 30.dp)
+            .size(height = 140.dp, width = 365.dp)
             .background(
                 color = Color(0xFFFBFCFB), shape = RoundedCornerShape(
                     topStart = 16.dp,
                 )
             )
     ) {
-        Column {
+        Column(modifier = Modifier.padding(start = 100.dp, top = 20.dp)) {
             Row {
                 Text(
                     plantName,
                     fontSize = 25.sp,
-                    modifier = Modifier.padding(top = 43.dp, start = 30.dp),
+                    modifier = Modifier.padding(top = 3.dp),
                     color = Color(0xFF000000),
                     fontWeight = FontWeight.Medium
                 )
-                Text(
-                    gardenName,
-                    fontSize = 25.sp,
-                    modifier = Modifier.padding(top = 43.dp, start = 30.dp),
-                    color = Color(0xFF000000),
-                    fontWeight = FontWeight.Medium
-                )
+                Box(
+                    modifier = Modifier.background(
+                        color = Color(0xFFA2FFAC), shape = RoundedCornerShape(
+                            topStart = 16.dp,
+                        )
+                    ).padding(top = 3.dp, start = 22.dp).size(width = 40.dp, height = 20.dp),
+                ) {
+                    Text(
+                        gardenName,
+                        fontSize = 20.sp,
+                        color = Color(0xFF075E10),
+                    )
+                }
             }
             Text(
                 drugName,
-                fontSize = 25.sp,
-                modifier = Modifier.padding(top = 43.dp, start = 30.dp),
+                fontSize = 17.sp,
+                modifier = Modifier.padding(top = 3.dp),
                 color = Color(0xFF000000),
-                fontWeight = FontWeight.Medium
             )
             Text(
                 taskName,
-                fontSize = 25.sp,
-                modifier = Modifier.padding(top = 43.dp, start = 30.dp),
+                fontSize = 17.sp,
+                modifier = Modifier.padding(top = 3.dp),
                 color = Color(0xFF000000),
-                fontWeight = FontWeight.Medium
             )
             Text(
                 plantName,
-                fontSize = 25.sp,
-                modifier = Modifier.padding(top = 43.dp, start = 30.dp),
+                fontSize = 17.sp,
+                modifier = Modifier.padding(top = 3.dp),
                 color = Color(0xFF000000),
-                fontWeight = FontWeight.Medium
             )
         }
 
