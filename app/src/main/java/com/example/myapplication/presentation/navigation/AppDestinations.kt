@@ -13,4 +13,6 @@ object AppDestinations {
     const val GARDEN_ADD = "gardenAddScreen"
 
     const val DRUG_INFO = "drugInfoScreen"
+
+    const val PLANT_ADD = "plantAddScreen"
 }

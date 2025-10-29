@@ -22,10 +22,11 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.example.myapplication.R
 
 @Composable
-fun PlantAdd() {
+fun PlantAdd(navController: NavController) {
     Box(
         modifier = Modifier
             .size(600.dp, 100.dp)

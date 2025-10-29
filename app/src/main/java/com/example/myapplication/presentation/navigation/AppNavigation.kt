@@ -10,6 +10,7 @@ import com.example.myapplication.presentation.Drugs
 import com.example.myapplication.presentation.GardenAdd
 import com.example.myapplication.presentation.MainScreen
 import com.example.myapplication.presentation.MyGardens
+import com.example.myapplication.presentation.PlantAdd
 
 @Composable
 fun AppNavigation() {
@@ -37,6 +38,9 @@ fun AppNavigation() {
             val purpose = backStackEntry.arguments?.getString("purpose")
             val consumptionRate = backStackEntry.arguments?.getString("consumptionRate")
             DrugInfo(navController = navController, drugName, purpose, consumptionRate)
+        }
+        composable(route = AppDestinations.PLANT_ADD) {
+            PlantAdd(navController = navController)
         }
     }
 }

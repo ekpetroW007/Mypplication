@@ -27,7 +27,7 @@ fun Calendar(innerPadding: PaddingValues, navController: NavController) {
     Scaffold(modifier = Modifier.padding(innerPadding),
         floatingActionButton = {
             Button(
-                onClick = { navController.navigate(AppDestinations.DRUG_ADD_ROUTE) },
+                onClick = { navController.navigate(AppDestinations.PLANT_ADD) },
                 colors = ButtonDefaults.buttonColors(
                     contentColor = White,
                     containerColor = Color(0xFF40BE54)
