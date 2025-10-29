@@ -25,7 +25,7 @@ import androidx.compose.ui.unit.sp
 import com.example.myapplication.R
 
 @Composable
-fun EditingPlantInformation() {
+fun PlantAdd() {
     Box(
         modifier = Modifier
             .size(600.dp, 100.dp)

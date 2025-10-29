@@ -95,7 +95,7 @@ fun MyGardens(navController: NavController, innerPadding: PaddingValues, ) {
 }
 
 @Composable
-fun GardensCard(gardenName: String, gardenViewmodel: GardensViewmodel, id: Int) {
+fun GardensCard(gardenName: String, gardenViewmodel: GardensViewmodel, id: Int, ) {
     Card(
         elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
         colors = CardDefaults.cardColors(containerColor = White),
@@ -108,6 +108,24 @@ fun GardensCard(gardenName: String, gardenViewmodel: GardensViewmodel, id: Int) 
                 )
             )
     ) {
+        Row {
+            Image(
+                bitmap = ImageBitmap.imageResource(R.drawable.export),
+                contentDescription = "Экспортировать",
+                modifier = Modifier
+                    .padding(start = 10.dp, top = 10.dp)
+                    .size(15.dp, 20.dp)
+                    .clickable { } // TODO (ЭКСПОРТ САДА)
+            )
+            Image(
+                bitmap = ImageBitmap.imageResource(R.drawable.delete),
+                contentDescription = "Удалить",
+                modifier = Modifier
+                    .padding(start = 10.dp, top = 10.dp)
+                    .size(15.dp, 20.dp)
+                    .clickable { gardenViewmodel.deleteGarden(id)}
+            )
+        }
         Row {
             Image(
                 bitmap = ImageBitmap.imageResource(R.drawable.greenmygarden),
@@ -123,24 +141,6 @@ fun GardensCard(gardenName: String, gardenViewmodel: GardensViewmodel, id: Int) 
                 color = Color(0xFF000000),
                 fontWeight = FontWeight.Medium
             )
-            Column {
-                Image(
-                    bitmap = ImageBitmap.imageResource(R.drawable.export),
-                    contentDescription = "Экспортировать",
-                    modifier = Modifier
-                        .padding(start = 100.dp, top = 20.dp)
-                        .size(15.dp, 20.dp)
-                        .clickable { } // TODO (ЭКСПОРТ САДА)
-                )
-                Image(
-                    bitmap = ImageBitmap.imageResource(R.drawable.delete),
-                    contentDescription = "Удалить",
-                    modifier = Modifier
-                        .padding(start = 100.dp, top = 10.dp)
-                        .size(15.dp, 20.dp)
-                        .clickable { gardenViewmodel.deleteGarden(id)}
-                )
-            }
         }
         Image(
             bitmap = ImageBitmap.imageResource(R.drawable.longline),
