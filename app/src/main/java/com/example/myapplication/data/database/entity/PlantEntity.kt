@@ -45,7 +45,7 @@ data class PlantEntity(
     val photo: String,
 
     @ColumnInfo(name = "drug_id", index = true)
-    val drugId: Int?,
+    val drugId: Int,
 
     @ColumnInfo(name = "garden_id", index = true)
     val gardenId: Int

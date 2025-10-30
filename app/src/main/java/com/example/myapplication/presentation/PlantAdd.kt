@@ -92,15 +92,17 @@ fun PlantAdd(
         )
 
         Text(
-            "${drugId.intValue}",
+            drugId.intValue.toString(),
             fontSize = 20.sp,
             modifier = Modifier.padding(top = 5.dp, start = 20.dp)
         )
         TextField(
-            value = drugId.intValue,
+            value = drugId.intValue.toString(),
             textStyle = TextStyle(fontSize = 20.sp),
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Phone),
-            onValueChange = { newText: Int -> drugId.intValue = newText }
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+            onValueChange = { newText ->
+                drugId.intValue = newText.filter { it.isDigit() }.toIntOrNull() ?: 0
+            }
         )
         Text(
             "Задача:",
@@ -126,15 +128,17 @@ fun PlantAdd(
         )
 
         Text(
-            gardenId.value,
+            gardenId.intValue.toString(),
             fontSize = 20.sp,
             modifier = Modifier.padding(top = 5.dp, start = 20.dp)
         )
         TextField(
-            value = gardenId.value,
+            value = gardenId.intValue.toString(),
             textStyle = TextStyle(fontSize = 20.sp),
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Phone),
-            onValueChange = { newText -> gardenId.value = newText }
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+            onValueChange = { newText ->
+                gardenId.intValue = newText.filter { it.isDigit() }.toIntOrNull() ?: 0
+            }
         )
         Text(
             "Интервал полива:",
@@ -143,15 +147,17 @@ fun PlantAdd(
         )
 
         Text(
-            period.intValue,
+            period.intValue.toString(),
             fontSize = 20.sp,
             modifier = Modifier.padding(top = 5.dp, start = 20.dp)
         )
         TextField(
-            value = period.intValue,
+            value = period.intValue.toString(),
             textStyle = TextStyle(fontSize = 20.sp),
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Phone),
-            onValueChange = { newText -> period.intValue = newText }
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+            onValueChange = { newText ->
+                period.intValue = newText.filter { it.isDigit() }.toIntOrNull() ?: 0
+            }
         )
         Text(
             "Фото:",

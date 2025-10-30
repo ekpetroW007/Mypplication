@@ -36,7 +36,7 @@ class PlantsViewmodel(private val repository: BookeeperRepository) : ViewModel()
         task: String,
         period: Int,
         photo: String,
-        drugId: Int?,
+        drugId: Int,
         gardenId: Int
     ) {
         viewModelScope.launch {
