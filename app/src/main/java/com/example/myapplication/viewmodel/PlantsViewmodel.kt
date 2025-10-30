@@ -32,20 +32,20 @@ class PlantsViewmodel(private val repository: BookeeperRepository) : ViewModel()
     }
 
     fun addPlant(
-        name: String,
-        task: String,
+        plantName: String,
+        taskName: String,
         period: Int,
-        photo: String,
+        plantPhoto: String,
         drugId: Int,
         gardenId: Int
     ) {
         viewModelScope.launch {
             try {
                 val newPlant = PlantEntity(
-                    name = name,
+                    plantName = plantName,
                     period = period,
-                    photo = photo,
-                    task = task,
+                    plantPhoto = plantPhoto,
+                    taskName = taskName,
                     drugId = drugId,
                     gardenId = gardenId
                 )
