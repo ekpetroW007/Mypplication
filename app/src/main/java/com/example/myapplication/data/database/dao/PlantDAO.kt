@@ -2,9 +2,7 @@ package com.example.myapplication.data.database.dao
 
 import androidx.room.Dao
 import androidx.room.Insert
-import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.example.myapplication.data.database.entity.DrugEntity
 import com.example.myapplication.data.database.entity.PlantEntity
 import kotlinx.coroutines.flow.Flow
 

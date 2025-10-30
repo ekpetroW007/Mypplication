@@ -12,7 +12,7 @@ import androidx.room.PrimaryKey
             entity = TaskEntity::class,
             parentColumns = ["id"],
             childColumns = ["task_id"],
-            onDelete = ForeignKey.SET_NULL // При удалении задачи, у растения это поле станет null
+            onDelete = ForeignKey.SET_NULL 
         ),
         ForeignKey(
             entity = DrugEntity::class,
@@ -24,7 +24,7 @@ import androidx.room.PrimaryKey
             entity = GardenEntity::class,
             parentColumns = ["id"],
             childColumns = ["garden_id"],
-            onDelete = ForeignKey.CASCADE // При удалении сада, все его растения тоже удалятся
+            onDelete = ForeignKey.CASCADE
         )
     ]
 )

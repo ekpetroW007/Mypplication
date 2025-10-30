@@ -56,27 +56,22 @@ class PlantsViewmodel(private val repository: BookeeperRepository) : ViewModel()
         }
     }
 
-    // StateFlow для хранения списка растений для конкретного сада.
-    // Используем MutableStateFlow, чтобы иметь возможность обновлять его значение.
     private val _plantsByGardenId = MutableStateFlow<List<PlantEntity>>(emptyList())
     val plantsByGardenId: StateFlow<List<PlantEntity>> = _plantsByGardenId.asStateFlow()
 
-    // Функция для загрузки растений по ID сада.
     fun loadPlantsByGardenId(gardenId: Int) {
         viewModelScope.launch {
             repository.allPlantsByGardenId(gardenId)
                 .catch { exception ->
-                    // Обработка возможных ошибок при получении данных из БД
                     Log.d(
                         "PlantsViewModel",
                         "Exception while fetching plants by garden ID",
                         exception
                     )
                     _plantsByGardenId.value =
-                        emptyList() // В случае ошибки показываем пустой список
+                        emptyList()
                 }
                 .collect { plants ->
-                    // Как только Flow эмитит новые данные, мы обновляем наш StateFlow.
                     _plantsByGardenId.value = plants
                 }
         }
