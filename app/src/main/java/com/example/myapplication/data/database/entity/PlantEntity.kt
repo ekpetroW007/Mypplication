@@ -9,12 +9,6 @@ import androidx.room.PrimaryKey
     tableName = "plant",
     foreignKeys = [
         ForeignKey(
-            entity = TaskEntity::class,
-            parentColumns = ["id"],
-            childColumns = ["task_id"],
-            onDelete = ForeignKey.SET_NULL
-        ),
-        ForeignKey(
             entity = DrugEntity::class,
             parentColumns = ["id"],
             childColumns = ["drug_id"],

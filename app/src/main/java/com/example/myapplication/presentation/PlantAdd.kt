@@ -70,12 +70,12 @@ fun PlantAdd(
         Text(
             "Название растения:",
             modifier = Modifier.padding(top = 120.dp, start = 20.dp),
-            fontSize = 20.sp
+            fontSize = 15.sp
         )
 
         Text(
             plantName.value,
-            fontSize = 20.sp,
+            fontSize = 15.sp,
             modifier = Modifier.padding(top = 5.dp, start = 20.dp)
         )
         TextField(
@@ -85,14 +85,14 @@ fun PlantAdd(
             onValueChange = { newText -> plantName.value = newText }
         )
         Text(
-            "Препарат:",
+            "Айди препарата:",
             modifier = Modifier.padding(top = 20.dp, start = 20.dp),
-            fontSize = 20.sp
+            fontSize = 15.sp
         )
 
         Text(
             drugId.intValue.toString(),
-            fontSize = 20.sp,
+            fontSize = 15.sp,
             modifier = Modifier.padding(top = 5.dp, start = 20.dp)
         )
         TextField(
@@ -105,12 +105,12 @@ fun PlantAdd(
         Text(
             "Задача:",
             modifier = Modifier.padding(top = 20.dp, start = 20.dp),
-            fontSize = 20.sp
+            fontSize = 15.sp
         )
 
         Text(
             taskName.value,
-            fontSize = 20.sp,
+            fontSize = 15.sp,
             modifier = Modifier.padding(top = 5.dp, start = 20.dp)
         )
         TextField(
@@ -120,14 +120,14 @@ fun PlantAdd(
             onValueChange = { newText -> taskName.value = newText }
         )
         Text(
-            "Название сада:",
+            "Айди сада:",
             modifier = Modifier.padding(top = 20.dp, start = 20.dp),
-            fontSize = 20.sp
+            fontSize = 15.sp
         )
 
         Text(
             gardenId.intValue.toString(),
-            fontSize = 20.sp,
+            fontSize = 15.sp,
             modifier = Modifier.padding(top = 5.dp, start = 20.dp)
         )
         TextField(
@@ -140,12 +140,12 @@ fun PlantAdd(
         Text(
             "Интервал полива:",
             modifier = Modifier.padding(top = 20.dp, start = 20.dp),
-            fontSize = 20.sp
+            fontSize = 15.sp
         )
 
         Text(
             period.intValue.toString(),
-            fontSize = 20.sp,
+            fontSize = 15.sp,
             modifier = Modifier.padding(top = 5.dp, start = 20.dp)
         )
         TextField(
@@ -158,12 +158,12 @@ fun PlantAdd(
         Text(
             "Фото:",
             modifier = Modifier.padding(top = 20.dp, start = 20.dp),
-            fontSize = 20.sp
+            fontSize = 15.sp
         )
 
         Text(
             plantPhoto.value,
-            fontSize = 20.sp,
+            fontSize = 15.sp,
             modifier = Modifier.padding(top = 5.dp, start = 20.dp)
         )
         TextField(
@@ -186,7 +186,7 @@ fun PlantAdd(
 
             },
             modifier = Modifier
-                .padding(start = 25.dp, top = 40.dp)
+                .padding(start = 25.dp, top = 15.dp)
                 .size(height = 70.dp, width = 365.dp)
                 .background(
                     White, shape = RoundedCornerShape(
