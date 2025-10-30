@@ -9,6 +9,8 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -17,6 +19,8 @@ import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Color.Companion.White
@@ -57,7 +61,7 @@ fun Calendar(innerPadding: PaddingValues, navController: NavController) {
 
     val viewmodelPlantsFactory = PlantsViewmodelFactory(application.repository)
     val plantsViewmodel: PlantsViewmodel = viewModel(factory = viewmodelPlantsFactory)
-
+    val plantList by plantsViewmodel.plants.collectAsState()
     Scaffold(
         modifier = Modifier.padding(innerPadding),
         floatingActionButton = {
@@ -73,16 +77,11 @@ fun Calendar(innerPadding: PaddingValues, navController: NavController) {
         }) { innerPadding ->
 
         SelectableWeekCalendar(dayContent = { WeekCalendar(it) }, firstDayOfWeek = DayOfWeek.MONDAY)
-        DayCard(
-            "plantName",
-            "drugName",
-            "taskName",
-            "gardenName",
-            plantsViewmodel,
-            drugsViewmodel,
-            tasksViewmodel,
-            gardensViewmodel
-        )
+        LazyColumn(modifier = Modifier.padding(start = 25.dp, top = 10.dp)) {
+            items(plantList) { plant ->
+                DayCard(plant.plantName, plant.taskName, plant.period, plant.plantPhoto, plant.drugId, plant.gardenId, plantsViewmodel, drugsViewmodel, tasksViewmodel, gardensViewmodel)
+            }
+        }
     }
 }
 
@@ -100,13 +99,15 @@ fun WeekCalendar(dayState: DayState<DynamicSelectionState>) {
 @Composable
 fun DayCard(
     plantName: String,
-    drugName: String,
     taskName: String,
-    gardenName: String,
+    period: Int,
+    plantPhoto: String,
+    drugId: Int,
+    gardenId: Int,
     plantsViewmodel: PlantsViewmodel,
     drugsViewmodel: DrugsViewmodel,
     tasksViewmodel: TasksViewmodel,
-    gardensViewmodel: GardensViewmodel
+    gardensViewmodel: GardensViewmodel,
 ) {
     Card(
         elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
@@ -137,14 +138,14 @@ fun DayCard(
                     ).padding(top = 3.dp, start = 22.dp).size(width = 40.dp, height = 20.dp),
                 ) {
                     Text(
-                        gardenName,
+                        gardenId.toString(),
                         fontSize = 20.sp,
                         color = Color(0xFF075E10),
                     )
                 }
             }
             Text(
-                drugName,
+                drugId.toString(),
                 fontSize = 17.sp,
                 modifier = Modifier.padding(top = 3.dp),
                 color = Color(0xFF000000),
@@ -156,7 +157,7 @@ fun DayCard(
                 color = Color(0xFF000000),
             )
             Text(
-                plantName,
+                period.toString(),
                 fontSize = 17.sp,
                 modifier = Modifier.padding(top = 3.dp),
                 color = Color(0xFF000000),
