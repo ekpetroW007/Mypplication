@@ -42,11 +42,12 @@ fun PlantAdd(
     val viewmodelFactory = PlantsViewmodelFactory(application.repository)
     val plantsViewmodel: PlantsViewmodel = viewModel(factory = viewmodelFactory)
     val plantName = remember { mutableStateOf("") }
-    val drugId = remember { mutableIntStateOf(0) }
+    val plantPhoto = remember { mutableStateOf("") }
     val taskName = remember { mutableStateOf("") }
     val gardenId = remember { mutableIntStateOf(0) }
     val period = remember { mutableIntStateOf(0) }
-    val plantPhoto = remember { mutableStateOf("") }
+    val drugId = remember { mutableIntStateOf(0) }
+
     Box(
         modifier = Modifier
             .size(600.dp, 100.dp)
@@ -99,7 +100,7 @@ fun PlantAdd(
             value = drugId.intValue,
             textStyle = TextStyle(fontSize = 20.sp),
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Phone),
-            onValueChange = { newText -> drugId.intValue = newText }
+            onValueChange = { newText: Int -> drugId.intValue = newText }
         )
         Text(
             "Задача:",
