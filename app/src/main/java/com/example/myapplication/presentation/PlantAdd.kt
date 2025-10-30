@@ -5,7 +5,6 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -32,8 +31,6 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.example.myapplication.BookeeperApp
 import com.example.myapplication.R
-import com.example.myapplication.viewmodel.DrugsViewmodel
-import com.example.myapplication.viewmodel.DrugsViewmodelFactory
 import com.example.myapplication.viewmodel.PlantsViewmodel
 import com.example.myapplication.viewmodel.PlantsViewmodelFactory
 
@@ -45,7 +42,7 @@ fun PlantAdd(
     val viewmodelFactory = PlantsViewmodelFactory(application.repository)
     val plantsViewmodel: PlantsViewmodel = viewModel(factory = viewmodelFactory)
     val plantName = remember { mutableStateOf("") }
-    val drugName = remember { mutableIntStateOf(0) }
+    val drugId = remember { mutableIntStateOf(0) }
     val taskName = remember { mutableStateOf("") }
     val gardenId = remember { mutableIntStateOf(0) }
     val period = remember { mutableIntStateOf(0) }
@@ -94,15 +91,15 @@ fun PlantAdd(
         )
 
         Text(
-            drugName.value,
+            "${drugId.intValue}",
             fontSize = 20.sp,
             modifier = Modifier.padding(top = 5.dp, start = 20.dp)
         )
         TextField(
-            value = drugName.value,
+            value = drugId.intValue,
             textStyle = TextStyle(fontSize = 20.sp),
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Phone),
-            onValueChange = { newText -> drugName.value = newText }
+            onValueChange = { newText -> drugId.intValue = newText }
         )
         Text(
             "Задача:",
@@ -128,15 +125,15 @@ fun PlantAdd(
         )
 
         Text(
-            gardenName.value,
+            gardenId.value,
             fontSize = 20.sp,
             modifier = Modifier.padding(top = 5.dp, start = 20.dp)
         )
         TextField(
-            value = gardenName.value,
+            value = gardenId.value,
             textStyle = TextStyle(fontSize = 20.sp),
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Phone),
-            onValueChange = { newText -> gardenName.value = newText }
+            onValueChange = { newText -> gardenId.value = newText }
         )
         Text(
             "Интервал полива:",
@@ -144,12 +141,16 @@ fun PlantAdd(
             fontSize = 20.sp
         )
 
-        Text(period.value, fontSize = 20.sp, modifier = Modifier.padding(top = 5.dp, start = 20.dp))
+        Text(
+            period.intValue,
+            fontSize = 20.sp,
+            modifier = Modifier.padding(top = 5.dp, start = 20.dp)
+        )
         TextField(
-            value = period.value,
+            value = period.intValue,
             textStyle = TextStyle(fontSize = 20.sp),
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Phone),
-            onValueChange = { newText -> period.value = newText }
+            onValueChange = { newText -> period.intValue = newText }
         )
         Text(
             "Фото:",
@@ -170,7 +171,14 @@ fun PlantAdd(
         )
         Button(
             onClick = {
-                plantsViewmodel.addPlant(plantName.value, taskName.value, consumptionRate.value)
+                plantsViewmodel.addPlant(
+                    plantName.value,
+                    taskName.value,
+                    period.intValue,
+                    plantPhoto.value,
+                    drugId.intValue,
+                    gardenId.intValue
+                )
                 navController.popBackStack()
 
             },
