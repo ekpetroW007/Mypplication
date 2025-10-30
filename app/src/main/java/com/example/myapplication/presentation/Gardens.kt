@@ -172,7 +172,7 @@ fun GardensCard(gardenName: String, gardenViewmodel: GardensViewmodel, id: Int) 
                         horizontalAlignment = Alignment.CenterHorizontally
                     ) {
                         Text(
-                            "2",
+                            plantList.size.toString(),
                             color = Color(0xFF40BE54),
                             modifier = Modifier.fillMaxWidth(1f),
                             fontSize = 22.sp, fontWeight = Bold,
@@ -204,7 +204,7 @@ fun GardensCard(gardenName: String, gardenViewmodel: GardensViewmodel, id: Int) 
                         horizontalAlignment = Alignment.CenterHorizontally
                     ) {
                         Text(
-                            "2",
+                            taskList.size.toString(),
                             color = Color(0xFF40BE54),
                             modifier = Modifier.fillMaxWidth(1f),
                             fontSize = 22.sp, fontWeight = Bold,
