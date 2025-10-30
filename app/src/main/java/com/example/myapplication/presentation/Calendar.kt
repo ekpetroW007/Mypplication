@@ -77,9 +77,20 @@ fun Calendar(innerPadding: PaddingValues, navController: NavController) {
         }) { innerPadding ->
 
         SelectableWeekCalendar(dayContent = { WeekCalendar(it) }, firstDayOfWeek = DayOfWeek.MONDAY)
-        LazyColumn(modifier = Modifier.padding(start = 25.dp, top = 10.dp)) {
+        LazyColumn(modifier = Modifier.padding(start = 25.dp, top = 120.dp)) {
             items(plantList) { plant ->
-                DayCard(plant.plantName, plant.taskName, plant.period, plant.plantPhoto, plant.drugId, plant.gardenId, plantsViewmodel, drugsViewmodel, tasksViewmodel, gardensViewmodel)
+                DayCard(
+                    plant.plantName,
+                    plant.taskName,
+                    plant.period,
+                    plant.plantPhoto,
+                    plant.drugId,
+                    plant.gardenId,
+                    plantsViewmodel,
+                    drugsViewmodel,
+                    tasksViewmodel,
+                    gardensViewmodel
+                )
             }
         }
     }
@@ -131,11 +142,14 @@ fun DayCard(
                     fontWeight = FontWeight.Medium
                 )
                 Box(
-                    modifier = Modifier.background(
-                        color = Color(0xFFA2FFAC), shape = RoundedCornerShape(
-                            topStart = 16.dp,
+                    modifier = Modifier
+                        .background(
+                            color = Color(0xFFA2FFAC), shape = RoundedCornerShape(
+                                topStart = 16.dp,
+                            )
                         )
-                    ).padding(top = 3.dp, start = 22.dp).size(width = 40.dp, height = 20.dp),
+                        .padding(top = 3.dp, start = 22.dp)
+                        .size(width = 40.dp, height = 20.dp),
                 ) {
                     Text(
                         gardenId.toString(),
