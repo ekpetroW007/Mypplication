@@ -79,7 +79,7 @@ fun Calendar(innerPadding: PaddingValues, navController: NavController) {
         SelectableWeekCalendar(dayContent = { WeekCalendar(it) }, firstDayOfWeek = DayOfWeek.MONDAY)
         LazyColumn(modifier = Modifier.padding(start = 25.dp, top = 120.dp)) {
             items(plantList) { plant ->
-                DayCard(
+                DayCard( // TODO КАРТОЧКА НЕ ПОЯВЛЯЕТСЯ
                     plant.plantName,
                     plant.taskName,
                     plant.period,

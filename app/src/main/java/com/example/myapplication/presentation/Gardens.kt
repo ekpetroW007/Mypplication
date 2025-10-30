@@ -50,6 +50,8 @@ import com.example.myapplication.viewmodel.GardensViewmodel
 import com.example.myapplication.viewmodel.GardensViewmodelFactory
 import com.example.myapplication.viewmodel.PlantsViewmodel
 import com.example.myapplication.viewmodel.PlantsViewmodelFactory
+import com.example.myapplication.viewmodel.TasksViewmodel
+import com.example.myapplication.viewmodel.TasksViewmodelFactory
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
@@ -60,13 +62,6 @@ fun MyGardens(navController: NavController, innerPadding: PaddingValues) {
     val viewmodelGardenFactory = GardensViewmodelFactory(application.repository)
     val gardensViewmodel: GardensViewmodel = viewModel(factory = viewmodelGardenFactory)
     val gardensList by gardensViewmodel.gardens.collectAsState()
-
-
-    val viewmodelPlantFactory = PlantsViewmodelFactory(application.repository)
-    val plantsViewmodel: PlantsViewmodel = viewModel(factory = viewmodelPlantFactory)
-
-//    val x = plantsViewmodel.getPlantByGardenId(1)
-//    LaunchedEffect(x) { Log.d("allPlantsByGardenId", "result: ${x}") }
 
 
     Scaffold(
@@ -96,6 +91,14 @@ fun MyGardens(navController: NavController, innerPadding: PaddingValues) {
 
 @Composable
 fun GardensCard(gardenName: String, gardenViewmodel: GardensViewmodel, id: Int) {
+    val application = LocalContext.current.applicationContext as BookeeperApp
+    val viewmodelGardenFactory = GardensViewmodelFactory(application.repository)
+    val viewmodelTasksFactory = TasksViewmodelFactory(application.repository)
+    val tasksViewmodel: TasksViewmodel = viewModel(factory = viewmodelTasksFactory)
+    val viewmodelPlantsFactory = PlantsViewmodelFactory(application.repository)
+    val plantsViewmodel: PlantsViewmodel = viewModel(factory = viewmodelPlantsFactory)
+    val plantList by plantsViewmodel.plants.collectAsState()
+    val taskList by tasksViewmodel.tasks.collectAsState()
     Card(
         elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
         colors = CardDefaults.cardColors(containerColor = White),
@@ -262,9 +265,13 @@ fun GardensCard(gardenName: String, gardenViewmodel: GardensViewmodel, id: Int) 
                 modifier = Modifier.padding(top = 23.dp, start = 22.dp),
                 fontSize = 22.sp,
             )
-            Column(modifier = Modifier.padding(top = 5.dp)) {
-                PlantsAtMygardensScreen("Груша Конференция")
-                PlantsAtMygardensScreen("Яблоня Антоновка")
+            LazyColumn(modifier = Modifier.padding(start = 25.dp, top = 120.dp)) {
+                items(taskList) { task ->
+                    PlantsAtMygardensScreen(
+                        task.name,
+                        plantsViewmodel
+                    )
+                }
             }
         }
         Spacer(modifier = Modifier.width(15.dp))
@@ -274,16 +281,19 @@ fun GardensCard(gardenName: String, gardenViewmodel: GardensViewmodel, id: Int) 
                 modifier = Modifier.padding(top = 23.dp, start = 22.dp),
                 fontSize = 22.sp,
             )
-            Column(modifier = Modifier.padding(top = 5.dp)) {
-                TasksAtMygardensScreen("Обработка от парши")
-                TasksAtMygardensScreen("Профилактика от вредителей")
+            LazyColumn(modifier = Modifier.padding(top = 5.dp)) {
+                items(plantList) { plant ->
+                    TasksAtMygardensScreen(
+                        plant.plantName, tasksViewmodel
+                    )
+                }
             }
         }
     }
 }
 
 @Composable
-fun PlantsAtMygardensScreen(plantMygardenScreen: String) {
+fun PlantsAtMygardensScreen(plantName: String, plantsViewmodel: PlantsViewmodel) {
     Card(
         colors = CardDefaults.cardColors(containerColor = Color(0xFFA2FFAC)),
         border = BorderStroke(1.dp, Color(0xFF075E10)),
@@ -295,7 +305,7 @@ fun PlantsAtMygardensScreen(plantMygardenScreen: String) {
             )
     ) {
         Text(
-            plantMygardenScreen,
+            plantName,
             modifier = Modifier.padding(horizontal = 10.dp),
             fontSize = 15.sp,
             color = Color(0xFF075E10)
@@ -304,7 +314,7 @@ fun PlantsAtMygardensScreen(plantMygardenScreen: String) {
 }
 
 @Composable
-fun TasksAtMygardensScreen(taskMygardenScreen: String) {
+fun TasksAtMygardensScreen(name: String, tasksViewmodel: TasksViewmodel) {
     Card(
         colors = CardDefaults.cardColors(containerColor = Color(0xFFA2FFAC)),
         border = BorderStroke(1.dp, Color(0xFF075E10)),
@@ -316,7 +326,7 @@ fun TasksAtMygardensScreen(taskMygardenScreen: String) {
             )
     ) {
         Text(
-            "Профилактика от вредителей",
+            name,
             modifier = Modifier.padding(horizontal = 10.dp),
             fontSize = 15.sp,
             color = Color(0xFF075E10)
