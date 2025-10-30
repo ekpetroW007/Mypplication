@@ -12,7 +12,7 @@ import androidx.room.PrimaryKey
             entity = TaskEntity::class,
             parentColumns = ["id"],
             childColumns = ["task_id"],
-            onDelete = ForeignKey.SET_NULL 
+            onDelete = ForeignKey.SET_NULL
         ),
         ForeignKey(
             entity = DrugEntity::class,
@@ -33,16 +33,16 @@ data class PlantEntity(
     val id: Int = 0,
 
     @ColumnInfo(name = "name")
-    val name: String,
+    val plantName: String,
 
     @ColumnInfo(name = "task")
-    val task: String,
+    val taskName: String,
 
     @ColumnInfo(name = "period")
     val period: Int,
 
     @ColumnInfo(name = "photo_path")
-    val photo: String,
+    val plantPhoto: String,
 
     @ColumnInfo(name = "drug_id", index = true)
     val drugId: Int,
