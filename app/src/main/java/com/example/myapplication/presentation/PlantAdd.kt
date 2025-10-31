@@ -225,7 +225,7 @@ fun DrugDropdown(
     drugList: List<DrugEntity>,
     expanded1: Boolean,
     onClick1: () -> Unit,
-    onClick2: (Int) -> Unit
+    onClick2: (Int) -> Unit //
 ) {
 
     Box(
