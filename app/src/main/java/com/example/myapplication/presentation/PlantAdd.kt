@@ -44,9 +44,9 @@ fun PlantAdd(
     val plantName = remember { mutableStateOf("") }
     val plantPhoto = remember { mutableStateOf("") }
     val taskName = remember { mutableStateOf("") }
-    val gardenId = remember { mutableIntStateOf(0) }
+    val gardenId = remember { mutableStateOf<Int?>(null) }
     val period = remember { mutableIntStateOf(0) }
-    val drugId = remember { mutableIntStateOf(0) }
+    val drugId = remember { mutableStateOf<Int?>(null) }
 
     Box(
         modifier = Modifier
@@ -92,16 +92,16 @@ fun PlantAdd(
         )
 
         Text(
-            drugId.intValue.toString(),
+            drugId.value.toString(),
             fontSize = 15.sp,
             modifier = Modifier.padding(top = 5.dp, start = 20.dp)
         )
         TextField(
-            value = drugId.intValue.toString(),
+            value = drugId.value.toString(),
             textStyle = TextStyle(fontSize = 20.sp),
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
             onValueChange = { newText ->
-                drugId.intValue = newText.filter { it.isDigit() }.toInt()
+                drugId.value = newText.filter { it.isDigit() }.toInt()
             }
         )
         Text(
@@ -128,16 +128,16 @@ fun PlantAdd(
         )
 
         Text(
-            gardenId.intValue.toString(),
+            gardenId.value.toString(),
             fontSize = 15.sp,
             modifier = Modifier.padding(top = 5.dp, start = 20.dp)
         )
         TextField(
-            value = gardenId.intValue.toString(),
+            value = gardenId.value.toString(),
             textStyle = TextStyle(fontSize = 20.sp),
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
             onValueChange = { newText ->
-                gardenId.intValue = newText.filter { it.isDigit() }.toInt()
+                gardenId.value = newText.filter { it.isDigit() }.toInt()
             }
         )
         Text(
@@ -183,8 +183,8 @@ fun PlantAdd(
                     taskName.value,
                     period.intValue,
                     plantPhoto.value,
-                    drugId.intValue,
-                    gardenId.intValue
+                    drugId.value,
+                    gardenId.value
                 )
                 navController.popBackStack()
 

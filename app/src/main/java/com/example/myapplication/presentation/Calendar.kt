@@ -1,6 +1,7 @@
 package com.example.myapplication.presentation
 
 import android.annotation.SuppressLint
+import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -21,6 +22,7 @@ import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
@@ -67,6 +69,7 @@ fun Calendar(innerPadding: PaddingValues, navController: NavController) {
     val viewmodelPlantsFactory = PlantsViewmodelFactory(application.repository)
     val plantsViewmodel: PlantsViewmodel = viewModel(factory = viewmodelPlantsFactory)
     val plantList by plantsViewmodel.plants.collectAsState()
+    LaunchedEffect(Unit) { Log.d("plantList", plantList.toString()) }
     Scaffold(
         modifier = Modifier.padding(innerPadding),
         floatingActionButton = {
@@ -79,24 +82,28 @@ fun Calendar(innerPadding: PaddingValues, navController: NavController) {
             ) {
                 Text("+")
             }
-        } ) { innerPadding ->
-
-        SelectableWeekCalendar(dayContent = { WeekCalendar(it) }, firstDayOfWeek = DayOfWeek.MONDAY)
-        LazyColumn(modifier = Modifier.padding(start = 25.dp)) {
-            items(plantList) { plant ->
-                DayCard( // TODO КАРТОЧКА НЕ ПОЯВЛЯЕТСЯ
-                    plant.plantName,
-                    plant.taskName,
-                    plant.period,
-                    plant.plantPhoto,
-                    plant.drugId,
-                    plant.gardenId,
-                    plantsViewmodel,
-                    drugsViewmodel,
-                    tasksViewmodel,
-                    gardensViewmodel,
-                    plant.id
-                )
+        }) { innerPadding ->
+        Column {
+            SelectableWeekCalendar(
+                dayContent = { WeekCalendar(it) },
+                firstDayOfWeek = DayOfWeek.MONDAY,
+            )
+            LazyColumn(modifier = Modifier.padding(start = 25.dp)) {
+                items(plantList) { plant ->
+                    DayCard( // TODO КАРТОЧКА НЕ ПОЯВЛЯЕТСЯ
+                        plant.plantName,
+                        plant.taskName,
+                        plant.period,
+                        plant.plantPhoto,
+                        plant.drugId,
+                        plant.gardenId,
+                        plantsViewmodel,
+                        drugsViewmodel,
+                        tasksViewmodel,
+                        gardensViewmodel,
+                        plant.id
+                    )
+                }
             }
         }
     }
@@ -119,8 +126,8 @@ fun DayCard(
     taskName: String,
     period: Int,
     plantPhoto: String,
-    drugId: Int,
-    gardenId: Int,
+    drugId: Int?,
+    gardenId: Int?,
     plantsViewmodel: PlantsViewmodel,
     drugsViewmodel: DrugsViewmodel,
     tasksViewmodel: TasksViewmodel,
@@ -170,7 +177,7 @@ fun DayCard(
                     modifier = Modifier
                         .padding(start = 135.dp, top = 22.dp)
                         .size(15.dp, 20.dp)
-                        .clickable { plantsViewmodel.deletePlant(id)}
+                        .clickable { plantsViewmodel.deletePlant(id) }
                 )
             }
             Text(

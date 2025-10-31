@@ -18,7 +18,7 @@ import androidx.room.PrimaryKey
             entity = GardenEntity::class,
             parentColumns = ["id"],
             childColumns = ["garden_id"],
-            onDelete = ForeignKey.CASCADE
+            onDelete = ForeignKey.SET_NULL
         )
     ]
 )
@@ -39,8 +39,8 @@ data class PlantEntity(
     val plantPhoto: String,
 
     @ColumnInfo(name = "drug_id", index = true)
-    val drugId: Int,
+    val drugId: Int?,
 
     @ColumnInfo(name = "garden_id", index = true)
-    val gardenId: Int
+    val gardenId: Int?
 )
