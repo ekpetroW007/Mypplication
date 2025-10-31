@@ -99,6 +99,7 @@ fun GardensCard(gardenName: String, gardenViewmodel: GardensViewmodel, id: Int) 
     val plantsViewmodel: PlantsViewmodel = viewModel(factory = viewmodelPlantsFactory)
     val plantList by plantsViewmodel.plants.collectAsState()
     val taskList by tasksViewmodel.tasks.collectAsState()
+    val filteredPlantList = plantList.filter{it.gardenId == id}
     Card(
         elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
         colors = CardDefaults.cardColors(containerColor = White),
@@ -172,7 +173,7 @@ fun GardensCard(gardenName: String, gardenViewmodel: GardensViewmodel, id: Int) 
                         horizontalAlignment = Alignment.CenterHorizontally
                     ) {
                         Text(
-                            plantList.size.toString(),
+                            filteredPlantList.size.toString(),
                             color = Color(0xFF40BE54),
                             modifier = Modifier.fillMaxWidth(1f),
                             fontSize = 22.sp, fontWeight = Bold,
@@ -266,9 +267,9 @@ fun GardensCard(gardenName: String, gardenViewmodel: GardensViewmodel, id: Int) 
                 fontSize = 22.sp,
             )
             LazyColumn(modifier = Modifier.padding(start = 25.dp, top = 120.dp)) {
-                items(taskList) { task ->
+                items(filteredPlantList) { plant ->
                     PlantsAtMygardensScreen(
-                        task.name,
+                        plant.plantName,
                         plantsViewmodel
                     )
                 }
@@ -282,9 +283,9 @@ fun GardensCard(gardenName: String, gardenViewmodel: GardensViewmodel, id: Int) 
                 fontSize = 22.sp,
             )
             LazyColumn(modifier = Modifier.padding(top = 5.dp)) {
-                items(plantList) { plant ->
+                items(filteredPlantList) { plant ->
                     TasksAtMygardensScreen(
-                        plant.plantName, tasksViewmodel
+                        plant.taskName, tasksViewmodel
                     )
                 }
             }
