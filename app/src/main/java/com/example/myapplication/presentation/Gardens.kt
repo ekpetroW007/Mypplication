@@ -92,7 +92,6 @@ fun MyGardens(navController: NavController, innerPadding: PaddingValues) {
 @Composable
 fun GardensCard(gardenName: String, gardenViewmodel: GardensViewmodel, id: Int) {
     val application = LocalContext.current.applicationContext as BookeeperApp
-    val viewmodelGardenFactory = GardensViewmodelFactory(application.repository)
     val viewmodelTasksFactory = TasksViewmodelFactory(application.repository)
     val tasksViewmodel: TasksViewmodel = viewModel(factory = viewmodelTasksFactory)
     val viewmodelPlantsFactory = PlantsViewmodelFactory(application.repository)
