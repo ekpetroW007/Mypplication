@@ -67,7 +67,8 @@ fun PlantAdd(
     val gardenId = remember { mutableStateOf<Int?>(null) }
     val period = remember { mutableIntStateOf(0) }
     val drugId = remember { mutableStateOf<Int?>(null) }
-    var expanded by remember { mutableStateOf(false) }
+    var expanded1 by remember { mutableStateOf(false) }
+    var expanded2 by remember { mutableStateOf(false) }
     Box(
         modifier = Modifier
             .size(600.dp, 100.dp)
@@ -108,7 +109,7 @@ fun PlantAdd(
 
         Text(
             "Выберите препарат:",
-            modifier = Modifier.padding(top = 20.dp, start = 20.dp).clickable() { expanded = !expanded },
+            modifier = Modifier.padding(top = 20.dp, start = 20.dp).clickable() { expanded1 = !expanded1 },
             fontSize = 15.sp
         )
         Text(
@@ -116,7 +117,7 @@ fun PlantAdd(
             fontSize = 15.sp,
             modifier = Modifier.padding(top = 5.dp, start = 20.dp)
         )
-        DrugDropdown(drugList, expanded, { expanded = false }, { drugId.value = it }) // TODO СДЕЛАТЬ ТАК ЖЕ С САДАМИ
+        DrugDropdown(drugList, expanded1, { expanded1 = false }, { drugId.value = it }) // TODO СДЕЛАТЬ ТАК ЖЕ С САДАМИ
         Text(
             "Задача:",
             modifier = Modifier.padding(top = 20.dp, start = 20.dp),
@@ -138,7 +139,7 @@ fun PlantAdd(
 
         Text(
             "Выберите сад:",
-            modifier = Modifier.padding(top = 20.dp, start = 20.dp).clickable() { expanded = !expanded },
+            modifier = Modifier.padding(top = 20.dp, start = 20.dp).clickable() { expanded2 = !expanded2 },
             fontSize = 15.sp
         )
         Text(
@@ -146,7 +147,7 @@ fun PlantAdd(
             fontSize = 15.sp,
             modifier = Modifier.padding(top = 5.dp, start = 20.dp)
         )
-        GardenDropdown(gardenList, expanded, { expanded = false }, { gardenId.value = it })
+        GardenDropdown(gardenList, expanded2, { expanded2 = false }, { gardenId.value = it })
 
 
         Text(
@@ -222,7 +223,7 @@ fun PlantAdd(
 @Composable
 fun DrugDropdown(
     drugList: List<DrugEntity>,
-    expanded: Boolean,
+    expanded1: Boolean,
     onClick1: () -> Unit,
     onClick2: (Int) -> Unit
 ) {
@@ -232,7 +233,7 @@ fun DrugDropdown(
             .padding(16.dp)
     ) {
         DropdownMenu(
-            expanded = expanded,
+            expanded = expanded1,
             onDismissRequest = { onClick1() }
         ) {
             drugList.forEach { drug ->
@@ -247,7 +248,7 @@ fun DrugDropdown(
 @Composable
 fun GardenDropdown(
     gardenList: List<GardenEntity>,
-    expanded: Boolean,
+    expanded2: Boolean,
     onClick1: () -> Unit,
     onClick2: (Int) -> Unit
 ) {
@@ -257,7 +258,7 @@ fun GardenDropdown(
             .padding(16.dp)
     ) {
         DropdownMenu(
-            expanded = expanded,
+            expanded = expanded2,
             onDismissRequest = { onClick1() }
         ) {
             gardenList.forEach { garden ->
