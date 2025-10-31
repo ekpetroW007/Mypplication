@@ -40,8 +40,11 @@ import androidx.navigation.NavController
 import com.example.myapplication.BookeeperApp
 import com.example.myapplication.R
 import com.example.myapplication.data.database.entity.DrugEntity
+import com.example.myapplication.data.database.entity.GardenEntity
 import com.example.myapplication.viewmodel.DrugsViewmodel
 import com.example.myapplication.viewmodel.DrugsViewmodelFactory
+import com.example.myapplication.viewmodel.GardensViewmodel
+import com.example.myapplication.viewmodel.GardensViewmodelFactory
 import com.example.myapplication.viewmodel.PlantsViewmodel
 import com.example.myapplication.viewmodel.PlantsViewmodelFactory
 
@@ -55,6 +58,9 @@ fun PlantAdd(
     val viewmodelFactoryDrug = DrugsViewmodelFactory(application.repository)
     val drugsViewmodel: DrugsViewmodel = viewModel(factory = viewmodelFactoryDrug)
     val drugList by drugsViewmodel.drugs.collectAsState()
+    val viewmodelFactoryGarden = GardensViewmodelFactory(application.repository)
+    val gardensViewmodel: GardensViewmodel = viewModel(factory = viewmodelFactoryGarden)
+    val gardenList by gardensViewmodel.gardens.collectAsState()
     val plantName = remember { mutableStateOf("") }
     val plantPhoto = remember { mutableStateOf("") }
     val taskName = remember { mutableStateOf("") }
@@ -101,8 +107,8 @@ fun PlantAdd(
         )
 
         Text(
-            "Айди препарата:",
-            modifier = Modifier.padding(top = 20.dp, start = 20.dp),
+            "Выберите препарат:",
+            modifier = Modifier.padding(top = 20.dp, start = 20.dp).clickable() { expanded = !expanded },
             fontSize = 15.sp
         )
         Text(
@@ -110,7 +116,6 @@ fun PlantAdd(
             fontSize = 15.sp,
             modifier = Modifier.padding(top = 5.dp, start = 20.dp)
         )
-        Text("ВЫБЕРИТЕ ПРЕПАРАТ", modifier = Modifier.clickable() { expanded = !expanded })
         DrugDropdown(drugList, expanded, { expanded = false }, { drugId.value = it }) // TODO СДЕЛАТЬ ТАК ЖЕ С САДАМИ
         Text(
             "Задача:",
@@ -129,25 +134,21 @@ fun PlantAdd(
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Phone),
             onValueChange = { newText -> taskName.value = newText }
         )
+
+
         Text(
-            "Айди сада:",
-            modifier = Modifier.padding(top = 20.dp, start = 20.dp),
+            "Выберите сад:",
+            modifier = Modifier.padding(top = 20.dp, start = 20.dp).clickable() { expanded = !expanded },
             fontSize = 15.sp
         )
-
         Text(
             gardenId.value.toString(),
             fontSize = 15.sp,
             modifier = Modifier.padding(top = 5.dp, start = 20.dp)
         )
-        TextField(
-            value = gardenId.value.toString(),
-            textStyle = TextStyle(fontSize = 20.sp),
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
-            onValueChange = { newText ->
-                gardenId.value = newText.filter { it.isDigit() }.toInt()
-            }
-        )
+        GardenDropdown(gardenList, expanded, { expanded = false }, { gardenId.value = it })
+
+
         Text(
             "Интервал полива:",
             modifier = Modifier.padding(top = 20.dp, start = 20.dp),
@@ -238,6 +239,31 @@ fun DrugDropdown(
                 DropdownMenuItem(
                     text = { Text(drug.name) },
                     onClick = { onClick2(drug.id) }
+                )
+            }
+        }
+    }
+}
+@Composable
+fun GardenDropdown(
+    gardenList: List<GardenEntity>,
+    expanded: Boolean,
+    onClick1: () -> Unit,
+    onClick2: (Int) -> Unit
+) {
+
+    Box(
+        modifier = Modifier
+            .padding(16.dp)
+    ) {
+        DropdownMenu(
+            expanded = expanded,
+            onDismissRequest = { onClick1() }
+        ) {
+            gardenList.forEach { garden ->
+                DropdownMenuItem(
+                    text = { Text(garden.name) },
+                    onClick = { onClick2(garden.id) }
                 )
             }
         }
