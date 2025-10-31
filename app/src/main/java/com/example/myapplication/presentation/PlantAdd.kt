@@ -9,14 +9,22 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material.icons.Icons
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.DropdownMenu
+import androidx.compose.material3.DropdownMenuItem
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Color.Companion.White
@@ -31,6 +39,9 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.example.myapplication.BookeeperApp
 import com.example.myapplication.R
+import com.example.myapplication.data.database.entity.DrugEntity
+import com.example.myapplication.viewmodel.DrugsViewmodel
+import com.example.myapplication.viewmodel.DrugsViewmodelFactory
 import com.example.myapplication.viewmodel.PlantsViewmodel
 import com.example.myapplication.viewmodel.PlantsViewmodelFactory
 
@@ -39,15 +50,18 @@ fun PlantAdd(
     navController: NavController,
 ) {
     val application = LocalContext.current.applicationContext as BookeeperApp
-    val viewmodelFactory = PlantsViewmodelFactory(application.repository)
-    val plantsViewmodel: PlantsViewmodel = viewModel(factory = viewmodelFactory)
+    val viewmodelFactoryPlant = PlantsViewmodelFactory(application.repository)
+    val plantsViewmodel: PlantsViewmodel = viewModel(factory = viewmodelFactoryPlant)
+    val viewmodelFactoryDrug = DrugsViewmodelFactory(application.repository)
+    val drugsViewmodel: DrugsViewmodel = viewModel(factory = viewmodelFactoryDrug)
+    val drugList by drugsViewmodel.drugs.collectAsState()
     val plantName = remember { mutableStateOf("") }
     val plantPhoto = remember { mutableStateOf("") }
     val taskName = remember { mutableStateOf("") }
     val gardenId = remember { mutableStateOf<Int?>(null) }
     val period = remember { mutableIntStateOf(0) }
     val drugId = remember { mutableStateOf<Int?>(null) }
-
+    var expanded by remember { mutableStateOf(false) }
     Box(
         modifier = Modifier
             .size(600.dp, 100.dp)
@@ -85,25 +99,19 @@ fun PlantAdd(
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Phone),
             onValueChange = { newText -> plantName.value = newText }
         )
+
         Text(
             "Айди препарата:",
             modifier = Modifier.padding(top = 20.dp, start = 20.dp),
             fontSize = 15.sp
         )
-
         Text(
             drugId.value.toString(),
             fontSize = 15.sp,
             modifier = Modifier.padding(top = 5.dp, start = 20.dp)
         )
-        TextField(
-            value = drugId.value.toString(),
-            textStyle = TextStyle(fontSize = 20.sp),
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
-            onValueChange = { newText ->
-                drugId.value = newText.filter { it.isDigit() }.toInt()
-            }
-        )
+        Text("ВЫБЕРИТЕ ПРЕПАРАТ", modifier = Modifier.clickable() { expanded = !expanded })
+        DrugDropdown(drugList, expanded, { expanded = false }, { drugId.value = it }) // TODO СДЕЛАТЬ ТАК ЖЕ С САДАМИ
         Text(
             "Задача:",
             modifier = Modifier.padding(top = 20.dp, start = 20.dp),
@@ -200,12 +208,38 @@ fun PlantAdd(
             colors = ButtonDefaults.buttonColors(
                 contentColor = White,
                 containerColor = Color(0xFF40BE54),
-                )
+            )
         ) {
             Text(
                 "Cохранить", fontSize = 25.sp, modifier = Modifier
                     .padding(horizontal = 22.dp)
             )
+        }
+    }
+}
+
+@Composable
+fun DrugDropdown(
+    drugList: List<DrugEntity>,
+    expanded: Boolean,
+    onClick1: () -> Unit,
+    onClick2: (Int) -> Unit
+) {
+
+    Box(
+        modifier = Modifier
+            .padding(16.dp)
+    ) {
+        DropdownMenu(
+            expanded = expanded,
+            onDismissRequest = { onClick1() }
+        ) {
+            drugList.forEach { drug ->
+                DropdownMenuItem(
+                    text = { Text(drug.name) },
+                    onClick = { onClick2(drug.id) }
+                )
+            }
         }
     }
 }
