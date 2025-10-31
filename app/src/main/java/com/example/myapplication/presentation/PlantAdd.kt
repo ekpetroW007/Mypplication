@@ -33,6 +33,7 @@ import com.example.myapplication.BookeeperApp
 import com.example.myapplication.R
 import com.example.myapplication.viewmodel.PlantsViewmodel
 import com.example.myapplication.viewmodel.PlantsViewmodelFactory
+
 @Composable
 fun PlantAdd(
     navController: NavController,
@@ -100,7 +101,8 @@ fun PlantAdd(
             textStyle = TextStyle(fontSize = 20.sp),
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
             onValueChange = { newText ->
-                drugId.intValue = newText.filter { it.isDigit() }.toInt() }
+                drugId.intValue = newText.filter { it.isDigit() }.toInt()
+            }
         )
         Text(
             "Задача:",
@@ -135,7 +137,8 @@ fun PlantAdd(
             textStyle = TextStyle(fontSize = 20.sp),
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
             onValueChange = { newText ->
-                gardenId.intValue = newText.filter { it.isDigit() }.toInt() }
+                gardenId.intValue = newText.filter { it.isDigit() }.toInt()
+            }
         )
         Text(
             "Интервал полива:",
@@ -153,7 +156,8 @@ fun PlantAdd(
             textStyle = TextStyle(fontSize = 20.sp),
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
             onValueChange = { newText ->
-                period.intValue = newText.filter { it.isDigit() }.toInt() }
+                period.intValue = newText.filter { it.isDigit() }.toInt()
+            }
         )
         Text(
             "Фото:",
@@ -196,7 +200,6 @@ fun PlantAdd(
             colors = ButtonDefaults.buttonColors(
                 contentColor = White,
                 containerColor = Color(0xFF40BE54),
-
                 )
         ) {
             Text(

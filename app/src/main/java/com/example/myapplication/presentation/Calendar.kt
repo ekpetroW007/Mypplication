@@ -74,10 +74,10 @@ fun Calendar(innerPadding: PaddingValues, navController: NavController) {
             ) {
                 Text("+")
             }
-        }) { innerPadding ->
+        } ) { innerPadding ->
 
         SelectableWeekCalendar(dayContent = { WeekCalendar(it) }, firstDayOfWeek = DayOfWeek.MONDAY)
-        LazyColumn(modifier = Modifier.padding(start = 25.dp, top = 120.dp)) {
+        LazyColumn(modifier = Modifier.padding(start = 25.dp)) {
             items(plantList) { plant ->
                 DayCard( // TODO КАРТОЧКА НЕ ПОЯВЛЯЕТСЯ
                     plant.plantName,
@@ -124,7 +124,7 @@ fun DayCard(
         elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
         colors = CardDefaults.cardColors(containerColor = White),
         modifier = Modifier
-            .padding(top = 120.dp, start = 30.dp)
+            .padding(start = 30.dp)
             .size(height = 140.dp, width = 365.dp)
             .background(
                 color = Color(0xFFFBFCFB), shape = RoundedCornerShape(
