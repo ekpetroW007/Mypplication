@@ -88,7 +88,7 @@ fun Calendar(innerPadding: PaddingValues, navController: NavController) {
                 dayContent = { WeekCalendar(it) },
                 firstDayOfWeek = DayOfWeek.MONDAY,
             )
-            LazyColumn(modifier = Modifier.padding(start = 25.dp)) {
+            LazyColumn(modifier = Modifier.padding(start = 30.dp, top = 40.dp)) {
                 items(plantList) { plant ->
                     DayCard(
                         plant.plantName,
@@ -141,8 +141,8 @@ fun DayCard(
         elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
         colors = CardDefaults.cardColors(containerColor = White),
         modifier = Modifier
-            .padding(start = 30.dp)
-            .size(height = 140.dp, width = 365.dp)
+            .padding(top = 8.dp)
+            .size(height = 140.dp, width = 340.dp)
             .background(
                 color = Color(0xFFFBFCFB), shape = RoundedCornerShape(
                     topStart = 16.dp,
@@ -174,14 +174,7 @@ fun DayCard(
                         color = Color(0xFF075E10),
                     )
                 }
-                Image(
-                    bitmap = ImageBitmap.imageResource(R.drawable.delete),
-                    contentDescription = "Удалить",
-                    modifier = Modifier
-                        .padding(start = 135.dp, top = 22.dp)
-                        .size(15.dp, 20.dp)
-                        .clickable { plantsViewmodel.deletePlant(id); tasksViewmodel.deleteTask(id) }
-                )
+
             }
             Text(
                 drugId.toString(),
@@ -195,12 +188,22 @@ fun DayCard(
                 modifier = Modifier.padding(top = 3.dp),
                 color = Color(0xFF000000),
             )
-            Text(
-                period.toString(),
-                fontSize = 17.sp,
-                modifier = Modifier.padding(top = 3.dp),
-                color = Color(0xFF000000),
-            )
+            Row {
+                Text(
+                    period.toString(),
+                    fontSize = 17.sp,
+                    modifier = Modifier.padding(top = 3.dp),
+                    color = Color(0xFF000000),
+                )
+                Image(
+                    bitmap = ImageBitmap.imageResource(R.drawable.delete),
+                    contentDescription = "Удалить",
+                    modifier = Modifier
+                        .padding(start = 100.dp)
+                        .size(15.dp, 20.dp)
+                        .clickable { plantsViewmodel.deletePlant(id); tasksViewmodel.deleteTask(id) }
+                )
+            }
         }
 
     }
