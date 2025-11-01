@@ -67,6 +67,7 @@ fun PlantAdd(
     val plantPhoto = remember { mutableStateOf("") }
     val taskName = remember { mutableStateOf("") }
     val gardenId = remember { mutableStateOf<Int?>(null) }
+    val gardenName = remember { mutableStateOf<String?>(null) }
     val period = remember { mutableIntStateOf(0) }
     val drugId = remember { mutableStateOf<Int?>(null) }
     var expanded1 by remember { mutableStateOf(false) }
@@ -154,7 +155,7 @@ fun PlantAdd(
             fontSize = 15.sp
         )
         Text(
-            gardenId.value.toString(),
+            gardenName.value.toString(),
             fontSize = 15.sp,
             modifier = Modifier.padding(top = 5.dp, start = 20.dp)
         )
