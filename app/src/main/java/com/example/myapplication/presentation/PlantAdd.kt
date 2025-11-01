@@ -45,7 +45,6 @@ import com.example.myapplication.viewmodel.GardensViewmodel
 import com.example.myapplication.viewmodel.GardensViewmodelFactory
 import com.example.myapplication.viewmodel.PlantsViewmodel
 import com.example.myapplication.viewmodel.PlantsViewmodelFactory
-import io.github.boguszpawlowski.composecalendar.kotlinxDateTime.now
 
 @Composable
 fun PlantAdd(

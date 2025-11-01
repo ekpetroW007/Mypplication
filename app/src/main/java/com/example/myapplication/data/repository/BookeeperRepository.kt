@@ -46,10 +46,6 @@ class BookeeperRepository(
         gardenDAO.deleteGarden(id)
     }
 
-    suspend fun allPlantsByGardenId(gardenId: Int): Flow<List<PlantEntity>> {
-        return plantDAO.getPlantByGardenId(gardenId)
-    }
-
     suspend fun insertPlant(plant: PlantEntity) {
         plantDAO.insertPlant(plant)
     }
