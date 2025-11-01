@@ -32,7 +32,7 @@ class PlantsViewmodel(private val repository: BookeeperRepository) : ViewModel()
         plantName: String,
         taskName: String,
         period: Int,
-        firstDayOfPeriod: Long,
+        firstDayOfPeriod: LocalDate?,
         plantPhoto: String,
         drugId: Int?,
         gardenId: Int?
@@ -54,26 +54,5 @@ class PlantsViewmodel(private val repository: BookeeperRepository) : ViewModel()
             }
         }
     }
-
-//    private val _plantsByGardenId = MutableStateFlow<List<PlantEntity>>(emptyList())
-//    val plantsByGardenId: StateFlow<List<PlantEntity>> = _plantsByGardenId.asStateFlow()
-//
-//    fun loadPlantsByGardenId(gardenId: Int) {
-//        viewModelScope.launch {
-//            repository.allPlantsByGardenId(gardenId)
-//                .catch { exception ->
-//                    Log.d(
-//                        "PlantsViewModel",
-//                        "Exception while fetching plants by garden ID",
-//                        exception
-//                    )
-//                    _plantsByGardenId.value =
-//                        emptyList()
-//                }
-//                .collect { plants ->
-//                    _plantsByGardenId.value = plants
-//                }
-//        }
-//    }
 
 }

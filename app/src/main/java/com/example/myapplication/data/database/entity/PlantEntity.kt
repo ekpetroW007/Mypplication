@@ -38,7 +38,7 @@ data class PlantEntity(
     val period: Int,
 
     @ColumnInfo(name = "firstDayOfPeriod")
-    val firstDayOfPeriod: Long,
+    val firstDayOfPeriod: LocalDate?,
 
     @ColumnInfo(name = "photo_path")
     val plantPhoto: String,

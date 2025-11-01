@@ -204,7 +204,7 @@ fun PlantAdd(
                     plantName.value,
                     taskName.value,
                     period.intValue,
-                    0,// firstDayOfPeriod.plusDays(period.intValue.toLong()),
+                     LocalDate.now(),
                     plantPhoto.value,
                     drugId.value,
                     gardenId.value
