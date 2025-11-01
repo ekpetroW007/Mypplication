@@ -42,11 +42,13 @@ android {
 }
 
 dependencies {
+    implementation("androidx.security:security-crypto:1.1.0-alpha06")
+    implementation("androidx.preference:preference-ktx:1.2.1")
     implementation("io.github.boguszpawlowski.composecalendar:composecalendar:1.4.0")
-    implementation ("io.github.boguszpawlowski.composecalendar:kotlinx-datetime:1.4.0")
+    implementation("io.github.boguszpawlowski.composecalendar:kotlinx-datetime:1.4.0")
     implementation(libs.androidx.room.runtime)
     implementation(libs.androidx.room.ktx)
-    implementation (libs.androidx.runtime.livedata)
+    implementation(libs.androidx.runtime.livedata)
     implementation(libs.androidx.lifecycle.viewmodel.compose)
     implementation(libs.ui)
     annotationProcessor(libs.androidx.room.room.compiler)

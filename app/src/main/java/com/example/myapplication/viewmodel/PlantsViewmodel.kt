@@ -35,6 +35,7 @@ class PlantsViewmodel(private val repository: BookeeperRepository) : ViewModel()
         plantName: String,
         taskName: String,
         period: Int,
+        firstDayOfPeriod: Long,
         plantPhoto: String,
         drugId: Int?,
         gardenId: Int?
@@ -44,6 +45,7 @@ class PlantsViewmodel(private val repository: BookeeperRepository) : ViewModel()
                 val newPlant = PlantEntity(
                     plantName = plantName,
                     period = period,
+                    firstDayOfPeriod = firstDayOfPeriod,
                     plantPhoto = plantPhoto,
                     taskName = taskName,
                     drugId = drugId,
