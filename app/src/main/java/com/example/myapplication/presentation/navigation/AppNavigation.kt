@@ -6,10 +6,8 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.myapplication.presentation.DrugAdd
 import com.example.myapplication.presentation.DrugInfo
-import com.example.myapplication.presentation.Drugs
 import com.example.myapplication.presentation.GardenAdd
 import com.example.myapplication.presentation.MainScreen
-import com.example.myapplication.presentation.MyGardens
 import com.example.myapplication.presentation.PlantAdd
 
 @Composable

@@ -40,13 +40,28 @@ import com.example.myapplication.BookeeperApp
 import com.example.myapplication.R
 import com.example.myapplication.viewmodel.DrugsViewmodel
 import com.example.myapplication.viewmodel.DrugsViewmodelFactory
+import com.example.myapplication.viewmodel.GardensViewmodel
+import com.example.myapplication.viewmodel.GardensViewmodelFactory
+import com.example.myapplication.viewmodel.PlantsViewmodel
+import com.example.myapplication.viewmodel.PlantsViewmodelFactory
+import com.example.myapplication.viewmodel.TasksViewmodel
+import com.example.myapplication.viewmodel.TasksViewmodelFactory
 
 @Composable
-fun Profile(innerPadding: PaddingValues) {
+fun Profile(innerPadding: PaddingValues, id: Int) {
     val application = LocalContext.current.applicationContext as BookeeperApp
+    val viewmodelPlantsFactory = PlantsViewmodelFactory(application.repository)
+    val plantsViewmodel: PlantsViewmodel = viewModel(factory = viewmodelPlantsFactory)
+    val viewmodelGardensFactory = GardensViewmodelFactory(application.repository)
+    val gardensViewmodel: GardensViewmodel = viewModel(factory = viewmodelGardensFactory)
     val viewmodelFactory = DrugsViewmodelFactory(application.repository)
     val drugsViewmodel: DrugsViewmodel = viewModel(factory = viewmodelFactory)
+    val viewmodelTasksFactory = TasksViewmodelFactory(application.repository)
+    val tasksViewmodel: TasksViewmodel = viewModel(factory = viewmodelTasksFactory)
     val drugList by drugsViewmodel.drugs.collectAsState()
+    val plantList by plantsViewmodel.plants.collectAsState()
+    val taskList by tasksViewmodel.tasks.collectAsState()
+    val gardenList by gardensViewmodel.gardens.collectAsState()
     Column(modifier = Modifier.padding(innerPadding)) {
         Text(
             "Статистика",
@@ -82,7 +97,7 @@ fun Profile(innerPadding: PaddingValues) {
                         horizontalAlignment = Alignment.CenterHorizontally
                     ) {
                         Text(
-                            "1", // TODO (будет браться из вьюмодели) , образец
+                            gardenList.size.toString(), // TODO (будет браться из вьюмодели) , образец
                             color = Color(0xFF18C933),
                             modifier = Modifier.fillMaxWidth(1f),
                             fontSize = 20.sp,
@@ -123,7 +138,7 @@ fun Profile(innerPadding: PaddingValues) {
                         horizontalAlignment = Alignment.CenterHorizontally
                     ) {
                         Text(
-                            "2", // TODO (будет браться из вьюмодели) , образец
+                            plantList.size.toString(), // TODO (будет браться из вьюмодели) , образец
                             color = Color(0xFF18C933),
                             modifier = Modifier.fillMaxWidth(1f),
                             fontSize = 20.sp, fontWeight = Bold,
@@ -205,7 +220,7 @@ fun Profile(innerPadding: PaddingValues) {
                         horizontalAlignment = Alignment.CenterHorizontally
                     ) {
                         Text(
-                            "2",
+                            taskList.size.toString(),
                             color = Color(0xFF18C933),
                             modifier = Modifier.fillMaxWidth(1f),
                             fontSize = 20.sp, fontWeight = Bold,
