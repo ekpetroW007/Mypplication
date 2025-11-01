@@ -45,6 +45,7 @@ import com.example.myapplication.viewmodel.GardensViewmodel
 import com.example.myapplication.viewmodel.GardensViewmodelFactory
 import com.example.myapplication.viewmodel.PlantsViewmodel
 import com.example.myapplication.viewmodel.PlantsViewmodelFactory
+import io.github.boguszpawlowski.composecalendar.kotlinxDateTime.now
 
 @Composable
 fun PlantAdd(
@@ -67,6 +68,7 @@ fun PlantAdd(
     val drugId = remember { mutableStateOf<Int?>(null) }
     var expanded1 by remember { mutableStateOf(false) }
     var expanded2 by remember { mutableStateOf(false) }
+    val firstDayOfPeriod = LocalDate.now()
     Box(
         modifier = Modifier
             .size(600.dp, 100.dp)
@@ -107,7 +109,9 @@ fun PlantAdd(
 
         Text(
             "Выберите препарат:",
-            modifier = Modifier.padding(top = 20.dp, start = 20.dp).clickable() { expanded1 = !expanded1 },
+            modifier = Modifier
+                .padding(top = 20.dp, start = 20.dp)
+                .clickable() { expanded1 = !expanded1 },
             fontSize = 15.sp
         )
         Text(
@@ -115,7 +119,11 @@ fun PlantAdd(
             fontSize = 15.sp,
             modifier = Modifier.padding(top = 5.dp, start = 20.dp)
         )
-        DrugDropdown(drugList, expanded1, { expanded1 = false }, { drugId.value = it }) // TODO СДЕЛАТЬ ТАК ЖЕ С САДАМИ
+        DrugDropdown(
+            drugList,
+            expanded1,
+            { expanded1 = false },
+            { drugId.value = it }) // TODO СДЕЛАТЬ ТАК ЖЕ С САДАМИ
         Text(
             "Задача:",
             modifier = Modifier.padding(top = 20.dp, start = 20.dp),
@@ -137,7 +145,9 @@ fun PlantAdd(
 
         Text(
             "Выберите сад:",
-            modifier = Modifier.padding(top = 20.dp, start = 20.dp).clickable() { expanded2 = !expanded2 },
+            modifier = Modifier
+                .padding(top = 20.dp, start = 20.dp)
+                .clickable() { expanded2 = !expanded2 },
             fontSize = 15.sp
         )
         Text(
@@ -190,7 +200,7 @@ fun PlantAdd(
                     plantName.value,
                     taskName.value,
                     period.intValue,
-                    firstDayOfPeriod = 0,
+                    firstDayOfPeriod.plusDays(period.intValue.toLong()),
                     plantPhoto.value,
                     drugId.value,
                     gardenId.value
@@ -244,6 +254,7 @@ fun DrugDropdown(
         }
     }
 }
+
 @Composable
 fun GardenDropdown(
     gardenList: List<GardenEntity>,

@@ -12,6 +12,7 @@ import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.catch
+import java.time.LocalDate
 
 class PlantsViewmodel(private val repository: BookeeperRepository) : ViewModel() {
     val plants = repository.allPlants
@@ -31,11 +32,15 @@ class PlantsViewmodel(private val repository: BookeeperRepository) : ViewModel()
         }
     }
 
+//    fun nextWateringDate(): LocalDate {
+//        return
+//    }
+
     fun addPlant(
         plantName: String,
         taskName: String,
         period: Int,
-        firstDayOfPeriod: Long,
+        firstDayOfPeriod: LocalDate = LocalDate.now(),
         plantPhoto: String,
         drugId: Int?,
         gardenId: Int?

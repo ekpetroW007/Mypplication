@@ -1,9 +1,11 @@
 package com.example.myapplication.data.database.entity
 
+
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
+import java.time.LocalDate
 
 @Entity(
     tableName = "plant",
@@ -36,7 +38,7 @@ data class PlantEntity(
     val period: Int,
 
     @ColumnInfo(name = "firstDayOfPeriod")
-    val firstDayOfPeriod: Long, // 0
+    val firstDayOfPeriod: LocalDate = LocalDate.now(),
 
     @ColumnInfo(name = "photo_path")
     val plantPhoto: String,
