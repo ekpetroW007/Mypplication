@@ -9,9 +9,11 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -25,6 +27,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Color.Companion.White
@@ -88,7 +91,7 @@ fun Calendar(innerPadding: PaddingValues, navController: NavController) {
                 dayContent = { WeekCalendar(it) },
                 firstDayOfWeek = DayOfWeek.MONDAY,
             )
-            LazyColumn(modifier = Modifier.padding(start = 30.dp, top = 40.dp)) {
+            LazyColumn(modifier = Modifier.padding(start = 30.dp, top = 30.dp)) {
                 items(plantList) { plant ->
                     DayCard(
                         plant.plantName,
@@ -165,11 +168,14 @@ fun DayCard(
                                 topStart = 16.dp,
                             )
                         )
-                        .padding(top = 3.dp, start = 22.dp)
-                        .size(width = 40.dp, height = 20.dp),
+                        .padding(start = 40.dp)
+                        .size(width = 20.dp, height = 20.dp),
                 ) {
                     Text(
                         gardenId.toString(),
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .wrapContentSize(Alignment.Center),
                         fontSize = 20.sp,
                         color = Color(0xFF075E10),
                     )
