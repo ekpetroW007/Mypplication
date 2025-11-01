@@ -13,8 +13,8 @@ import com.example.myapplication.presentation.MainScreen
 import com.example.myapplication.presentation.navigation.AppNavigation
 import com.example.myapplication.viewmodel.MainScreenViewmodel
 
-private lateinit var sharedPrefs: SharedPreferences
-val editor = sharedPrefs.edit()
+//private lateinit var sharedPrefs: SharedPreferences
+//val editor = sharedPrefs.edit()
 
 // На экране входа
 
