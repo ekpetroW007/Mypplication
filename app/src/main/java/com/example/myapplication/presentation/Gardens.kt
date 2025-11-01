@@ -142,7 +142,7 @@ fun GardensCard(gardenName: String, gardenViewmodel: GardensViewmodel, id: Int) 
             Text(
                 gardenName,
                 fontSize = 25.sp,
-                modifier = Modifier.padding(top = 43.dp, start = 30.dp),
+                modifier = Modifier.padding(top = 38.dp, start = 35.dp),
                 color = Color(0xFF000000),
                 fontWeight = FontWeight.Medium
             )
@@ -265,7 +265,7 @@ fun GardensCard(gardenName: String, gardenViewmodel: GardensViewmodel, id: Int) 
                 modifier = Modifier.padding(top = 23.dp, start = 22.dp),
                 fontSize = 22.sp,
             )
-            LazyColumn(modifier = Modifier.padding(start = 25.dp, top = 120.dp)) {
+            LazyColumn(modifier = Modifier.padding(top = 5.dp)) {
                 items(filteredPlantList) { plant ->
                     PlantsAtMygardensScreen(
                         plant.plantName,
@@ -274,7 +274,7 @@ fun GardensCard(gardenName: String, gardenViewmodel: GardensViewmodel, id: Int) 
                 }
             }
         }
-        Spacer(modifier = Modifier.width(15.dp))
+        Spacer(modifier = Modifier.width(8.dp))
         Column {
             Text(
                 "Задачи:",
