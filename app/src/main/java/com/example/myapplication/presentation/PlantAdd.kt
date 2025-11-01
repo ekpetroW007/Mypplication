@@ -45,6 +45,8 @@ import com.example.myapplication.viewmodel.GardensViewmodel
 import com.example.myapplication.viewmodel.GardensViewmodelFactory
 import com.example.myapplication.viewmodel.PlantsViewmodel
 import com.example.myapplication.viewmodel.PlantsViewmodelFactory
+import com.example.myapplication.viewmodel.TasksViewmodel
+import com.example.myapplication.viewmodel.TasksViewmodelFactory
 
 @Composable
 fun PlantAdd(
@@ -58,6 +60,8 @@ fun PlantAdd(
     val drugList by drugsViewmodel.drugs.collectAsState()
     val viewmodelFactoryGarden = GardensViewmodelFactory(application.repository)
     val gardensViewmodel: GardensViewmodel = viewModel(factory = viewmodelFactoryGarden)
+    val viewmodelTasksFactory = TasksViewmodelFactory(application.repository)
+    val tasksViewmodel: TasksViewmodel = viewModel(factory = viewmodelTasksFactory)
     val gardenList by gardensViewmodel.gardens.collectAsState()
     val plantName = remember { mutableStateOf("") }
     val plantPhoto = remember { mutableStateOf("") }
@@ -122,7 +126,7 @@ fun PlantAdd(
             drugList,
             expanded1,
             { expanded1 = false },
-            { drugId.value = it }) // TODO СДЕЛАТЬ ТАК ЖЕ С САДАМИ
+            { drugId.value = it })
         Text(
             "Задача:",
             modifier = Modifier.padding(top = 20.dp, start = 20.dp),
@@ -204,6 +208,7 @@ fun PlantAdd(
                     drugId.value,
                     gardenId.value
                 )
+                tasksViewmodel.addTask(taskName.value)
                 navController.popBackStack()
 
             },

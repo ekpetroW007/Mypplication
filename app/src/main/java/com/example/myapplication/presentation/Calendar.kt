@@ -134,6 +134,9 @@ fun DayCard(
     gardensViewmodel: GardensViewmodel,
     id: Int
 ) {
+    val application = LocalContext.current.applicationContext as BookeeperApp
+    val viewmodelTasksFactory = TasksViewmodelFactory(application.repository)
+    val tasksViewmodel: TasksViewmodel = viewModel(factory = viewmodelTasksFactory)
     Card(
         elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
         colors = CardDefaults.cardColors(containerColor = White),
@@ -177,7 +180,7 @@ fun DayCard(
                     modifier = Modifier
                         .padding(start = 135.dp, top = 22.dp)
                         .size(15.dp, 20.dp)
-                        .clickable { plantsViewmodel.deletePlant(id) }
+                        .clickable { plantsViewmodel.deletePlant(id); tasksViewmodel.deleteTask(id) }
                 )
             }
             Text(

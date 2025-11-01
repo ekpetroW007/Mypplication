@@ -32,4 +32,15 @@ class TasksViewmodel(
             }
         }
     }
+
+    fun deleteTask(id: Int) {
+        viewModelScope.launch {
+            try {
+                repository.deleteTask(id)
+            } catch (e: Exception) {
+                Log.d("deleteTask", e.toString())
+            }
+        }
+    }
+
 }

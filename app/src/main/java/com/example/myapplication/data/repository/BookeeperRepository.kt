@@ -38,6 +38,10 @@ class BookeeperRepository(
         taskDAO.insertTask(task)
     }
 
+    suspend fun deleteTask(id: Int) {
+        taskDAO.deleteTask(id)
+    }
+
     suspend fun insertGarden(garden: GardenEntity) {
         gardenDAO.insertGarden(garden)
     }
