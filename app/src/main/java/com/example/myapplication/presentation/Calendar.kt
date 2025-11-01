@@ -90,7 +90,7 @@ fun Calendar(innerPadding: PaddingValues, navController: NavController) {
             )
             LazyColumn(modifier = Modifier.padding(start = 25.dp)) {
                 items(plantList) { plant ->
-                    DayCard( // TODO КАРТОЧКА НЕ ПОЯВЛЯЕТСЯ
+                    DayCard(
                         plant.plantName,
                         plant.taskName,
                         plant.period,
