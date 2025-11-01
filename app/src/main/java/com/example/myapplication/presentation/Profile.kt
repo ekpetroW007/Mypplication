@@ -48,7 +48,7 @@ import com.example.myapplication.viewmodel.TasksViewmodel
 import com.example.myapplication.viewmodel.TasksViewmodelFactory
 
 @Composable
-fun Profile(innerPadding: PaddingValues, id: Int) {
+fun Profile(innerPadding: PaddingValues) {
     val application = LocalContext.current.applicationContext as BookeeperApp
     val viewmodelPlantsFactory = PlantsViewmodelFactory(application.repository)
     val plantsViewmodel: PlantsViewmodel = viewModel(factory = viewmodelPlantsFactory)
