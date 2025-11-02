@@ -6,7 +6,6 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -47,10 +46,9 @@ import com.example.myapplication.viewmodel.PlantsViewmodel
 import com.example.myapplication.viewmodel.PlantsViewmodelFactory
 import com.example.myapplication.viewmodel.TasksViewmodel
 import com.example.myapplication.viewmodel.TasksViewmodelFactory
-import com.example.myapplication.viewmodel.UserViewModel
 
 @Composable
-fun Profile(innerPadding: PaddingValues) {
+fun Profile() {
     val application = LocalContext.current.applicationContext as BookeeperApp
     val viewmodelPlantsFactory = PlantsViewmodelFactory(application.repository)
     val plantsViewmodel: PlantsViewmodel = viewModel(factory = viewmodelPlantsFactory)
@@ -283,7 +281,7 @@ fun Profile(innerPadding: PaddingValues) {
                     Text(
                         "Приложение для планирования и учета обработки",
                         modifier = Modifier
-                            .padding(start = 22.dp),
+                            .padding(start = 10.dp),
                         fontSize = 12.sp,
                         fontStyle = FontStyle.Italic,
                         color = Color(0xFF000000)
@@ -291,7 +289,7 @@ fun Profile(innerPadding: PaddingValues) {
                     Text(
                         "растений в саду. Создавайте графики работ,",
                         modifier = Modifier
-                            .padding(start = 22.dp),
+                            .padding(start = 10.dp),
                         fontSize = 12.sp,
                         fontStyle = FontStyle.Italic,
                         color = Color(0xFF000000)
@@ -299,7 +297,7 @@ fun Profile(innerPadding: PaddingValues) {
                     Text(
                         "отслеживайте выполнение и ведите историю обработок",
                         modifier = Modifier
-                            .padding(start = 22.dp),
+                            .padding(start = 10.dp),
                         fontSize = 12.sp,
                         fontStyle = FontStyle.Italic,
                         color = Color(0xFF000000)

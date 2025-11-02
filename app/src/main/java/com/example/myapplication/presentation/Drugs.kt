@@ -97,7 +97,7 @@ fun Drugs(
 //                    )
 //                }
 //            }
-            LazyColumn(modifier = Modifier.padding(start = 9.dp, top = 8.dp)) {
+            LazyColumn(modifier = Modifier.padding(start = 9.dp, top = 6.dp)) {
                 items(drugList) { drug ->
                     DrugCard(drug.name, drug.purpose, drug.consumptionRate, navController, drugsViewmodel, drug.id)
                 }
