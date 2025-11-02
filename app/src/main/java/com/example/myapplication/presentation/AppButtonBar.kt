@@ -1,8 +1,10 @@
 package com.example.myapplication.presentation
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
@@ -12,6 +14,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Color.Companion.White
 import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -21,7 +24,7 @@ import com.example.myapplication.R
 
 @Composable
 fun AppButtonBar(onClick: (String) -> Unit) {
-    Row(modifier = Modifier.padding(start = 10.dp, bottom = 6.dp)) {
+    Row(modifier = Modifier.padding(start = 6.dp).background(White)) {
         NavigationItem("Календарь", onClick)
         NavigationItem("Мои сады", onClick)
         NavigationItem("Препараты", onClick)
@@ -48,7 +51,7 @@ fun NavigationItem(text: String, onClick: (String) -> Unit) {
                         .padding(start = 4.dp)
                 )
                 Text(
-                    text, fontSize = 17.sp,
+                    text, fontSize = 15.sp,
                     color = Color(0xFF48484B), modifier = Modifier.padding(start = 4.dp)
                 )
             }
@@ -62,7 +65,7 @@ fun NavigationItem(text: String, onClick: (String) -> Unit) {
                         .padding(start = 4.dp)
                 )
                 Text(
-                    text, fontSize = 17.sp,
+                    text, fontSize = 15.sp,
                     color = Color(0xFF48484B), modifier = Modifier.padding(start = 4.dp)
                 )
             }
@@ -76,7 +79,7 @@ fun NavigationItem(text: String, onClick: (String) -> Unit) {
                         .padding(start = 4.dp)
                 )
                 Text(
-                    text, fontSize = 17.sp,
+                    text, fontSize = 15.sp,
                     color = Color(0xFF48484B), modifier = Modifier.padding(start = 4.dp)
                 )
             }
@@ -90,16 +93,10 @@ fun NavigationItem(text: String, onClick: (String) -> Unit) {
                         .padding(start = 4.dp)
                 )
                 Text(
-                    text, fontSize = 17.sp,
+                    text, fontSize = 15.sp,
                     color = Color(0xFF48484B), modifier = Modifier.padding(start = 4.dp)
                 )
             }
         }
     }
-}
-
-@Preview
-@Composable
-fun PreviewButtonBar() {
-    AppButtonBar {}
 }
