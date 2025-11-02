@@ -5,6 +5,7 @@ import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
@@ -49,7 +50,7 @@ fun Drugs(
     val viewmodelFactory = DrugsViewmodelFactory(application.repository)
     val drugsViewmodel: DrugsViewmodel = viewModel(factory = viewmodelFactory)
     val drugList by drugsViewmodel.drugs.collectAsState()
-
+    Box(modifier = Modifier.background(White).size(1000.dp))
     Scaffold(
         modifier = Modifier.padding(innerPadding),
         floatingActionButton = {
@@ -64,6 +65,7 @@ fun Drugs(
             }
         }
     ) { innerPadding ->
+        Box(modifier = Modifier.background(White).size(1000.dp))
         Column(modifier = Modifier.padding(innerPadding)) {
 //            Card(
 //                elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
@@ -95,7 +97,7 @@ fun Drugs(
 //                    )
 //                }
 //            }
-            LazyColumn(modifier = Modifier.padding(start = 25.dp, top = 10.dp)) {
+            LazyColumn(modifier = Modifier.padding(start = 9.dp, top = 8.dp)) {
                 items(drugList) { drug ->
                     DrugCard(drug.name, drug.purpose, drug.consumptionRate, navController, drugsViewmodel, drug.id)
                 }
