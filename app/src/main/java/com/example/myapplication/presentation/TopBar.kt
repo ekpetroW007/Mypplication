@@ -21,10 +21,10 @@ import androidx.compose.ui.text.font.FontWeight.Companion.Bold
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.myapplication.R
-import com.example.myapplication.others.login
+import com.example.myapplication.viewmodel.UserViewModel
 
 @Composable
-fun TopBar(topBarText: String) {
+fun TopBar(topBarText: String, userLogin: String) {
     Box(
         modifier = Modifier
             .size(600.dp, 100.dp)
@@ -50,7 +50,8 @@ fun TopBar(topBarText: String) {
             Column {
                 Spacer(modifier = Modifier.height(20.dp))
                 Text(
-                    topBarText, modifier = Modifier.padding(horizontal = 20.dp),
+                    topBarText,
+                    modifier = Modifier.padding(horizontal = 20.dp),
                     fontSize = 35.sp,
                     color = White,
                     fontWeight = Bold
@@ -59,7 +60,7 @@ fun TopBar(topBarText: String) {
                 when (topBarText) {
                     "Профиль" -> {
                         Text(
-                            login,
+                            userLogin, // Используем переданный логин
                             fontSize = 20.sp,
                             modifier = Modifier.padding(start = 22.dp),
                             color = White
@@ -93,8 +94,6 @@ fun TopBar(topBarText: String) {
                         )
                     }
                 }
-
-
             }
         }
     }

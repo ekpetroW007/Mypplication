@@ -55,43 +55,39 @@ class BookeeperRepository(
         plantDAO.insertPlant(plant)
     }
 
-    fun filterPlantsForWeek(
-        plants: List<PlantEntity>,
-        weekStart: Date,
-        weekEnd: Date
-    ): List<PlantEntity> {
-        return plants.filter { plant ->
-            isWateringDateInWeek(plant, weekStart, weekEnd)
-        }
-    }
+//    fun filterPlantsForWeek(plants: List<PlantEntity>, weekStart: Date, weekEnd: Date): List<PlantEntity> {
+//        return plants.filter { plant ->
+//            isWateringDateInWeek(plant, weekStart, weekEnd)
+//        }
+//    }
 
-    private fun isWateringDateInWeek(plant: PlantEntity, weekStart: Date, weekEnd: Date): Boolean {
-        val calendar = Calendar.getInstance()
-
-        // Получаем дату создания растения
-        val creationDate = plant.creationDate
-
-        // Рассчитываем все даты полива от создания до конца недели
-        var currentWateringDate = creationDate
-        val calendarTemp = Calendar.getInstance()
-
-        while (currentWateringDate <= weekEnd) {
-            // Проверяем, попадает ли дата полива в текущую неделю
-            if (currentWateringDate in weekStart..weekEnd) {
-                return true
-            }
-
-            // Переходим к следующей дате полива
-            calendarTemp.time = currentWateringDate
-            calendarTemp.add(Calendar.DAY_OF_YEAR, plant.wateringInterval)
-            currentWateringDate = calendarTemp.time
-
-            // Защита от бесконечного цикла
-            if (currentWateringDate.before(calendarTemp.time)) {
-                break
-            }
-        }
-
-        return false
-    }
+//    private fun isWateringDateInWeek(plant: PlantEntity, weekStart: Date, weekEnd: Date): Boolean {
+//        val calendar = Calendar.getInstance()
+//
+//        // Получаем дату создания растения
+//        val creationDate = plant.creationDate
+//
+//        // Рассчитываем все даты полива от создания до конца недели
+//        var currentWateringDate = creationDate
+//        val calendarTemp = Calendar.getInstance()
+//
+//        while (currentWateringDate <= weekEnd) {
+//            // Проверяем, попадает ли дата полива в текущую неделю
+//            if (currentWateringDate in weekStart..weekEnd) {
+//                return true
+//            }
+//
+//            // Переходим к следующей дате полива
+//            calendarTemp.time = currentWateringDate
+//            calendarTemp.add(Calendar.DAY_OF_YEAR, plant.wateringInterval)
+//            currentWateringDate = calendarTemp.time
+//
+//            // Защита от бесконечного цикла
+//            if (currentWateringDate.before(calendarTemp.time)) {
+//                break
+//            }
+//        }
+//
+//        return false
+//    }
 }

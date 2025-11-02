@@ -1,44 +1,30 @@
 package com.example.myapplication.others
 
-import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.runtime.Composable
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewmodel.compose.viewModel
-import androidx.navigation.NavController
-import androidx.navigation.compose.rememberNavController
-import com.example.myapplication.presentation.MainScreen
+import com.example.myapplication.presentation.PreferencesManager
 import com.example.myapplication.presentation.navigation.AppNavigation
-import com.example.myapplication.viewmodel.MainScreenViewmodel
-
-//private lateinit var sharedPrefs: SharedPreferences
-//val editor = sharedPrefs.edit()
-
-// На экране входа
-
-//@Composable
-//fun OnLoginSuccess() {
-//    editor.putString("user_login", "testuser")
-//    editor.putBoolean("is_logged_in", true)
-//    editor.apply() // или commit()
-//
-//
-//}
+import com.example.myapplication.ui.theme.MyApplicationTheme
+import com.example.myapplication.viewmodel.UserViewModel
 
 class MainActivity : ComponentActivity() {
+
+    private lateinit var preferencesManager: PreferencesManager
+    private lateinit var userViewModel: UserViewModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        preferencesManager = PreferencesManager(this)
+        userViewModel = UserViewModel(preferencesManager)
+
         setContent {
-            AppNavigation()
-//            if (sharedPrefs.getBoolean("is_logged_in", false)) {
-//                MainScreen(viewModel(), rememberNavController())
-//            } else {
-//                OnLoginSuccess()
-//            }
+            MyApplicationTheme {
+                AppNavigation(userViewModel = userViewModel)
+            }
         }
     }
 }
 
-var login = "Егор Егор" // ВВОДИТ ПОЛЬЗОВАТЕЛЬ
+

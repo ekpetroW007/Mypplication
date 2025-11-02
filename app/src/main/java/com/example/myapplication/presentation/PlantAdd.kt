@@ -47,6 +47,7 @@ import com.example.myapplication.viewmodel.PlantsViewmodel
 import com.example.myapplication.viewmodel.PlantsViewmodelFactory
 import com.example.myapplication.viewmodel.TasksViewmodel
 import com.example.myapplication.viewmodel.TasksViewmodelFactory
+import java.util.Date
 
 @Composable
 fun PlantAdd(
@@ -68,11 +69,11 @@ fun PlantAdd(
     val taskName = remember { mutableStateOf("") }
     val gardenId = remember { mutableStateOf<Int?>(null) }
     val gardenName = remember { mutableStateOf<String?>(null) }
-    val period = remember { mutableIntStateOf(0) }
+    val wateringInterval = remember { mutableIntStateOf(0) }
+    val creationDate = remember { mutableStateOf(Date()) }
     val drugId = remember { mutableStateOf<Int?>(null) }
     var expanded1 by remember { mutableStateOf(false) }
     var expanded2 by remember { mutableStateOf(false) }
-    val firstDayOfPeriod = LocalDate.now()
     Box(
         modifier = Modifier
             .size(600.dp, 100.dp)
@@ -169,16 +170,16 @@ fun PlantAdd(
         )
 
         Text(
-            period.intValue.toString(),
+            wateringInterval.intValue.toString(),
             fontSize = 15.sp,
             modifier = Modifier.padding(top = 5.dp, start = 20.dp)
         )
         TextField(
-            value = period.intValue.toString(),
+            value = wateringInterval.intValue.toString(),
             textStyle = TextStyle(fontSize = 20.sp),
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
             onValueChange = { newText ->
-                period.intValue = newText.filter { it.isDigit() }.toInt()
+                wateringInterval.intValue = newText.filter { it.isDigit() }.toInt()
             }
         )
         Text(
@@ -203,8 +204,7 @@ fun PlantAdd(
                 plantsViewmodel.addPlant(
                     plantName.value,
                     taskName.value,
-                    period.intValue,
-                     LocalDate.now(),
+                    wateringInterval.intValue,
                     plantPhoto.value,
                     drugId.value,
                     gardenId.value

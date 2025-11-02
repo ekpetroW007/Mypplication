@@ -6,6 +6,8 @@ package com.example.myapplication.presentation.navigation
  */
 object AppDestinations {
     // Маршрут для главного экрана
+
+    const val REGISTRATION_ROUTE = "registration"
     const val MAINSCREEN_ROUTE = "mainScreen"
 
     const val DRUG_ADD_ROUTE = "drugsAddScreen"

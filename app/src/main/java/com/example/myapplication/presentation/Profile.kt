@@ -46,6 +46,7 @@ import com.example.myapplication.viewmodel.PlantsViewmodel
 import com.example.myapplication.viewmodel.PlantsViewmodelFactory
 import com.example.myapplication.viewmodel.TasksViewmodel
 import com.example.myapplication.viewmodel.TasksViewmodelFactory
+import com.example.myapplication.viewmodel.UserViewModel
 
 @Composable
 fun Profile(innerPadding: PaddingValues) {
@@ -138,7 +139,7 @@ fun Profile(innerPadding: PaddingValues) {
                         horizontalAlignment = Alignment.CenterHorizontally
                     ) {
                         Text(
-                            plantList.size.toString(), // TODO (будет браться из вьюмодели) , образец
+                            plantList.size.toString(),
                             color = Color(0xFF18C933),
                             modifier = Modifier.fillMaxWidth(1f),
                             fontSize = 20.sp, fontWeight = Bold,
@@ -179,7 +180,7 @@ fun Profile(innerPadding: PaddingValues) {
                         horizontalAlignment = Alignment.CenterHorizontally
                     ) {
                         Text(
-                            drugList.size.toString(), // TODO (будет браться из вьюмодели) , образец
+                            drugList.size.toString(),
                             color = Color(0xFF18C933),
                             modifier = Modifier.fillMaxWidth(1f),
                             fontSize = 20.sp, fontWeight = Bold,

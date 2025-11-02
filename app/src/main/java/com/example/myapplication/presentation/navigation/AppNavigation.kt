@@ -1,6 +1,9 @@
 package com.example.myapplication.presentation.navigation
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -9,21 +12,35 @@ import com.example.myapplication.presentation.DrugInfo
 import com.example.myapplication.presentation.GardenAdd
 import com.example.myapplication.presentation.MainScreen
 import com.example.myapplication.presentation.PlantAdd
+import com.example.myapplication.presentation.Registration
+import com.example.myapplication.viewmodel.UserViewModel
 
 @Composable
-fun AppNavigation() {
-    // 1. Создаем NavController. Он отвечает за управление состоянием навигации.
-    // rememberNavController() гарантирует, что контроллер сохранится при перерисовках.
+fun AppNavigation(userViewModel: UserViewModel) {
     val navController = rememberNavController()
 
-    // 2. NavHost - это контейнер, который связывает маршруты с Composable-экранами.
+    // Используем collectAsState() для StateFlow вместо observeAsState() для LiveData
+    val isRegistered by userViewModel.isRegistered.collectAsState()
+
+    // Определяем стартовый экран в зависимости от статуса регистрации
+    val startDestination = if (isRegistered) {
+        AppDestinations.MAINSCREEN_ROUTE
+    } else {
+        AppDestinations.REGISTRATION_ROUTE
+    }
+
     NavHost(
         navController = navController,
-        // 3. Указываем стартовый экран.
-        startDestination = AppDestinations.MAINSCREEN_ROUTE // тут путь в Main Screen, Garden везде для примера
+        startDestination = startDestination
     ) {
+        composable(route = AppDestinations.REGISTRATION_ROUTE) {
+            Registration(
+                navController = navController,
+                userViewModel = userViewModel
+            )
+        }
         composable(route = AppDestinations.MAINSCREEN_ROUTE) {
-            MainScreen(navController = navController)
+            MainScreen(navController = navController, userViewModel = userViewModel)
         }
         composable(route = AppDestinations.DRUG_ADD_ROUTE) {
             DrugAdd(navController = navController)
