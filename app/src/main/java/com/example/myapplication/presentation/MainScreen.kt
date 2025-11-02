@@ -34,7 +34,7 @@ fun MainScreen(viewModel: MainScreenViewmodel = viewModel(), navController: NavC
         },
     ) { innerPadding ->
         when (selectedScreen) {
-            "Профиль" -> Profile(innerPadding)
+            "Профиль" -> Profile()
             "Препараты" -> Drugs(navController, innerPadding)
             "Мои сады" -> MyGardens(navController,innerPadding)
             "Календарь" -> Calendar(innerPadding, navController)
