@@ -181,7 +181,7 @@ fun GardensCard(gardenName: String, gardenViewmodel: GardensViewmodel, id: Int) 
                         Text(
                             "Растений",
                             modifier = Modifier.fillMaxWidth(1f),
-                            fontSize = 17.sp,
+                            fontSize = 16.sp,
                             textAlign = TextAlign.Center
                         )
                     }
@@ -213,7 +213,7 @@ fun GardensCard(gardenName: String, gardenViewmodel: GardensViewmodel, id: Int) 
                         Text(
                             "Задач",
                             modifier = Modifier.fillMaxWidth(1f),
-                            fontSize = 17.sp,
+                            fontSize = 16.sp,
                             textAlign = TextAlign.Center
                         )
                     }
@@ -245,7 +245,7 @@ fun GardensCard(gardenName: String, gardenViewmodel: GardensViewmodel, id: Int) 
                         Text(
                             "Обработок",
                             modifier = Modifier.fillMaxWidth(1f),
-                            fontSize = 17.sp,
+                            fontSize = 16.sp,
                             textAlign = TextAlign.Center
                         )
                     }
@@ -278,7 +278,7 @@ fun GardensCard(gardenName: String, gardenViewmodel: GardensViewmodel, id: Int) 
         Column {
             Text(
                 "Задачи:",
-                modifier = Modifier.padding(top = 23.dp, start = 22.dp),
+                modifier = Modifier.padding(top = 45.dp, start = 22.dp),
                 fontSize = 22.sp,
             )
             LazyColumn(modifier = Modifier.padding(top = 5.dp)) {
@@ -291,6 +291,10 @@ fun GardensCard(gardenName: String, gardenViewmodel: GardensViewmodel, id: Int) 
         }
     }
 }
+
+
+
+
 
 @Composable
 fun PlantsAtMygardensScreen(plantName: String, plantsViewmodel: PlantsViewmodel) {

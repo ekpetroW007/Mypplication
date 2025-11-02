@@ -1,6 +1,5 @@
 package com.example.myapplication.presentation
 
-import java.time.LocalDate
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -72,6 +71,8 @@ fun PlantAdd(
     val wateringInterval = remember { mutableIntStateOf(0) }
     val creationDate = remember { mutableStateOf(Date()) }
     val drugId = remember { mutableStateOf<Int?>(null) }
+    val selectedDrug = remember { mutableStateOf<DrugEntity?>(null) }
+    val selectedGarden = remember { mutableStateOf<GardenEntity?>(null) }
     var expanded1 by remember { mutableStateOf(false) }
     var expanded2 by remember { mutableStateOf(false) }
     Box(
@@ -120,7 +121,7 @@ fun PlantAdd(
             fontSize = 15.sp
         )
         Text(
-            drugId.value.toString(),
+            selectedDrug.value?.name ?: "Не выбран",
             fontSize = 15.sp,
             modifier = Modifier.padding(top = 5.dp, start = 20.dp)
         )
@@ -128,10 +129,11 @@ fun PlantAdd(
             drugList,
             expanded1,
             { expanded1 = false },
-            { drugId.value = it })
+            { drugId.value = it },
+            { drug -> selectedDrug.value = drug })
         Text(
             "Задача:",
-            modifier = Modifier.padding(top = 20.dp, start = 20.dp),
+            modifier = Modifier.padding(top = 5.dp, start = 20.dp),
             fontSize = 15.sp
         )
 
@@ -156,16 +158,21 @@ fun PlantAdd(
             fontSize = 15.sp
         )
         Text(
-            gardenName.value.toString(),
+            selectedGarden.value?.name ?: "Не выбран",
             fontSize = 15.sp,
             modifier = Modifier.padding(top = 5.dp, start = 20.dp)
         )
-        GardenDropdown(gardenList, expanded2, { expanded2 = false }, { gardenId.value = it })
+        GardenDropdown(
+            gardenList,
+            expanded2,
+            { expanded2 = false },
+            { gardenId.value = it },
+            { garden -> selectedGarden.value = garden })
 
 
         Text(
             "Интервал полива:",
-            modifier = Modifier.padding(top = 20.dp, start = 20.dp),
+            modifier = Modifier.padding(top = 5.dp, start = 20.dp),
             fontSize = 15.sp
         )
 
@@ -239,7 +246,8 @@ fun DrugDropdown(
     drugList: List<DrugEntity>,
     expanded1: Boolean,
     onClick1: () -> Unit,
-    onClick2: (Int) -> Unit
+    onClick2: (Int) -> Unit,
+    onClick3: (DrugEntity) -> Unit
 ) {
 
     Box(
@@ -253,7 +261,11 @@ fun DrugDropdown(
             drugList.forEach { drug ->
                 DropdownMenuItem(
                     text = { Text(drug.name) },
-                    onClick = { onClick2(drug.id) }
+                    onClick = {
+                        onClick3(drug)
+                        onClick2(drug.id)
+                        onClick1()
+                    }
                 )
             }
         }
@@ -265,7 +277,8 @@ fun GardenDropdown(
     gardenList: List<GardenEntity>,
     expanded2: Boolean,
     onClick1: () -> Unit,
-    onClick2: (Int) -> Unit
+    onClick2: (Int) -> Unit,
+    onClick3: (GardenEntity) -> Unit
 ) {
 
     Box(
@@ -279,7 +292,11 @@ fun GardenDropdown(
             gardenList.forEach { garden ->
                 DropdownMenuItem(
                     text = { Text(garden.name) },
-                    onClick = { onClick2(garden.id) }
+                    onClick = {
+                        onClick3(garden)
+                        onClick2(garden.id)
+                        onClick1()
+                    }
                 )
             }
         }
