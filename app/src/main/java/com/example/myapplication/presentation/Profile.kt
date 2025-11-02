@@ -31,6 +31,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight.Companion.Bold
+import androidx.compose.ui.text.font.FontWeight.Companion.Medium
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.em
@@ -98,7 +99,7 @@ fun Profile(innerPadding: PaddingValues) {
                         horizontalAlignment = Alignment.CenterHorizontally
                     ) {
                         Text(
-                            gardenList.size.toString(), // TODO (будет браться из вьюмодели) , образец
+                            gardenList.size.toString(),
                             color = Color(0xFF18C933),
                             modifier = Modifier.fillMaxWidth(1f),
                             fontSize = 20.sp,
@@ -108,6 +109,7 @@ fun Profile(innerPadding: PaddingValues) {
                             "Садов",
                             modifier = Modifier.fillMaxWidth(1f),
                             fontSize = 15.sp,
+                            fontWeight = Medium,
                             textAlign = TextAlign.Center
                         )
                     }
@@ -149,6 +151,7 @@ fun Profile(innerPadding: PaddingValues) {
                             "Растений",
                             modifier = Modifier.fillMaxWidth(1f),
                             fontSize = 15.sp,
+                            fontWeight = Medium,
                             textAlign = TextAlign.Center
                         )
                     }
@@ -190,6 +193,7 @@ fun Profile(innerPadding: PaddingValues) {
                             "Препаратов",
                             modifier = Modifier.fillMaxWidth(1f),
                             fontSize = 15.sp,
+                            fontWeight = Medium,
                             textAlign = TextAlign.Center
                         )
                     }
@@ -231,6 +235,7 @@ fun Profile(innerPadding: PaddingValues) {
                             "Задач",
                             modifier = Modifier.fillMaxWidth(1f),
                             fontSize = 15.sp,
+                            fontWeight = Medium,
                             textAlign = TextAlign.Center
                         )
                     }
@@ -271,14 +276,32 @@ fun Profile(innerPadding: PaddingValues) {
                         color = Color(0xFF000000)
                     )
                 }
-                Text(
-                    "Приложение для планирования и учета обработки растений в саду. Создавайте графики работ, отслеживайте выполнение и ведите историю обработок.",
-                    modifier = Modifier
-                        .padding(horizontal = 22.dp),
-                    fontSize = 14.sp,
-                    fontStyle = FontStyle.Italic,
-                    color = Color(0xFF000000)
-                )
+                Column {
+                    Text(
+                        "Приложение для планирования и учета обработки",
+                        modifier = Modifier
+                            .padding(start = 22.dp),
+                        fontSize = 12.sp,
+                        fontStyle = FontStyle.Italic,
+                        color = Color(0xFF000000)
+                    )
+                    Text(
+                        "растений в саду. Создавайте графики работ,",
+                        modifier = Modifier
+                            .padding(start = 22.dp),
+                        fontSize = 12.sp,
+                        fontStyle = FontStyle.Italic,
+                        color = Color(0xFF000000)
+                    )
+                    Text(
+                        "отслеживайте выполнение и ведите историю обработок",
+                        modifier = Modifier
+                            .padding(start = 22.dp),
+                        fontSize = 12.sp,
+                        fontStyle = FontStyle.Italic,
+                        color = Color(0xFF000000)
+                    )
+                }
             }
             Card(
                 elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
