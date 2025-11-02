@@ -73,8 +73,10 @@ fun Calendar(innerPadding: PaddingValues, navController: NavController) {
     val viewmodelPlantsFactory = PlantsViewmodelFactory(application.repository)
     val plantsViewmodel: PlantsViewmodel = viewModel(factory = viewmodelPlantsFactory)
     val plantList by plantsViewmodel.plants.collectAsState()
+    Box(modifier = Modifier.background(White).size(1000.dp))
     LaunchedEffect(Unit) { Log.d("plantList", plantList.toString()) }
     Scaffold(
+
         modifier = Modifier.padding(innerPadding),
         floatingActionButton = {
             Button(
@@ -87,6 +89,7 @@ fun Calendar(innerPadding: PaddingValues, navController: NavController) {
                 Text("+")
             }
         }) { innerPadding ->
+        Box(modifier = Modifier.background(White).size(1000.dp))
         Column {
             SelectableWeekCalendar(
                 dayContent = { WeekCalendar(it) },
@@ -121,7 +124,8 @@ fun WeekCalendar(dayState: DayState<DynamicSelectionState>) {
         Text(
             text = dayState.date.dayOfMonth.toString(),
             modifier = Modifier.fillMaxWidth(),
-            textAlign = TextAlign.Center
+            textAlign = TextAlign.Center,
+            color=Color.Black,
         )
     }
 }

@@ -15,6 +15,7 @@ import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
+import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -97,33 +98,39 @@ fun PlantAdd(
     Column {
         Text(
             "Название растения:",
-            modifier = Modifier.padding(top = 120.dp, start = 20.dp),
+            modifier = Modifier.padding(top = 105.dp, start = 20.dp),
             fontSize = 15.sp
         )
-
         Text(
             plantName.value,
             fontSize = 15.sp,
-            modifier = Modifier.padding(top = 5.dp, start = 20.dp)
+            modifier = Modifier.padding(start = 20.dp)
         )
         TextField(
             value = plantName.value,
-            textStyle = TextStyle(fontSize = 20.sp),
+            textStyle = TextStyle(fontSize = 1.sp),
+            colors = TextFieldDefaults.colors(
+                unfocusedContainerColor = Color.White,
+                unfocusedTextColor = Color.White,
+                focusedContainerColor = Color.White,
+                focusedTextColor = Color.White,
+            ),
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
             onValueChange = { newText -> plantName.value = newText }
         )
 
+
         Text(
             "Выберите препарат:",
             modifier = Modifier
-                .padding(top = 20.dp, start = 20.dp)
+                .padding(top = 15.dp, start = 20.dp)
                 .clickable() { expanded1 = !expanded1 },
             fontSize = 15.sp
         )
         Text(
             selectedDrug.value?.name ?: "Не выбран",
             fontSize = 15.sp,
-            modifier = Modifier.padding(top = 5.dp, start = 20.dp)
+            modifier = Modifier.padding(start = 20.dp)
         )
         DrugDropdown(
             drugList,
@@ -133,14 +140,13 @@ fun PlantAdd(
             { drug -> selectedDrug.value = drug })
         Text(
             "Задача:",
-            modifier = Modifier.padding(top = 5.dp, start = 20.dp),
+            modifier = Modifier.padding(start = 20.dp),
             fontSize = 15.sp
         )
-
         Text(
             taskName.value,
             fontSize = 15.sp,
-            modifier = Modifier.padding(top = 5.dp, start = 20.dp)
+            modifier = Modifier.padding(start = 20.dp)
         )
         TextField(
             value = taskName.value,
@@ -148,19 +154,17 @@ fun PlantAdd(
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
             onValueChange = { newText -> taskName.value = newText }
         )
-
-
         Text(
             "Выберите сад:",
             modifier = Modifier
-                .padding(top = 20.dp, start = 20.dp)
+                .padding(top = 15.dp, start = 20.dp)
                 .clickable() { expanded2 = !expanded2 },
             fontSize = 15.sp
         )
         Text(
             selectedGarden.value?.name ?: "Не выбран",
             fontSize = 15.sp,
-            modifier = Modifier.padding(top = 5.dp, start = 20.dp)
+            modifier = Modifier.padding(start = 20.dp)
         )
         GardenDropdown(
             gardenList,
@@ -172,14 +176,14 @@ fun PlantAdd(
 
         Text(
             "Интервал полива:",
-            modifier = Modifier.padding(top = 5.dp, start = 20.dp),
+            modifier = Modifier.padding(start = 20.dp),
             fontSize = 15.sp
         )
 
         Text(
             wateringInterval.intValue.toString(),
             fontSize = 15.sp,
-            modifier = Modifier.padding(top = 5.dp, start = 20.dp)
+            modifier = Modifier.padding(start = 20.dp)
         )
         TextField(
             value = wateringInterval.intValue.toString(),
@@ -191,14 +195,14 @@ fun PlantAdd(
         )
         Text(
             "Фото:",
-            modifier = Modifier.padding(top = 20.dp, start = 20.dp),
+            modifier = Modifier.padding(top = 15.dp, start = 20.dp),
             fontSize = 15.sp
         )
 
         Text(
             plantPhoto.value,
             fontSize = 15.sp,
-            modifier = Modifier.padding(top = 5.dp, start = 20.dp)
+            modifier = Modifier.padding(start = 20.dp)
         )
         TextField(
             value = plantPhoto.value,
@@ -223,7 +227,7 @@ fun PlantAdd(
 
             },
             modifier = Modifier
-                .padding(start = 25.dp, top = 15.dp)
+                .padding(start = 25.dp, top = 5.dp)
                 .size(height = 70.dp, width = 365.dp)
                 .background(
                     White, shape = RoundedCornerShape(
