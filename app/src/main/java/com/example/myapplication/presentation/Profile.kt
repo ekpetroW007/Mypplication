@@ -64,7 +64,8 @@ fun Profile(innerPadding: PaddingValues) {
     val plantList by plantsViewmodel.plants.collectAsState()
     val taskList by tasksViewmodel.tasks.collectAsState()
     val gardenList by gardensViewmodel.gardens.collectAsState()
-    Column(modifier = Modifier.padding(innerPadding)) {
+    Box(modifier = Modifier.background(White).size(1000.dp))
+    Column(modifier = Modifier.padding(top = 100.dp, end = 17.dp)) {
         Text(
             "Статистика",
             fontSize = 25.sp,
@@ -108,6 +109,7 @@ fun Profile(innerPadding: PaddingValues) {
                         Text(
                             "Садов",
                             modifier = Modifier.fillMaxWidth(1f),
+                            color=Color.Black,
                             fontSize = 15.sp,
                             fontWeight = Medium,
                             textAlign = TextAlign.Center
@@ -150,6 +152,7 @@ fun Profile(innerPadding: PaddingValues) {
                         Text(
                             "Растений",
                             modifier = Modifier.fillMaxWidth(1f),
+                            color=Color.Black,
                             fontSize = 15.sp,
                             fontWeight = Medium,
                             textAlign = TextAlign.Center
@@ -192,6 +195,7 @@ fun Profile(innerPadding: PaddingValues) {
                         Text(
                             "Препаратов",
                             modifier = Modifier.fillMaxWidth(1f),
+                            color=Color.Black,
                             fontSize = 15.sp,
                             fontWeight = Medium,
                             textAlign = TextAlign.Center
@@ -204,13 +208,11 @@ fun Profile(innerPadding: PaddingValues) {
                 elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
                 colors = CardDefaults.cardColors(containerColor = White),
                 modifier = Modifier
-                    .size(height = 70.dp, width = 85.dp)
+                    .size(height = 70.dp, width = 100.dp)
                     .background(
                         White, shape = RoundedCornerShape(
                             topStart = 16.dp,
                             topEnd = 16.dp,
-                            bottomEnd = 0.dp,
-                            bottomStart = 0.dp
                         )
                     )
             ) {
@@ -234,6 +236,7 @@ fun Profile(innerPadding: PaddingValues) {
                         Text(
                             "Задач",
                             modifier = Modifier.fillMaxWidth(1f),
+                            color=Color.Black,
                             fontSize = 15.sp,
                             fontWeight = Medium,
                             textAlign = TextAlign.Center
