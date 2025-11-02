@@ -109,7 +109,7 @@ fun PlantAdd(
         TextField(
             value = plantName.value,
             textStyle = TextStyle(fontSize = 20.sp),
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Phone),
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
             onValueChange = { newText -> plantName.value = newText }
         )
 
@@ -145,7 +145,7 @@ fun PlantAdd(
         TextField(
             value = taskName.value,
             textStyle = TextStyle(fontSize = 20.sp),
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Phone),
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
             onValueChange = { newText -> taskName.value = newText }
         )
 
