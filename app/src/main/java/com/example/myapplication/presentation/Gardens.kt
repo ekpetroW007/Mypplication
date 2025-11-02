@@ -1,6 +1,10 @@
 package com.example.myapplication.presentation
 
 import android.annotation.SuppressLint
+import android.content.Context
+import android.content.Intent
+import android.net.Uri
+import android.widget.Toast
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -41,10 +45,12 @@ import androidx.compose.ui.text.font.FontWeight.Companion.Bold
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.core.content.FileProvider
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.example.myapplication.BookeeperApp
 import com.example.myapplication.R
+import com.example.myapplication.data.database.entity.PlantEntity
 import com.example.myapplication.presentation.navigation.AppDestinations
 import com.example.myapplication.viewmodel.GardensViewmodel
 import com.example.myapplication.viewmodel.GardensViewmodelFactory
@@ -52,6 +58,10 @@ import com.example.myapplication.viewmodel.PlantsViewmodel
 import com.example.myapplication.viewmodel.PlantsViewmodelFactory
 import com.example.myapplication.viewmodel.TasksViewmodel
 import com.example.myapplication.viewmodel.TasksViewmodelFactory
+import java.io.File
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
@@ -300,9 +310,8 @@ fun GardensCard(gardenName: String, gardenViewmodel: GardensViewmodel, id: Int) 
     }
 }
 
-private fun exportGardenToFile(context: Context, gardenName: String, plants: List<Plant>) {
+private fun exportGardenToFile(context: Context, gardenName: String, plants: List<PlantEntity>) {
     try {
-        // Создаем содержимое файла
         val content = buildString {
             appendLine("Сад: $gardenName")
             appendLine("Дата экспорта: ${getCurrentDateTime()}")
@@ -315,22 +324,14 @@ private fun exportGardenToFile(context: Context, gardenName: String, plants: Lis
             appendLine("=".repeat(50))
             appendLine("Всего растений: ${plants.size}")
         }
-
-        // Создаем файл во внешнем хранилище
         val fileName = "сад_${gardenName}_${getCurrentDateTimeForFileName()}.txt"
         val file = File(context.getExternalFilesDir(null), fileName)
-
-        // Записываем содержимое в файл
         file.writeText(content, Charsets.UTF_8)
-
-        // Создаем URI для доступа к файлу через FileProvider
         val uri: Uri = FileProvider.getUriForFile(
             context,
             "${context.packageName}.provider",
             file
         )
-
-        // Создаем Intent для отправки файла
         val shareIntent = Intent(Intent.ACTION_SEND).apply {
             type = "text/plain"
             putExtra(Intent.EXTRA_STREAM, uri)
@@ -338,18 +339,22 @@ private fun exportGardenToFile(context: Context, gardenName: String, plants: Lis
             putExtra(Intent.EXTRA_TEXT, "Файл экспорта сада \"$gardenName\"")
             addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
         }
-
-        // Запускаем диалог выбора приложения для отправки
         context.startActivity(Intent.createChooser(shareIntent, "Экспортировать сад"))
-
     } catch (e: Exception) {
         e.printStackTrace()
-        // Здесь можно показать Toast с сообщением об ошибке
         Toast.makeText(context, "Ошибка при экспорте: ${e.message}", Toast.LENGTH_LONG).show()
     }
 }
 
+private fun getCurrentDateTime(): String {
+    val formatter = SimpleDateFormat("dd.MM.yyyy HH:mm", Locale.getDefault())
+    return formatter.format(Date())
+}
 
+private fun getCurrentDateTimeForFileName(): String {
+    val formatter = SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault())
+    return formatter.format(Date())
+}
 
 
 @Composable
