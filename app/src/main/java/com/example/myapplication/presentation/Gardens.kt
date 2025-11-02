@@ -72,7 +72,7 @@ fun MyGardens(navController: NavController, innerPadding: PaddingValues) {
     val viewmodelGardenFactory = GardensViewmodelFactory(application.repository)
     val gardensViewmodel: GardensViewmodel = viewModel(factory = viewmodelGardenFactory)
     val gardensList by gardensViewmodel.gardens.collectAsState()
-
+    Box(modifier = Modifier.background(White).size(1000.dp))
 
     Scaffold(
         modifier = Modifier.padding(innerPadding),
@@ -88,9 +88,10 @@ fun MyGardens(navController: NavController, innerPadding: PaddingValues) {
             }
         }
     ) { innerPadding ->
+        Box(modifier = Modifier.background(White).size(1000.dp))
         Column(modifier = Modifier.padding(innerPadding)) {
 
-            LazyColumn(modifier = Modifier.padding(start = 25.dp, top = 10.dp)) {
+            LazyColumn(modifier = Modifier.padding(start = 9.dp, top = 5.dp)) {
                 items(gardensList) { garden ->
                     GardensCard(garden.name, gardensViewmodel, garden.id)
                 }
@@ -200,6 +201,7 @@ fun GardensCard(gardenName: String, gardenViewmodel: GardensViewmodel, id: Int) 
                             "Растений",
                             modifier = Modifier.fillMaxWidth(1f),
                             fontSize = 16.sp,
+                            color=Color.Black,
                             textAlign = TextAlign.Center
                         )
                     }
@@ -232,6 +234,7 @@ fun GardensCard(gardenName: String, gardenViewmodel: GardensViewmodel, id: Int) 
                             "Задач",
                             modifier = Modifier.fillMaxWidth(1f),
                             fontSize = 16.sp,
+                            color=Color.Black,
                             textAlign = TextAlign.Center
                         )
                     }
@@ -264,6 +267,7 @@ fun GardensCard(gardenName: String, gardenViewmodel: GardensViewmodel, id: Int) 
                             "Обработок",
                             modifier = Modifier.fillMaxWidth(1f),
                             fontSize = 16.sp,
+                            color=Color.Black,
                             textAlign = TextAlign.Center
                         )
                     }
@@ -281,6 +285,7 @@ fun GardensCard(gardenName: String, gardenViewmodel: GardensViewmodel, id: Int) 
             Text(
                 "Растения:",
                 modifier = Modifier.padding(top = 23.dp, start = 22.dp),
+                color=Color.Black,
                 fontSize = 22.sp,
             )
             LazyColumn(modifier = Modifier.padding(top = 5.dp)) {
@@ -296,7 +301,8 @@ fun GardensCard(gardenName: String, gardenViewmodel: GardensViewmodel, id: Int) 
         Column {
             Text(
                 "Задачи:",
-                modifier = Modifier.padding(top = 45.dp, start = 22.dp),
+                modifier = Modifier.padding(top = 70.dp, start = 22.dp),
+                color=Color.Black,
                 fontSize = 22.sp,
             )
             LazyColumn(modifier = Modifier.padding(top = 5.dp)) {
