@@ -34,7 +34,9 @@ class PlantsViewmodel(private val repository: BookeeperRepository) : ViewModel()
         wateringInterval: Int,
         plantPhoto: String,
         drugId: Int?,
-        gardenId: Int?
+        gardenId: Int?,
+        drugName: String,
+        gardenName: String
     ) {
         viewModelScope.launch {
             try {
@@ -44,7 +46,9 @@ class PlantsViewmodel(private val repository: BookeeperRepository) : ViewModel()
                     plantPhoto = plantPhoto,
                     taskName = taskName,
                     drugId = drugId,
-                    gardenId = gardenId
+                    gardenId = gardenId,
+                    drugName = drugName,
+                    gardenName =  gardenName
                 )
                 repository.insertPlant(newPlant)
             } catch (e: Exception) {

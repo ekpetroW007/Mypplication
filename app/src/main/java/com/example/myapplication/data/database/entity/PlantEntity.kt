@@ -50,5 +50,11 @@ data class PlantEntity(
     val drugId: Int?,
 
     @ColumnInfo(name = "garden_id", index = true)
-    val gardenId: Int?
+    val gardenId: Int?,
+
+    @ColumnInfo(name = "drugNameInPlant")
+    val drugName: String,
+
+    @ColumnInfo(name = "gardenNameInPlant")
+    val gardenName: String,
 )

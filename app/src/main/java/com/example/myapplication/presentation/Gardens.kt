@@ -91,14 +91,16 @@ fun MyGardens(navController: NavController, innerPadding: PaddingValues) {
 
 @Composable
 fun GardensCard(gardenName: String, gardenViewmodel: GardensViewmodel, id: Int) {
-    val application = LocalContext.current.applicationContext as BookeeperApp
-    val viewmodelTasksFactory = TasksViewmodelFactory(application.repository)
+    val application1 = LocalContext.current.applicationContext as BookeeperApp
+    val viewmodelTasksFactory = TasksViewmodelFactory(application1.repository)
     val tasksViewmodel: TasksViewmodel = viewModel(factory = viewmodelTasksFactory)
-    val viewmodelPlantsFactory = PlantsViewmodelFactory(application.repository)
+    val viewmodelPlantsFactory = PlantsViewmodelFactory(application1.repository)
     val plantsViewmodel: PlantsViewmodel = viewModel(factory = viewmodelPlantsFactory)
     val plantList by plantsViewmodel.plants.collectAsState()
     val taskList by tasksViewmodel.tasks.collectAsState()
-    val filteredPlantList = plantList.filter{it.gardenId == id}
+    val filteredPlantList = plantList.filter { it.gardenId == id }
+    val context = LocalContext.current
+    val application = context.applicationContext as BookeeperApp
     Card(
         elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
         colors = CardDefaults.cardColors(containerColor = White),
@@ -120,7 +122,13 @@ fun GardensCard(gardenName: String, gardenViewmodel: GardensViewmodel, id: Int) 
                         modifier = Modifier
                             .padding(start = 10.dp, top = 10.dp)
                             .size(15.dp, 20.dp)
-                            .clickable { } // TODO (ЭКСПОРТ САДА)
+                            .clickable {
+                                exportGardenToFile(
+                                    context = context,
+                                    gardenName = gardenName,
+                                    plants = filteredPlantList
+                                )
+                            } // TODO (ЭКСПОРТ САДА)
                     )
                     Image(
                         bitmap = ImageBitmap.imageResource(R.drawable.delete),
@@ -292,6 +300,54 @@ fun GardensCard(gardenName: String, gardenViewmodel: GardensViewmodel, id: Int) 
     }
 }
 
+private fun exportGardenToFile(context: Context, gardenName: String, plants: List<Plant>) {
+    try {
+        // Создаем содержимое файла
+        val content = buildString {
+            appendLine("Сад: $gardenName")
+            appendLine("Дата экспорта: ${getCurrentDateTime()}")
+            appendLine("=".repeat(50))
+
+            plants.forEach { plant ->
+                appendLine("${plant.plantName} - ${plant.drugName} - ${plant.taskName}")
+            }
+
+            appendLine("=".repeat(50))
+            appendLine("Всего растений: ${plants.size}")
+        }
+
+        // Создаем файл во внешнем хранилище
+        val fileName = "сад_${gardenName}_${getCurrentDateTimeForFileName()}.txt"
+        val file = File(context.getExternalFilesDir(null), fileName)
+
+        // Записываем содержимое в файл
+        file.writeText(content, Charsets.UTF_8)
+
+        // Создаем URI для доступа к файлу через FileProvider
+        val uri: Uri = FileProvider.getUriForFile(
+            context,
+            "${context.packageName}.provider",
+            file
+        )
+
+        // Создаем Intent для отправки файла
+        val shareIntent = Intent(Intent.ACTION_SEND).apply {
+            type = "text/plain"
+            putExtra(Intent.EXTRA_STREAM, uri)
+            putExtra(Intent.EXTRA_SUBJECT, "Экспорт сада: $gardenName")
+            putExtra(Intent.EXTRA_TEXT, "Файл экспорта сада \"$gardenName\"")
+            addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+        }
+
+        // Запускаем диалог выбора приложения для отправки
+        context.startActivity(Intent.createChooser(shareIntent, "Экспортировать сад"))
+
+    } catch (e: Exception) {
+        e.printStackTrace()
+        // Здесь можно показать Toast с сообщением об ошибке
+        Toast.makeText(context, "Ошибка при экспорте: ${e.message}", Toast.LENGTH_LONG).show()
+    }
+}
 
 
 

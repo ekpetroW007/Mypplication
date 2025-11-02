@@ -214,7 +214,9 @@ fun PlantAdd(
                     wateringInterval.intValue,
                     plantPhoto.value,
                     drugId.value,
-                    gardenId.value
+                    gardenId.value,
+                    selectedDrug.value?.name ?: "Не выбран",
+                    selectedGarden.value?.name ?: "Не выбран"
                 )
                 tasksViewmodel.addTask(taskName.value)
                 navController.popBackStack()

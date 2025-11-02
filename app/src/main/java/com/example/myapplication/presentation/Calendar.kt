@@ -99,13 +99,15 @@ fun Calendar(innerPadding: PaddingValues, navController: NavController) {
                         plant.taskName,
                         plant.wateringInterval,
                         plant.plantPhoto,
-                        plant.drugId,
-                        plant.gardenId,
+//                        plant.drugId,
+//                        plant.gardenId,
                         plantsViewmodel,
                         drugsViewmodel,
                         tasksViewmodel,
                         gardensViewmodel,
-                        plant.id
+                        plant.id,
+                        plant.drugName,
+                        plant.gardenName
                     )
                 }
             }
@@ -130,13 +132,13 @@ fun DayCard(
     taskName: String,
     wateringInterval: Int,
     plantPhoto: String,
-    drugId: Int?,
-    gardenId: Int?,
     plantsViewmodel: PlantsViewmodel,
     drugsViewmodel: DrugsViewmodel,
     tasksViewmodel: TasksViewmodel,
     gardensViewmodel: GardensViewmodel,
-    id: Int
+    id: Int,
+    drugName: String,
+    gardenName: String
 ) {
     val application = LocalContext.current.applicationContext as BookeeperApp
     val viewmodelTasksFactory = TasksViewmodelFactory(application.repository)
@@ -173,7 +175,7 @@ fun DayCard(
                         .size(width = 20.dp, height = 20.dp),
                 ) {
                     Text(
-                        gardenId.toString(),
+                        gardenName,
                         modifier = Modifier
                             .fillMaxSize()
                             .wrapContentSize(Alignment.Center),
@@ -184,7 +186,7 @@ fun DayCard(
 
             }
             Text(
-                drugId.toString(),
+                drugName,
                 fontSize = 17.sp,
                 modifier = Modifier.padding(top = 3.dp),
                 color = Color(0xFF000000),
