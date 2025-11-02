@@ -9,6 +9,7 @@ import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import java.time.LocalDate
+import java.util.Date
 
 class PlantsViewmodel(private val repository: BookeeperRepository) : ViewModel() {
     val plants = repository.allPlants
@@ -31,8 +32,8 @@ class PlantsViewmodel(private val repository: BookeeperRepository) : ViewModel()
     fun addPlant(
         plantName: String,
         taskName: String,
-        period: Int,
-        firstDayOfPeriod: LocalDate?,
+        wateringInterval: Int,
+        creationDate: Date,
         plantPhoto: String,
         drugId: Int?,
         gardenId: Int?
@@ -41,8 +42,8 @@ class PlantsViewmodel(private val repository: BookeeperRepository) : ViewModel()
             try {
                 val newPlant = PlantEntity(
                     plantName = plantName,
-                    period = period,
-                    firstDayOfPeriod = firstDayOfPeriod,
+                    wateringInterval = wateringInterval,
+                    creationDate = creationDate,
                     plantPhoto = plantPhoto,
                     taskName = taskName,
                     drugId = drugId,

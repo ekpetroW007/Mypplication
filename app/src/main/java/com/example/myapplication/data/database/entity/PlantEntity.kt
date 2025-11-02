@@ -5,10 +5,10 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
-import java.time.LocalDate
+import java.util.Date
 
 @Entity(
-    tableName = "plant",
+    tableName = "plants",
     foreignKeys = [
         ForeignKey(
             entity = DrugEntity::class,
@@ -34,11 +34,14 @@ data class PlantEntity(
     @ColumnInfo(name = "task")
     val taskName: String,
 
-    @ColumnInfo(name = "period")
-    val period: Int,
+    @ColumnInfo(name = "wateringInterval")
+    val wateringInterval: Int,
 
-    @ColumnInfo(name = "firstDayOfPeriod")
-    val firstDayOfPeriod: LocalDate?,
+    @ColumnInfo(name = "lastWateringDate")
+    val lastWateringDate: Date? = null,
+
+    @ColumnInfo(name = "creationDate")
+    val creationDate: Date,
 
     @ColumnInfo(name = "photo_path")
     val plantPhoto: String,

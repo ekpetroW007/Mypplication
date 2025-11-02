@@ -17,7 +17,7 @@ import com.example.myapplication.data.database.entity.*
     version = 1,
     exportSchema = false // Для простоты отключаем экспорт схемы
 )
-abstract class AppDatabase : RoomDatabase() {
+abstract class  AppDatabase : RoomDatabase() {
 
     abstract fun drugDao(): DrugDAO
     abstract fun gardenDao(): GardenDAO
@@ -29,7 +29,7 @@ abstract class AppDatabase : RoomDatabase() {
         @Volatile
         private var INSTANCE: AppDatabase? = null
 
-        fun getDatabase(context: Context): AppDatabase {
+        fun getInstance(context: Context): AppDatabase {
             return INSTANCE ?: synchronized(this) {
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
@@ -42,5 +42,6 @@ abstract class AppDatabase : RoomDatabase() {
                 instance
             }
         }
+
     }
 }

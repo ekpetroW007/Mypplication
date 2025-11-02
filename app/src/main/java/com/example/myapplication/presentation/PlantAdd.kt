@@ -72,7 +72,7 @@ fun PlantAdd(
     val drugId = remember { mutableStateOf<Int?>(null) }
     var expanded1 by remember { mutableStateOf(false) }
     var expanded2 by remember { mutableStateOf(false) }
-//    val firstDayOfPeriod = LocalDate.now()
+    val firstDayOfPeriod = LocalDate.now()
     Box(
         modifier = Modifier
             .size(600.dp, 100.dp)

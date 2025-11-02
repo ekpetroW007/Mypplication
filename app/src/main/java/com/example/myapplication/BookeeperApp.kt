@@ -6,7 +6,7 @@ import com.example.myapplication.data.database.AppDatabase
 import com.example.myapplication.data.repository.BookeeperRepository
 
 class BookeeperApp : Application() {
-    private val database by lazy { AppDatabase.getDatabase(this) }
+    private val database by lazy { AppDatabase.getInstance(this) }
 
     // Создаем экземпляр репозитория, передавая ему все необходимые DAO из нашей базы данных
     val repository by lazy {
