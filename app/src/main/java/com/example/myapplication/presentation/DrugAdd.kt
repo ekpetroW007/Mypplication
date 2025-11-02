@@ -66,7 +66,7 @@ fun DrugAdd(navController: NavController) {
             )
             Text(
                 "Добавление препарата",
-                modifier = Modifier.padding(start = 20.dp, top = 33.dp),
+                modifier = Modifier.padding(start = 40.dp, top = 25.dp),
                 fontSize = 28.sp,
                 fontWeight = Bold,
                 color = White
@@ -78,7 +78,7 @@ fun DrugAdd(navController: NavController) {
             elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
             colors = CardDefaults.cardColors(containerColor = White),
             modifier = Modifier
-                .padding(start = 25.dp, top = 140.dp)
+                .padding(start = 10.dp, top = 140.dp)
                 .size(height = 100.dp, width = 365.dp)
                 .background(
                     White, shape = RoundedCornerShape(
@@ -106,7 +106,7 @@ fun DrugAdd(navController: NavController) {
             elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
             colors = CardDefaults.cardColors(containerColor = White),
             modifier = Modifier
-                .padding(start = 25.dp, top = 20.dp)
+                .padding(start = 10.dp, top = 20.dp)
                 .size(height = 100.dp, width = 365.dp)
                 .background(
                     White, shape = RoundedCornerShape(
@@ -134,7 +134,7 @@ fun DrugAdd(navController: NavController) {
             elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
             colors = CardDefaults.cardColors(containerColor = White),
             modifier = Modifier
-                .padding(start = 25.dp, top = 20.dp)
+                .padding(start = 10.dp, top = 20.dp)
                 .size(height = 100.dp, width = 365.dp)
                 .background(
                     White, shape = RoundedCornerShape(
@@ -165,7 +165,7 @@ fun DrugAdd(navController: NavController) {
 
             },
             modifier = Modifier
-                .padding(start = 25.dp, top = 40.dp)
+                .padding(start = 10.dp, top = 40.dp)
                 .size(height = 70.dp, width = 365.dp)
                 .background(
                     White, shape = RoundedCornerShape(
