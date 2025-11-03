@@ -27,7 +27,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -43,6 +45,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.example.myapplication.BookeeperApp
 import com.example.myapplication.R
+import com.example.myapplication.data.database.entity.PlantEntity
 import com.example.myapplication.presentation.navigation.AppDestinations
 import com.example.myapplication.viewmodel.DrugsViewmodel
 import com.example.myapplication.viewmodel.DrugsViewmodelFactory
@@ -81,13 +84,25 @@ fun Calendar(innerPadding: PaddingValues, navController: NavController) {
     val viewmodelPlantsFactory = PlantsViewmodelFactory(application.repository)
     val plantsViewmodel: PlantsViewmodel = viewModel(factory = viewmodelPlantsFactory)
     val plantList by plantsViewmodel.plants.collectAsState()
-    val filteredPlantList = plantList.filter { plant ->
-        val cD: LocalDate = LocalDate.parse(plant.creationDate)
-        val weekDates = weekState.weekState.currentWeek.days
-        cD in weekDates
+
+    var filteredPlantList by remember { mutableStateOf<List<PlantEntity>>(emptyList()) }
+
+
+    LaunchedEffect(key1 = weekState.weekState.currentWeek, key2 = plantList) {
+        filteredPlantList = plantList.filter { plant ->
+            val cD: LocalDate = LocalDate.parse(plant.creationDate)
+            var nextDayOfWatering = cD.plusDays(plant.wateringInterval.toLong())
+            var isInWeek = false
+            val weekDates = weekState.weekState.currentWeek.days
+            while (nextDayOfWatering.dayOfYear < 365) {
+                nextDayOfWatering = nextDayOfWatering.plusDays(plant.wateringInterval.toLong())
+                isInWeek = nextDayOfWatering in weekDates
+            }
+            isInWeek
+
+        }
 
     }
-
     Box(
         modifier = Modifier
             .background(White)
@@ -120,7 +135,7 @@ fun Calendar(innerPadding: PaddingValues, navController: NavController) {
                 calendarState = weekState
             )
             LazyColumn(modifier = Modifier.padding(start = 30.dp, top = 30.dp)) {
-                items(plantList) { plant ->
+                items(filteredPlantList) { plant ->
                     DayCard(
                         plant.plantName,
                         plant.taskName,
