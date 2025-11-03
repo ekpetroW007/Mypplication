@@ -16,7 +16,6 @@ class UserViewModel(private val preferencesManager: PreferencesManager) : ViewMo
     val userLogin: StateFlow<String> = _userLogin
 
     init {
-        // Загружаем данные при инициализации
         viewModelScope.launch {
             preferencesManager.isRegistered.collect { registered ->
                 _isRegistered.value = registered

@@ -1,6 +1,6 @@
 package com.example.myapplication.presentation
 
-// RegistationProcess.kt
+
 import android.content.Context
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
@@ -21,27 +21,23 @@ class PreferencesManager(context: Context) {
         val USER_LOGIN = stringPreferencesKey("user_login")
     }
 
-    // Сохраняем статус регистрации
     suspend fun setRegistered(isRegistered: Boolean) {
         dataStore.edit { preferences ->
             preferences[IS_REGISTERED] = isRegistered
         }
     }
 
-    // Сохраняем логин пользователя
     suspend fun setUserLogin(login: String) {
         dataStore.edit { preferences ->
             preferences[USER_LOGIN] = login
         }
     }
 
-    // Получаем статус регистрации
     val isRegistered: Flow<Boolean> = dataStore.data
         .map { preferences ->
             preferences[IS_REGISTERED] ?: false
         }
 
-    // Получаем логин пользователя
     val userLogin: Flow<String> = dataStore.data
         .map { preferences ->
             preferences[USER_LOGIN] ?: "Гость"

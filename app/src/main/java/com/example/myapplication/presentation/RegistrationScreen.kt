@@ -36,7 +36,56 @@ import com.example.myapplication.viewmodel.UserViewModel
 @Composable
 fun Registration(navController: NavController, userViewModel: UserViewModel) {
     val loginState = remember { mutableStateOf("") }
-
+//        Image(
+//            bitmap = ImageBitmap.imageResource(R.drawable.green drug),
+//            contentDescription = "Препарат",
+//            modifier = Modifier
+//                .size(55.dp)
+//                .align(Alignment.TopStart)
+//                .padding(2.dp)
+//        )
+//
+//        Image(
+//            bitmap = ImageBitmap.imageResource(R.drawable.tree),
+//            contentDescription = "Дерево",
+//            modifier = Modifier
+//                .size(70.dp)
+//                .align(Alignment.TopStart)
+//                .padding(start = 50.dp, top = 30.dp)
+//        )
+//        Image(
+//            bitmap = ImageBitmap.imageResource(R.drawable.pot),
+//            contentDescription = "Горшок",
+//            modifier = Modifier
+//                .size(85.dp)
+//                .align(Alignment.TopStart)
+//                .padding(start = 30.dp, top = 10.dp)
+//        )
+//        Image(
+//            bitmap = ImageBitmap.imageResource(R.drawable.greenmailed),
+//            contentDescription = "Листок",
+//            modifier = Modifier
+//                .size(80.dp)
+//                .align(Alignment.TopStart)
+//                .padding(start = 2.dp, top = 100.dp)
+//        )
+//        Image(
+//            bitmap = ImageBitmap.imageResource(R.drawable.replant),
+//            contentDescription = "Росток",
+//            modifier = Modifier
+//                .size(75.dp)
+//                .align(Alignment.TopStart)
+//                .padding(start = 110.dp, top = 10.dp)
+//        )
+//        Image(
+//            bitmap = ImageBitmap.imageResource(R.drawable.drop),
+//            contentDescription = "Капля",
+//            modifier = Modifier
+//                .size(75.dp)
+//                .align(Alignment.TopStart)
+//                .padding(start = 45.dp)
+//        )
+//    }
     Box(
         modifier = Modifier
             .size(600.dp, 1000.dp)
@@ -95,7 +144,6 @@ fun Registration(navController: NavController, userViewModel: UserViewModel) {
                         if (loginState.value.isNotBlank()) {
                             userViewModel.registerUser(loginState.value)
                             navController.navigate(AppDestinations.MAINSCREEN_ROUTE) {
-                                // Очищаем back stack чтобы нельзя было вернуться на экран регистрации
                                 popUpTo(AppDestinations.REGISTRATION_ROUTE) { inclusive = true }
                             }
                         }
@@ -125,53 +173,3 @@ fun Registration(navController: NavController, userViewModel: UserViewModel) {
 
 
 
-//        Image(
-//            bitmap = ImageBitmap.imageResource(R.drawable.greendrug),
-//            contentDescription = "Препарат",
-//            modifier = Modifier
-//                .size(55.dp)
-//                .align(Alignment.TopStart)
-//                .padding(2.dp)
-//        )
-//
-//        Image(
-//            bitmap = ImageBitmap.imageResource(R.drawable.tree),
-//            contentDescription = "Дерево",
-//            modifier = Modifier
-//                .size(70.dp)
-//                .align(Alignment.TopStart)
-//                .padding(start = 50.dp, top = 30.dp)
-//        )
-//        Image(
-//            bitmap = ImageBitmap.imageResource(R.drawable.pot),
-//            contentDescription = "Горшок",
-//            modifier = Modifier
-//                .size(85.dp)
-//                .align(Alignment.TopStart)
-//                .padding(start = 30.dp, top = 10.dp)
-//        )
-//        Image(
-//            bitmap = ImageBitmap.imageResource(R.drawable.greenmygarden),
-//            contentDescription = "Листок",
-//            modifier = Modifier
-//                .size(80.dp)
-//                .align(Alignment.TopStart)
-//                .padding(start = 2.dp, top = 100.dp)
-//        )
-//        Image(
-//            bitmap = ImageBitmap.imageResource(R.drawable.regplant),
-//            contentDescription = "Росток",
-//            modifier = Modifier
-//                .size(75.dp)
-//                .align(Alignment.TopStart)
-//                .padding(start = 110.dp, top = 10.dp)
-//        )
-//        Image(
-//            bitmap = ImageBitmap.imageResource(R.drawable.drop),
-//            contentDescription = "Капля",
-//            modifier = Modifier
-//                .size(75.dp)
-//                .align(Alignment.TopStart)
-//                .padding(start = 45.dp)
-//        )
-//    }

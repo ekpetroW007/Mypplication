@@ -121,7 +121,7 @@ fun PlantAdd(
             "Выберите препарат:",
             modifier = Modifier
                 .padding(top = 15.dp, start = 20.dp)
-                .clickable() { expanded1 = !expanded1 },
+                .clickable { expanded1 = !expanded1 },
             fontSize = 15.sp
         )
         Text(
@@ -161,7 +161,7 @@ fun PlantAdd(
             "Выберите сад:",
             modifier = Modifier
                 .padding(top = 15.dp, start = 20.dp)
-                .clickable() { expanded2 = !expanded2 },
+                .clickable { expanded2 = !expanded2 },
             fontSize = 15.sp
         )
         Text(

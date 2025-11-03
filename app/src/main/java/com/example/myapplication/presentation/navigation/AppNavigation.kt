@@ -3,7 +3,6 @@ package com.example.myapplication.presentation.navigation
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.remember
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -19,10 +18,8 @@ import com.example.myapplication.viewmodel.UserViewModel
 fun AppNavigation(userViewModel: UserViewModel) {
     val navController = rememberNavController()
 
-    // Используем collectAsState() для StateFlow вместо observeAsState() для LiveData
     val isRegistered by userViewModel.isRegistered.collectAsState()
 
-    // Определяем стартовый экран в зависимости от статуса регистрации
     val startDestination = if (isRegistered) {
         AppDestinations.MAINSCREEN_ROUTE
     } else {

@@ -1,7 +1,6 @@
 package com.example.myapplication.presentation
 
 import androidx.compose.material3.Button
-import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -39,7 +38,6 @@ import com.example.myapplication.R
 import com.example.myapplication.presentation.navigation.AppDestinations
 import com.example.myapplication.viewmodel.DrugsViewmodel
 import com.example.myapplication.viewmodel.DrugsViewmodelFactory
-import com.example.myapplication.viewmodel.GardensViewmodel
 
 @Composable
 fun Drugs(

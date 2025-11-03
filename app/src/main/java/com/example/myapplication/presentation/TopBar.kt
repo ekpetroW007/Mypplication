@@ -21,7 +21,6 @@ import androidx.compose.ui.text.font.FontWeight.Companion.Bold
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.myapplication.R
-import com.example.myapplication.viewmodel.UserViewModel
 
 @Composable
 fun TopBar(topBarText: String, userLogin: String) {
@@ -60,7 +59,7 @@ fun TopBar(topBarText: String, userLogin: String) {
                 when (topBarText) {
                     "Профиль" -> {
                         Text(
-                            userLogin, // Используем переданный логин
+                            userLogin,
                             fontSize = 20.sp,
                             modifier = Modifier.padding(start = 22.dp),
                             color = White

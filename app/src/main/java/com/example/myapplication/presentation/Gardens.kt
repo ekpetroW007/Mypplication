@@ -111,7 +111,6 @@ fun GardensCard(gardenName: String, gardenViewmodel: GardensViewmodel, id: Int) 
     val taskList by tasksViewmodel.tasks.collectAsState()
     val filteredPlantList = plantList.filter { it.gardenId == id }
     val context = LocalContext.current
-    val application = context.applicationContext as BookeeperApp
     Card(
         elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
         colors = CardDefaults.cardColors(containerColor = White),
@@ -139,7 +138,7 @@ fun GardensCard(gardenName: String, gardenViewmodel: GardensViewmodel, id: Int) 
                                     gardenName = gardenName,
                                     plants = filteredPlantList
                                 )
-                            } // TODO (ЭКСПОРТ САДА)
+                            }
                     )
                     Image(
                         bitmap = ImageBitmap.imageResource(R.drawable.delete),

@@ -1,12 +1,6 @@
 package com.example.myapplication.presentation.navigation
 
-
-/**
- * Объект для хранения всех маршрутов навигации в приложении.
- */
 object AppDestinations {
-    // Маршрут для главного экрана
-
     const val REGISTRATION_ROUTE = "registration"
     const val MAINSCREEN_ROUTE = "mainScreen"
 

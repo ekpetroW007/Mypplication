@@ -17,19 +17,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Color.Companion.White
 import androidx.compose.ui.graphics.ImageBitmap
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.font.FontWeight.Companion.Bold
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
-import com.example.myapplication.BookeeperApp
 import com.example.myapplication.R
-import com.example.myapplication.viewmodel.DrugsViewmodel
-import com.example.myapplication.viewmodel.DrugsViewmodelFactory
+
 
 @Composable
 fun DrugInfo(
@@ -38,9 +34,8 @@ fun DrugInfo(
     purpose: String?,
     consumptionRate: String?
 ) {
-    val application = LocalContext.current.applicationContext as BookeeperApp
-    val viewmodelFactory = DrugsViewmodelFactory(application.repository)
-    val drugsViewmodel: DrugsViewmodel = viewModel(factory = viewmodelFactory)
+
+
     Box(
         modifier = Modifier
             .size(600.dp, 100.dp)
@@ -123,7 +118,7 @@ fun DrugInfo(
                     fontStyle = FontStyle.Italic,
                     modifier = Modifier
                         .padding(start = 18.dp)
-                ) // TODO (образец)
+                )
             }
         }
         Card(

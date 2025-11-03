@@ -15,9 +15,9 @@ import com.example.myapplication.data.database.entity.*
         TaskEntity::class
     ],
     version = 1,
-    exportSchema = false // Для простоты отключаем экспорт схемы
+    exportSchema = false
 )
-abstract class  AppDatabase : RoomDatabase() {
+abstract class AppDatabase : RoomDatabase() {
 
     abstract fun drugDao(): DrugDAO
     abstract fun gardenDao(): GardenDAO
@@ -25,7 +25,6 @@ abstract class  AppDatabase : RoomDatabase() {
     abstract fun taskDao(): TaskDAO
 
     companion object {
-        // @Volatile гарантирует, что значение INSTANCE всегда будет актуальным
         @Volatile
         private var INSTANCE: AppDatabase? = null
 
@@ -34,9 +33,8 @@ abstract class  AppDatabase : RoomDatabase() {
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
                     AppDatabase::class.java,
-                    "bookeper_database" // Имя файла бд
+                    "bookeper_database"
                 )
-                    .fallbackToDestructiveMigration() // При обновлении версии бд, старые данные будут удалены
                     .build()
                 INSTANCE = instance
                 instance
