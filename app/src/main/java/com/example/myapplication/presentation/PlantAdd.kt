@@ -219,7 +219,7 @@ fun PlantAdd(
 
             },
             modifier = Modifier
-                .padding(start = 25.dp, top = 5.dp)
+                .padding(start = 10.dp, top = 15.dp)
                 .size(height = 70.dp, width = 365.dp)
                 .background(
                     White, shape = RoundedCornerShape(

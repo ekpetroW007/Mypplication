@@ -74,7 +74,7 @@ fun DrugInfo(
             elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
             colors = CardDefaults.cardColors(containerColor = White),
             modifier = Modifier
-                .padding(start = 25.dp, top = 140.dp)
+                .padding(start = 10.dp, top = 140.dp)
                 .size(height = 100.dp, width = 365.dp)
                 .background(
                     White, shape = RoundedCornerShape(
@@ -102,7 +102,7 @@ fun DrugInfo(
             elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
             colors = CardDefaults.cardColors(containerColor = White),
             modifier = Modifier
-                .padding(start = 25.dp, top = 20.dp)
+                .padding(start = 10.dp, top = 20.dp)
                 .size(height = 100.dp, width = 365.dp)
                 .background(
                     White, shape = RoundedCornerShape(
@@ -130,7 +130,7 @@ fun DrugInfo(
             elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
             colors = CardDefaults.cardColors(containerColor = White),
             modifier = Modifier
-                .padding(start = 25.dp, top = 20.dp)
+                .padding(start = 10.dp, top = 20.dp)
                 .size(height = 100.dp, width = 365.dp)
                 .background(
                     White, shape = RoundedCornerShape(
