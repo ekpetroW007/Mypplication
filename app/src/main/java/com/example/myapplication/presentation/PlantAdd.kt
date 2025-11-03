@@ -20,6 +20,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.mutableLongStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -47,7 +48,7 @@ import com.example.myapplication.viewmodel.PlantsViewmodel
 import com.example.myapplication.viewmodel.PlantsViewmodelFactory
 import com.example.myapplication.viewmodel.TasksViewmodel
 import com.example.myapplication.viewmodel.TasksViewmodelFactory
-import java.util.Date
+import java.time.LocalDate
 
 @Composable
 fun PlantAdd(
@@ -70,7 +71,7 @@ fun PlantAdd(
     val gardenId = remember { mutableStateOf<Int?>(null) }
     val gardenName = remember { mutableStateOf<String?>(null) }
     val wateringInterval = remember { mutableIntStateOf(0) }
-    val creationDate = remember { mutableStateOf(Date()) }
+    val creationDate = remember { mutableLongStateOf(0L) }
     val drugId = remember { mutableStateOf<Int?>(null) }
     val selectedDrug = remember { mutableStateOf<DrugEntity?>(null) }
     val selectedGarden = remember { mutableStateOf<GardenEntity?>(null) }
@@ -216,6 +217,7 @@ fun PlantAdd(
                     plantName.value,
                     taskName.value,
                     wateringInterval.intValue,
+                    creationDate = LocalDate.now(). ,
                     plantPhoto.value,
                     drugId.value,
                     gardenId.value,

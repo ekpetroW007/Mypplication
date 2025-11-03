@@ -37,11 +37,8 @@ data class PlantEntity(
     @ColumnInfo(name = "wateringInterval")
     val wateringInterval: Int,
 
-//    @ColumnInfo(name = "lastWateringDate")
-//    val lastWateringDate: Date? = null,
-//
-//    @ColumnInfo(name = "creationDate")
-//    val creationDate: Date? = null,
+    @ColumnInfo(name = "creationDate")
+    val creationDate: Long,
 
     @ColumnInfo(name = "photo_path")
     val plantPhoto: String,
