@@ -20,7 +20,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
-import androidx.compose.runtime.mutableLongStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -69,9 +68,7 @@ fun PlantAdd(
     val plantPhoto = remember { mutableStateOf("") }
     val taskName = remember { mutableStateOf("") }
     val gardenId = remember { mutableStateOf<Int?>(null) }
-    val gardenName = remember { mutableStateOf<String?>(null) }
     val wateringInterval = remember { mutableIntStateOf(0) }
-    val creationDate = remember { mutableLongStateOf(0L) }
     val drugId = remember { mutableStateOf<Int?>(null) }
     val selectedDrug = remember { mutableStateOf<DrugEntity?>(null) }
     val selectedGarden = remember { mutableStateOf<GardenEntity?>(null) }
@@ -217,7 +214,7 @@ fun PlantAdd(
                     plantName.value,
                     taskName.value,
                     wateringInterval.intValue,
-                    creationDate = LocalDate.now(). ,
+                    creationDate = LocalDate.now().toString() ,
                     plantPhoto.value,
                     drugId.value,
                     gardenId.value,

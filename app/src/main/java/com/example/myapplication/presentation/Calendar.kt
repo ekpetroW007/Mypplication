@@ -27,6 +27,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -52,14 +53,21 @@ import com.example.myapplication.viewmodel.PlantsViewmodelFactory
 import com.example.myapplication.viewmodel.TasksViewmodel
 import com.example.myapplication.viewmodel.TasksViewmodelFactory
 import io.github.boguszpawlowski.composecalendar.SelectableWeekCalendar
+import io.github.boguszpawlowski.composecalendar.WeekCalendarState
 import io.github.boguszpawlowski.composecalendar.day.DayState
+import io.github.boguszpawlowski.composecalendar.rememberSelectableWeekCalendarState
+import io.github.boguszpawlowski.composecalendar.rememberWeekCalendarState
 import io.github.boguszpawlowski.composecalendar.selection.DynamicSelectionState
 import java.time.DayOfWeek
+import java.time.LocalDate
 import java.util.Date
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun Calendar(innerPadding: PaddingValues, navController: NavController) {
+    val weekState: WeekCalendarState<DynamicSelectionState> = rememberSelectableWeekCalendarState()
+    weekState.weekState.currentWeek
+
     val application = LocalContext.current.applicationContext as BookeeperApp
     val viewmodelGardenFactory = GardensViewmodelFactory(application.repository)
     val gardensViewmodel: GardensViewmodel = viewModel(factory = viewmodelGardenFactory)
@@ -73,9 +81,18 @@ fun Calendar(innerPadding: PaddingValues, navController: NavController) {
     val viewmodelPlantsFactory = PlantsViewmodelFactory(application.repository)
     val plantsViewmodel: PlantsViewmodel = viewModel(factory = viewmodelPlantsFactory)
     val plantList by plantsViewmodel.plants.collectAsState()
-    Box(modifier = Modifier
-        .background(White)
-        .size(1000.dp))
+    val filteredPlantList = plantList.filter { plant ->
+        val cD: LocalDate = LocalDate.parse(plant.creationDate)
+        val weekDates = weekState.weekState.currentWeek.days
+        cD in weekDates
+
+    }
+
+    Box(
+        modifier = Modifier
+            .background(White)
+            .size(1000.dp)
+    )
     LaunchedEffect(Unit) { Log.d("plantList", plantList.toString()) }
     Scaffold(
 
@@ -91,13 +108,16 @@ fun Calendar(innerPadding: PaddingValues, navController: NavController) {
                 Text("+")
             }
         }) { innerPadding ->
-        Box(modifier = Modifier
-            .background(White)
-            .size(1000.dp))
+        Box(
+            modifier = Modifier
+                .background(White)
+                .size(1000.dp)
+        )
         Column {
             SelectableWeekCalendar(
                 dayContent = { WeekCalendar(it) },
                 firstDayOfWeek = DayOfWeek.MONDAY,
+                calendarState = weekState
             )
             LazyColumn(modifier = Modifier.padding(start = 30.dp, top = 30.dp)) {
                 items(plantList) { plant ->

@@ -32,7 +32,7 @@ class PlantsViewmodel(private val repository: BookeeperRepository) : ViewModel()
         plantName: String,
         taskName: String,
         wateringInterval: Int,
-        creationDate: Long,
+        creationDate: String,
         plantPhoto: String,
         drugId: Int?,
         gardenId: Int?,
