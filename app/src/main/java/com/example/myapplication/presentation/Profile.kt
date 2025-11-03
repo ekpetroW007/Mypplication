@@ -71,7 +71,7 @@ fun Profile() {
             modifier = Modifier.padding(vertical = 12.dp, horizontal = 20.dp)
         )
 
-        Row(modifier = Modifier.padding(vertical = 12.dp, horizontal = 20.dp)) {
+        Row(modifier = Modifier.padding(top = 12.dp, start = 12.dp)) {
             Card(
                 elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
                 colors = CardDefaults.cardColors(containerColor = White),

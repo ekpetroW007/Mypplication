@@ -89,7 +89,7 @@ fun GardenAdd(navController: NavController) {
                 Text(
                     "Название сада",
                     modifier = Modifier
-                        .padding(start = 10.dp, top = 22.dp), fontSize = 22.sp
+                        .padding(start = 5.dp, top = 22.dp), fontSize = 22.sp
                 )
 
                 Text(name.value, fontSize = 20.sp)
