@@ -183,31 +183,30 @@ fun DayCard(
                 Text(
                     plantName,
                     fontSize = 25.sp,
-                    modifier = Modifier.padding(top = 3.dp),
                     color = Color(0xFF000000),
                     fontWeight = FontWeight.Medium
                 )
                 Text(
-                    "Название сада: $gardenName",
-                    fontSize = 22.sp,
+                    gardenName,
+                    fontSize = 17.sp,
                     color = Color(0xFF075E10),
                 )
                 Text(
                     "Препарат: $drugName",
-                    fontSize = 17.sp,
-                    modifier = Modifier.padding(top = 3.dp),
+                    fontSize = 16.sp,
+                    modifier = Modifier.padding(top = 1.dp),
                     color = Color(0xFF000000),
                 )
                 Text(
                     "Задача: $taskName",
                     fontSize = 15.sp,
-                    modifier = Modifier.padding(top = 3.dp),
+                    modifier = Modifier.padding(top = 1.dp),
                     color = Color(0xFF000000),
                 )
                 Text(
-                    "Интервал поливания: $wateringInterval",
-                    fontSize = 17.sp,
-                    modifier = Modifier.padding(top = 3.dp),
+                    "Интервал: $wateringInterval дней",
+                    fontSize = 14.sp,
+                    modifier = Modifier.padding(top = 1.dp),
                     color = Color(0xFF000000),
                 )
             }
@@ -215,7 +214,7 @@ fun DayCard(
                 bitmap = ImageBitmap.imageResource(R.drawable.delete),
                 contentDescription = "Удалить",
                 modifier = Modifier
-                    .padding(start = 90.dp, top = 10.dp)
+                    .padding(start = 60.dp, top = 10.dp)
                     .size(15.dp, 20.dp)
                     .clickable { plantsViewmodel.deletePlant(id); tasksViewmodel.deleteTask(id) }
             )
