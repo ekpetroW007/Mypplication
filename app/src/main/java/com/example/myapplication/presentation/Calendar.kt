@@ -200,64 +200,60 @@ fun DayCard(
                 )
             )
     ) {
-        Column(modifier = Modifier.padding(start = 100.dp, top = 20.dp)) {
-            Row {
-                Text(
-                    plantName,
-                    fontSize = 25.sp,
-                    modifier = Modifier.padding(top = 3.dp),
-                    color = Color(0xFF000000),
-                    fontWeight = FontWeight.Medium
-                )
-                Box(
-                    modifier = Modifier
-                        .background(
-                            color = Color(0xFFA2FFAC), shape = RoundedCornerShape(
-                                topStart = 16.dp,
-                            )
+        Column(modifier = Modifier.padding(start = 10.dp, top = 20.dp)) {
+            Text(
+                plantName,
+                fontSize = 25.sp,
+                modifier = Modifier.padding(top = 3.dp),
+                color = Color(0xFF000000),
+                fontWeight = FontWeight.Medium
+            )
+            Box(
+                modifier = Modifier
+                    .background(
+                        color = Color(0xFFA2FFAC), shape = RoundedCornerShape(
+                            topStart = 16.dp,
                         )
-                        .padding(start = 40.dp)
-                        .size(width = 20.dp, height = 20.dp),
-                ) {
-                    Text(
-                        gardenName,
-                        modifier = Modifier
-                            .fillMaxSize()
-                            .wrapContentSize(Alignment.Center),
-                        fontSize = 20.sp,
-                        color = Color(0xFF075E10),
                     )
-                }
-
-            }
-            Text(
-                drugName,
-                fontSize = 17.sp,
-                modifier = Modifier.padding(top = 3.dp),
-                color = Color(0xFF000000),
-            )
-            Text(
-                taskName,
-                fontSize = 17.sp,
-                modifier = Modifier.padding(top = 3.dp),
-                color = Color(0xFF000000),
-            )
-            Row {
+                    .padding(start = 40.dp)
+                    .size(width = 20.dp, height = 20.dp),
+            ) {
                 Text(
-                    wateringInterval.toString(),
-                    fontSize = 17.sp,
-                    modifier = Modifier.padding(top = 3.dp),
-                    color = Color(0xFF000000),
-                )
-                Image(
-                    bitmap = ImageBitmap.imageResource(R.drawable.delete),
-                    contentDescription = "Удалить",
+                    "Название сада: $gardenName",
                     modifier = Modifier
-                        .padding(start = 100.dp)
-                        .size(15.dp, 20.dp)
-                        .clickable { plantsViewmodel.deletePlant(id); tasksViewmodel.deleteTask(id) }
+                        .fillMaxSize()
+                        .wrapContentSize(Alignment.Center),
+                    fontSize = 22.sp,
+                    color = Color(0xFF075E10),
                 )
             }
+            Text(
+                "Препарат: $drugName",
+                fontSize = 17.sp,
+                modifier = Modifier.padding(top = 3.dp),
+                color = Color(0xFF000000),
+            )
+            Text(
+                "Задача: $taskName",
+                fontSize = 15.sp,
+                modifier = Modifier.padding(top = 3.dp),
+                color = Color(0xFF000000),
+            )
+            Text(
+                "Интервал поливания: $wateringInterval",
+                fontSize = 17.sp,
+                modifier = Modifier.padding(top = 3.dp),
+                color = Color(0xFF000000),
+            )
+            Image(
+                bitmap = ImageBitmap.imageResource(R.drawable.delete),
+                contentDescription = "Удалить",
+                modifier = Modifier
+                    .padding(start = 100.dp)
+                    .size(15.dp, 20.dp)
+                    .clickable { plantsViewmodel.deletePlant(id); tasksViewmodel.deleteTask(id) }
+            )
+
         }
 
     }
