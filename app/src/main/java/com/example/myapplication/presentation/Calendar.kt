@@ -9,11 +9,9 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -30,7 +28,6 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Color.Companion.White
@@ -47,10 +44,6 @@ import com.example.myapplication.BookeeperApp
 import com.example.myapplication.R
 import com.example.myapplication.data.database.entity.PlantEntity
 import com.example.myapplication.presentation.navigation.AppDestinations
-import com.example.myapplication.viewmodel.DrugsViewmodel
-import com.example.myapplication.viewmodel.DrugsViewmodelFactory
-import com.example.myapplication.viewmodel.GardensViewmodel
-import com.example.myapplication.viewmodel.GardensViewmodelFactory
 import com.example.myapplication.viewmodel.PlantsViewmodel
 import com.example.myapplication.viewmodel.PlantsViewmodelFactory
 import com.example.myapplication.viewmodel.TasksViewmodel
@@ -70,15 +63,6 @@ fun Calendar(innerPadding: PaddingValues, navController: NavController) {
     weekState.weekState.currentWeek
 
     val application = LocalContext.current.applicationContext as BookeeperApp
-    val viewmodelGardenFactory = GardensViewmodelFactory(application.repository)
-    val gardensViewmodel: GardensViewmodel = viewModel(factory = viewmodelGardenFactory)
-
-    val viewmodelDrugsFactory = DrugsViewmodelFactory(application.repository)
-    val drugsViewmodel: DrugsViewmodel = viewModel(factory = viewmodelDrugsFactory)
-
-    val viewmodelTasksFactory = TasksViewmodelFactory(application.repository)
-    val tasksViewmodel: TasksViewmodel = viewModel(factory = viewmodelTasksFactory)
-
     val viewmodelPlantsFactory = PlantsViewmodelFactory(application.repository)
     val plantsViewmodel: PlantsViewmodel = viewModel(factory = viewmodelPlantsFactory)
     val plantList by plantsViewmodel.plants.collectAsState()
@@ -147,9 +131,6 @@ fun Calendar(innerPadding: PaddingValues, navController: NavController) {
                         plant.taskName,
                         plant.wateringInterval,
                         plantsViewmodel,
-                        drugsViewmodel,
-                        tasksViewmodel,
-                        gardensViewmodel,
                         plant.id,
                         plant.drugName,
                         plant.gardenName
@@ -178,9 +159,6 @@ fun DayCard(
     taskName: String,
     wateringInterval: Int,
     plantsViewmodel: PlantsViewmodel,
-    drugsViewmodel: DrugsViewmodel,
-    tasksViewmodel: TasksViewmodel,
-    gardensViewmodel: GardensViewmodel,
     id: Int,
     drugName: String,
     gardenName: String
@@ -200,60 +178,47 @@ fun DayCard(
                 )
             )
     ) {
-        Column(modifier = Modifier.padding(start = 10.dp, top = 20.dp)) {
-            Text(
-                plantName,
-                fontSize = 25.sp,
-                modifier = Modifier.padding(top = 3.dp),
-                color = Color(0xFF000000),
-                fontWeight = FontWeight.Medium
-            )
-            Box(
-                modifier = Modifier
-                    .background(
-                        color = Color(0xFFA2FFAC), shape = RoundedCornerShape(
-                            topStart = 16.dp,
-                        )
-                    )
-                    .padding(start = 40.dp)
-                    .size(width = 20.dp, height = 20.dp),
-            ) {
+        Row {
+            Column(modifier = Modifier.padding(start = 10.dp, top = 5.dp)) {
+                Text(
+                    plantName,
+                    fontSize = 25.sp,
+                    modifier = Modifier.padding(top = 3.dp),
+                    color = Color(0xFF000000),
+                    fontWeight = FontWeight.Medium
+                )
                 Text(
                     "Название сада: $gardenName",
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .wrapContentSize(Alignment.Center),
                     fontSize = 22.sp,
                     color = Color(0xFF075E10),
                 )
+                Text(
+                    "Препарат: $drugName",
+                    fontSize = 17.sp,
+                    modifier = Modifier.padding(top = 3.dp),
+                    color = Color(0xFF000000),
+                )
+                Text(
+                    "Задача: $taskName",
+                    fontSize = 15.sp,
+                    modifier = Modifier.padding(top = 3.dp),
+                    color = Color(0xFF000000),
+                )
+                Text(
+                    "Интервал поливания: $wateringInterval",
+                    fontSize = 17.sp,
+                    modifier = Modifier.padding(top = 3.dp),
+                    color = Color(0xFF000000),
+                )
             }
-            Text(
-                "Препарат: $drugName",
-                fontSize = 17.sp,
-                modifier = Modifier.padding(top = 3.dp),
-                color = Color(0xFF000000),
-            )
-            Text(
-                "Задача: $taskName",
-                fontSize = 15.sp,
-                modifier = Modifier.padding(top = 3.dp),
-                color = Color(0xFF000000),
-            )
-            Text(
-                "Интервал поливания: $wateringInterval",
-                fontSize = 17.sp,
-                modifier = Modifier.padding(top = 3.dp),
-                color = Color(0xFF000000),
-            )
             Image(
                 bitmap = ImageBitmap.imageResource(R.drawable.delete),
                 contentDescription = "Удалить",
                 modifier = Modifier
-                    .padding(start = 100.dp)
+                    .padding(start = 90.dp, top = 10.dp)
                     .size(15.dp, 20.dp)
                     .clickable { plantsViewmodel.deletePlant(id); tasksViewmodel.deleteTask(id) }
             )
-
         }
 
     }
