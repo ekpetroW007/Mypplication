@@ -90,18 +90,26 @@ fun Calendar(innerPadding: PaddingValues, navController: NavController) {
 
     LaunchedEffect(key1 = weekState.weekState.currentWeek, key2 = plantList) {
         filteredPlantList = plantList.filter { plant ->
+            Log.d("filtration", "plant = $plant")
             val cD: LocalDate = LocalDate.parse(plant.creationDate)
+            Log.d("filtration", "creationDate = $cD")
             var nextDayOfWatering = cD.plusDays(plant.wateringInterval.toLong())
+            Log.d("filtration", "nextDayOfWatering  = $nextDayOfWatering ")
             var isInWeek = false
+
             val weekDates = weekState.weekState.currentWeek.days
+            Log.d("filtration", "weekDates  = $weekDates ")
             while (nextDayOfWatering.dayOfYear < 365) {
-                nextDayOfWatering = nextDayOfWatering.plusDays(plant.wateringInterval.toLong())
                 isInWeek = nextDayOfWatering in weekDates
+                if (isInWeek) {
+                    break
+                }
+                Log.d("filtration", "isInWeek  = $isInWeek ")
+                nextDayOfWatering = nextDayOfWatering.plusDays(plant.wateringInterval.toLong())
+                Log.d("filtration", "nextDayOfWatering  = $nextDayOfWatering in while ")
             }
             isInWeek
-
         }
-
     }
     Box(
         modifier = Modifier
