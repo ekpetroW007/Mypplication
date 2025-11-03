@@ -91,7 +91,7 @@ fun MyGardens(navController: NavController, innerPadding: PaddingValues) {
         Box(modifier = Modifier.background(White).size(1000.dp))
         Column(modifier = Modifier.padding(innerPadding)) {
 
-            LazyColumn(modifier = Modifier.padding(start = 9.dp, top = 5.dp)) {
+            LazyColumn(modifier = Modifier.padding(start = 5.dp, top = 5.dp)) {
                 items(gardensList) { garden ->
                     GardensCard(garden.name, gardensViewmodel, garden.id)
                 }

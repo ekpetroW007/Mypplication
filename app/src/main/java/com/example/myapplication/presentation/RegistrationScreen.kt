@@ -5,6 +5,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -15,11 +16,14 @@ import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
+import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Color.Companion.Black
 import androidx.compose.ui.graphics.Color.Companion.White
 import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.res.imageResource
@@ -88,16 +92,16 @@ fun Registration(navController: NavController, userViewModel: UserViewModel) {
 //    }
     Box(
         modifier = Modifier
-            .size(600.dp, 1000.dp)
-            .background(Color(0xFF2BC24B))
+            .size(1000.dp, 1000.dp)
+            .background(Color(0xFF2E8C3F))
     ) {
 
         Card(
             elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
             colors = CardDefaults.cardColors(containerColor = White),
             modifier = Modifier
-                .size(height = 640.dp, width = 380.dp)
-                .padding(start = 32.dp, top = 250.dp)
+                .size(height = 470.dp, width = 350.dp)
+                .padding(start = 35.dp, top = 210.dp)
                 .background(
                     White, shape = RoundedCornerShape(
                         topStart = 22.dp,
@@ -106,13 +110,14 @@ fun Registration(navController: NavController, userViewModel: UserViewModel) {
                         bottomStart = 22.dp
                     )
                 )
+                .fillMaxSize(),
         ) {
             Column {
                 Row {
                     Text(
                         "Bookeeper",
                         modifier = Modifier
-                            .padding(vertical = 30.dp, horizontal = 52.dp),
+                            .padding(top = 20.dp, start = 55.dp),
                         fontSize = 33.sp,
                         fontWeight = Medium,
                         color = Color(0xFF000000)
@@ -121,8 +126,8 @@ fun Registration(navController: NavController, userViewModel: UserViewModel) {
                         bitmap = ImageBitmap.imageResource(R.drawable.picofplant),
                         contentDescription = "Картинка растения в профиле",
                         modifier = Modifier
-                            .padding(horizontal = 8.dp, vertical = 10.dp)
-                            .size(50.dp, 80.dp)
+                            .padding(start = 8.dp)
+                            .size(55.dp, 80.dp)
                     )
                 }
                 Column {
@@ -135,8 +140,13 @@ fun Registration(navController: NavController, userViewModel: UserViewModel) {
                         value = loginState.value,
                         textStyle = TextStyle(fontSize = 20.sp),
                         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
+                        colors = TextFieldDefaults.colors(
+                            unfocusedContainerColor = White,
+                            unfocusedTextColor = Black,
+                            focusedContainerColor = White,
+                            focusedTextColor = Black,
+                        ),
                         onValueChange = { newText -> loginState.value = newText },
-                        modifier = Modifier.padding(horizontal = 16.dp)
                     )
                 }
                 Button(
@@ -149,8 +159,8 @@ fun Registration(navController: NavController, userViewModel: UserViewModel) {
                         }
                     },
                     modifier = Modifier
-                        .padding(start = 20.dp, top = 40.dp)
-                        .size(height = 70.dp, width = 310.dp)
+                        .padding(start = 35.dp, top = 18.dp)
+                        .size(height = 50.dp, width = 250.dp)
                         .background(
                             White, shape = RoundedCornerShape(topStart = 9.dp)
                         ),
