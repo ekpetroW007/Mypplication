@@ -16,6 +16,7 @@ import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
+import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -98,6 +99,12 @@ fun DrugAdd(navController: NavController) {
                     value = name.value,
                     keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
                     textStyle = TextStyle(fontSize = 20.sp),
+                    colors = TextFieldDefaults.colors(
+                        unfocusedContainerColor = White,
+                        unfocusedTextColor = White,
+                        focusedContainerColor = White,
+                        focusedTextColor = White,
+                    ),
                     onValueChange = { newText -> name.value = newText }
                 )
             }
@@ -126,6 +133,12 @@ fun DrugAdd(navController: NavController) {
                     value = purpose.value,
                     keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
                     textStyle = TextStyle(fontSize = 20.sp),
+                    colors = TextFieldDefaults.colors(
+                        unfocusedContainerColor = White,
+                        unfocusedTextColor = White,
+                        focusedContainerColor = White,
+                        focusedTextColor = White,
+                    ),
                     onValueChange = { newText -> purpose.value = newText }
                 )
             }
@@ -154,6 +167,12 @@ fun DrugAdd(navController: NavController) {
                     value = consumptionRate.value,
                     keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
                     textStyle = TextStyle(fontSize = 20.sp),
+                    colors = TextFieldDefaults.colors(
+                        unfocusedContainerColor = White,
+                        unfocusedTextColor = White,
+                        focusedContainerColor = White,
+                        focusedTextColor = White,
+                    ),
                     onValueChange = { newText -> consumptionRate.value = newText }
                 )
             }

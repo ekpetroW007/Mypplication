@@ -61,7 +61,11 @@ fun Profile() {
     val plantList by plantsViewmodel.plants.collectAsState()
     val taskList by tasksViewmodel.tasks.collectAsState()
     val gardenList by gardensViewmodel.gardens.collectAsState()
-    Box(modifier = Modifier.background(White).size(1000.dp))
+    Box(
+        modifier = Modifier
+            .background(White)
+            .size(1000.dp)
+    )
     Column(modifier = Modifier.padding(top = 100.dp, end = 17.dp)) {
         Text(
             "Статистика",
@@ -106,7 +110,7 @@ fun Profile() {
                         Text(
                             "Садов",
                             modifier = Modifier.fillMaxWidth(1f),
-                            color=Color.Black,
+                            color = Color.Black,
                             fontSize = 15.sp,
                             fontWeight = Medium,
                             textAlign = TextAlign.Center
@@ -149,7 +153,7 @@ fun Profile() {
                         Text(
                             "Растений",
                             modifier = Modifier.fillMaxWidth(1f),
-                            color=Color.Black,
+                            color = Color.Black,
                             fontSize = 15.sp,
                             fontWeight = Medium,
                             textAlign = TextAlign.Center
@@ -192,7 +196,7 @@ fun Profile() {
                         Text(
                             "Препаратов",
                             modifier = Modifier.fillMaxWidth(1f),
-                            color=Color.Black,
+                            color = Color.Black,
                             fontSize = 15.sp,
                             fontWeight = Medium,
                             textAlign = TextAlign.Center
@@ -233,7 +237,7 @@ fun Profile() {
                         Text(
                             "Задач",
                             modifier = Modifier.fillMaxWidth(1f),
-                            color=Color.Black,
+                            color = Color.Black,
                             fontSize = 15.sp,
                             fontWeight = Medium,
                             textAlign = TextAlign.Center
@@ -247,14 +251,11 @@ fun Profile() {
                 elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
                 colors = CardDefaults.cardColors(containerColor = White),
                 modifier = Modifier
-                    .padding(start = 20.dp, top = 12.dp, end = 0.dp, bottom = 10.dp)
+                    .padding(start = 18.dp, top = 12.dp, bottom = 10.dp)
                     .size(height = 150.dp, width = 375.dp)
                     .background(
                         White, shape = RoundedCornerShape(
                             topStart = 16.dp,
-                            topEnd = 0.dp,
-                            bottomEnd = 0.dp,
-                            bottomStart = 0.dp
                         )
                     )
             ) {

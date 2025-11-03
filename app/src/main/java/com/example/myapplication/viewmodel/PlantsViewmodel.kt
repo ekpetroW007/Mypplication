@@ -8,7 +8,6 @@ import com.example.myapplication.data.repository.BookeeperRepository
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
-import java.util.Date
 
 class PlantsViewmodel(private val repository: BookeeperRepository) : ViewModel() {
     val plants = repository.allPlants
@@ -33,7 +32,6 @@ class PlantsViewmodel(private val repository: BookeeperRepository) : ViewModel()
         taskName: String,
         wateringInterval: Int,
         creationDate: String,
-        plantPhoto: String,
         drugId: Int?,
         gardenId: Int?,
         drugName: String,
@@ -45,7 +43,6 @@ class PlantsViewmodel(private val repository: BookeeperRepository) : ViewModel()
                     plantName = plantName,
                     wateringInterval = wateringInterval,
                     creationDate = creationDate,
-                    plantPhoto = plantPhoto,
                     taskName = taskName,
                     drugId = drugId,
                     gardenId = gardenId,

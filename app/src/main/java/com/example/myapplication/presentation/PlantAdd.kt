@@ -65,7 +65,6 @@ fun PlantAdd(
     val tasksViewmodel: TasksViewmodel = viewModel(factory = viewmodelTasksFactory)
     val gardenList by gardensViewmodel.gardens.collectAsState()
     val plantName = remember { mutableStateOf("") }
-    val plantPhoto = remember { mutableStateOf("") }
     val taskName = remember { mutableStateOf("") }
     val gardenId = remember { mutableStateOf<Int?>(null) }
     val wateringInterval = remember { mutableIntStateOf(0) }
@@ -108,10 +107,10 @@ fun PlantAdd(
             value = plantName.value,
             textStyle = TextStyle(fontSize = 1.sp),
             colors = TextFieldDefaults.colors(
-                unfocusedContainerColor = Color.White,
-                unfocusedTextColor = Color.White,
-                focusedContainerColor = Color.White,
-                focusedTextColor = Color.White,
+                unfocusedContainerColor = White,
+                unfocusedTextColor = White,
+                focusedContainerColor = White,
+                focusedTextColor = White,
             ),
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
             onValueChange = { newText -> plantName.value = newText }
@@ -150,6 +149,12 @@ fun PlantAdd(
             value = taskName.value,
             textStyle = TextStyle(fontSize = 20.sp),
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
+            colors = TextFieldDefaults.colors(
+                unfocusedContainerColor = White,
+                unfocusedTextColor = White,
+                focusedContainerColor = White,
+                focusedTextColor = White,
+            ),
             onValueChange = { newText -> taskName.value = newText }
         )
         Text(
@@ -187,26 +192,15 @@ fun PlantAdd(
             value = wateringInterval.intValue.toString(),
             textStyle = TextStyle(fontSize = 20.sp),
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+            colors = TextFieldDefaults.colors(
+                unfocusedContainerColor = White,
+                unfocusedTextColor = White,
+                focusedContainerColor = White,
+                focusedTextColor = White,
+            ),
             onValueChange = { newText ->
                 wateringInterval.intValue = newText.filter { it.isDigit() }.toInt()
             }
-        )
-        Text(
-            "Фото:",
-            modifier = Modifier.padding(top = 15.dp, start = 20.dp),
-            fontSize = 15.sp
-        )
-
-        Text(
-            plantPhoto.value,
-            fontSize = 15.sp,
-            modifier = Modifier.padding(start = 20.dp)
-        )
-        TextField(
-            value = plantPhoto.value,
-            textStyle = TextStyle(fontSize = 20.sp),
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Phone),
-            onValueChange = { newText -> plantPhoto.value = newText }
         )
         Button(
             onClick = {
@@ -214,8 +208,7 @@ fun PlantAdd(
                     plantName.value,
                     taskName.value,
                     wateringInterval.intValue,
-                    creationDate = LocalDate.now().toString() ,
-                    plantPhoto.value,
+                    creationDate = LocalDate.now().toString(),
                     drugId.value,
                     gardenId.value,
                     selectedDrug.value?.name ?: "Не выбран",
@@ -240,7 +233,7 @@ fun PlantAdd(
         ) {
             Text(
                 "Cохранить", fontSize = 25.sp, modifier = Modifier
-                    .padding(horizontal = 22.dp)
+                    .padding(start = 8.dp, top = 8.dp)
             )
         }
     }

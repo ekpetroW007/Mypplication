@@ -16,6 +16,7 @@ import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
+import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -77,7 +78,7 @@ fun GardenAdd(navController: NavController) {
             elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
             colors = CardDefaults.cardColors(containerColor = White),
             modifier = Modifier
-                .padding(start = 25.dp, top = 140.dp)
+                .padding(start = 10.dp, top = 140.dp)
                 .size(height = 100.dp, width = 365.dp)
                 .background(
                     White, shape = RoundedCornerShape(
@@ -89,7 +90,7 @@ fun GardenAdd(navController: NavController) {
                 Text(
                     "Название сада",
                     modifier = Modifier
-                        .padding(start = 5.dp, top = 22.dp), fontSize = 22.sp
+                        .padding(start = 18.dp, top = 22.dp), fontSize = 22.sp
                 )
 
                 Text(name.value, fontSize = 20.sp)
@@ -97,6 +98,12 @@ fun GardenAdd(navController: NavController) {
                     value = name.value,
                     keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
                     textStyle = TextStyle(fontSize = 20.sp),
+                    colors = TextFieldDefaults.colors(
+                        unfocusedContainerColor = White,
+                        unfocusedTextColor = White,
+                        focusedContainerColor = White,
+                        focusedTextColor = White,
+                    ),
                     onValueChange = { newText -> name.value = newText }
                 )
             }

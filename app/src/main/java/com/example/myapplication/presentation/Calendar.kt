@@ -59,11 +59,9 @@ import io.github.boguszpawlowski.composecalendar.SelectableWeekCalendar
 import io.github.boguszpawlowski.composecalendar.WeekCalendarState
 import io.github.boguszpawlowski.composecalendar.day.DayState
 import io.github.boguszpawlowski.composecalendar.rememberSelectableWeekCalendarState
-import io.github.boguszpawlowski.composecalendar.rememberWeekCalendarState
 import io.github.boguszpawlowski.composecalendar.selection.DynamicSelectionState
 import java.time.DayOfWeek
 import java.time.LocalDate
-import java.util.Date
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
@@ -148,9 +146,6 @@ fun Calendar(innerPadding: PaddingValues, navController: NavController) {
                         plant.plantName,
                         plant.taskName,
                         plant.wateringInterval,
-                        plant.plantPhoto,
-//                        plant.drugId,
-//                        plant.gardenId,
                         plantsViewmodel,
                         drugsViewmodel,
                         tasksViewmodel,
@@ -182,7 +177,6 @@ fun DayCard(
     plantName: String,
     taskName: String,
     wateringInterval: Int,
-    plantPhoto: String,
     plantsViewmodel: PlantsViewmodel,
     drugsViewmodel: DrugsViewmodel,
     tasksViewmodel: TasksViewmodel,

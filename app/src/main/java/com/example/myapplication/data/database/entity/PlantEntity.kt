@@ -5,7 +5,6 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
-import java.util.Date
 
 @Entity(
     tableName = "plants",
@@ -39,9 +38,6 @@ data class PlantEntity(
 
     @ColumnInfo(name = "creationDate")
     val creationDate: String,
-
-    @ColumnInfo(name = "photo_path")
-    val plantPhoto: String,
 
     @ColumnInfo(name = "drug_id", index = true)
     val drugId: Int?,
