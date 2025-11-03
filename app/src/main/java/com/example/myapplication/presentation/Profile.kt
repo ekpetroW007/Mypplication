@@ -1,6 +1,5 @@
 package com.example.myapplication.presentation
 
-import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -304,41 +303,41 @@ fun Profile() {
                     )
                 }
             }
-            Card(
-                elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
-                colors = CardDefaults.cardColors(containerColor = White),
-                border = BorderStroke(1.dp, Color(0xFFBD1A0E)),
-                modifier = Modifier
-                    .padding(start = 20.dp, top = 10.dp, end = 0.dp, bottom = 0.dp)
-                    .size(height = 50.dp, width = 375.dp)
-                    .background(
-                        White, shape = RoundedCornerShape(
-                            topStart = 16.dp,
-                            topEnd = 0.dp,
-                            bottomEnd = 0.dp,
-                            bottomStart = 0.dp
-                        )
-                    )
-            ) {
-                Row {
-                    Image(
-                        bitmap = ImageBitmap.imageResource(R.drawable.logout),
-                        contentDescription = "Картинка выхода из аккаунта",
-                        modifier = Modifier
-                            .padding(horizontal = 22.dp)
-                            .size(30.dp, 60.dp)
-                    )
-                    Column {
-                        Text(
-                            "Выйти из аккаунта",
-                            modifier = Modifier
-                                .padding(horizontal = 15.dp, vertical = 10.dp),
-                            fontSize = 25.sp,
-                            color = Color(0xFFBD1A0E)
-                        )
-                    }
-                }
-            }
+//            Card(
+//                elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
+//                colors = CardDefaults.cardColors(containerColor = White),
+//                border = BorderStroke(1.dp, Color(0xFFBD1A0E)),
+//                modifier = Modifier
+//                    .padding(start = 20.dp, top = 10.dp, end = 0.dp, bottom = 0.dp)
+//                    .size(height = 50.dp, width = 375.dp)
+//                    .background(
+//                        White, shape = RoundedCornerShape(
+//                            topStart = 16.dp,
+//                            topEnd = 0.dp,
+//                            bottomEnd = 0.dp,
+//                            bottomStart = 0.dp
+//                        )
+//                    )
+//            ) {
+//                Row {
+//                    Image(
+//                        bitmap = ImageBitmap.imageResource(R.drawable.logout),
+//                        contentDescription = "Картинка выхода из аккаунта",
+//                        modifier = Modifier
+//                            .padding(horizontal = 22.dp)
+//                            .size(30.dp, 60.dp)
+//                    )
+//                    Column {
+//                        Text(
+//                            "Выйти из аккаунта",
+//                            modifier = Modifier
+//                                .padding(horizontal = 15.dp, vertical = 10.dp),
+//                            fontSize = 25.sp,
+//                            color = Color(0xFFBD1A0E)
+//                        )
+//                    }
+//                }
+//            }
         }
     }
 }

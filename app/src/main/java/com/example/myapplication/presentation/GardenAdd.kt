@@ -38,7 +38,7 @@ import com.example.myapplication.viewmodel.GardensViewmodel
 import com.example.myapplication.viewmodel.GardensViewmodelFactory
 
 @Composable
-fun GardenAdd(navController: NavController) { // TODO (тут в карточки садов будет добавляться инофрмация с экрана календаря)
+fun GardenAdd(navController: NavController) {
     val name = remember { mutableStateOf("") }
     val application = LocalContext.current.applicationContext as BookeeperApp
     val viewmodelFactory = GardensViewmodelFactory(application.repository)
@@ -64,7 +64,7 @@ fun GardenAdd(navController: NavController) { // TODO (тут в карточк�
             )
             Text(
                 "Добавление сада",
-                modifier = Modifier.padding(start = 22.dp, top = 28.dp),
+                modifier = Modifier.padding(start = 12.dp, top = 28.dp),
                 fontSize = 35.sp,
                 fontWeight = Bold,
                 color = White
@@ -89,7 +89,7 @@ fun GardenAdd(navController: NavController) { // TODO (тут в карточк�
                 Text(
                     "Название сада",
                     modifier = Modifier
-                        .padding(start = 18.dp, top = 22.dp), fontSize = 22.sp
+                        .padding(start = 10.dp, top = 22.dp), fontSize = 22.sp
                 )
 
                 Text(name.value, fontSize = 20.sp)
@@ -106,7 +106,7 @@ fun GardenAdd(navController: NavController) { // TODO (тут в карточк�
                 gardensViewmodel.gardenAdd(name.value)
                 navController.popBackStack()
             }, modifier = Modifier
-                .padding(start = 25.dp, top = 40.dp)
+                .padding(start = 10.dp, top = 40.dp)
                 .size(height = 70.dp, width = 365.dp)
                 .background(
                     White, shape = RoundedCornerShape(
