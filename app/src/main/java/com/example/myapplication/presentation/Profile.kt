@@ -80,7 +80,6 @@ fun Profile(navController: NavController) {
             Card(
                 elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
                 colors = CardDefaults.cardColors(containerColor = White),
-                onClick = { navController.navigate("gardenAddScreen") },
                 modifier = Modifier
                     .size(70.dp)
                     .background(
@@ -125,7 +124,6 @@ fun Profile(navController: NavController) {
             Card(
                 elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
                 colors = CardDefaults.cardColors(containerColor = White),
-                onClick = { navController.navigate("plantAddScreen") },
                 modifier = Modifier
                     .size(height = 70.dp, width = 90.dp)
                     .background(
@@ -169,7 +167,6 @@ fun Profile(navController: NavController) {
             Card(
                 elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
                 colors = CardDefaults.cardColors(containerColor = White),
-                onClick = { navController.navigate("drugAddScreen") },
                 modifier = Modifier
                     .size(height = 70.dp, width = 100.dp)
                     .background(
