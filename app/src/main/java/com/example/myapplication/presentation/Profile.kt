@@ -35,6 +35,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.em
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavController
 import com.example.myapplication.BookeeperApp
 import com.example.myapplication.R
 import com.example.myapplication.viewmodel.DrugsViewmodel
@@ -47,7 +48,7 @@ import com.example.myapplication.viewmodel.TasksViewmodel
 import com.example.myapplication.viewmodel.TasksViewmodelFactory
 
 @Composable
-fun Profile() {
+fun Profile(navController: NavController) {
     val application = LocalContext.current.applicationContext as BookeeperApp
     val viewmodelPlantsFactory = PlantsViewmodelFactory(application.repository)
     val plantsViewmodel: PlantsViewmodel = viewModel(factory = viewmodelPlantsFactory)
@@ -79,6 +80,7 @@ fun Profile() {
             Card(
                 elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
                 colors = CardDefaults.cardColors(containerColor = White),
+                onClick = { navController.navigate("gardenAddScreen") },
                 modifier = Modifier
                     .size(70.dp)
                     .background(
@@ -89,6 +91,7 @@ fun Profile() {
                             bottomStart = 0.dp
                         )
                     )
+
             ) {
                 Box(
                     modifier = Modifier
@@ -122,6 +125,7 @@ fun Profile() {
             Card(
                 elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
                 colors = CardDefaults.cardColors(containerColor = White),
+                onClick = { navController.navigate("plantAddScreen") },
                 modifier = Modifier
                     .size(height = 70.dp, width = 90.dp)
                     .background(
@@ -165,6 +169,7 @@ fun Profile() {
             Card(
                 elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
                 colors = CardDefaults.cardColors(containerColor = White),
+                onClick = { navController.navigate("drugAddScreen") },
                 modifier = Modifier
                     .size(height = 70.dp, width = 100.dp)
                     .background(
